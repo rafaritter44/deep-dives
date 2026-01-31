@@ -490,3 +490,5 @@ module DefiningGenericClasses =
         member this.Current = states.Head
     let tracker = StateTracker 10
     tracker.UpdateState 17
+    printfn $"Current: {tracker.Current}"
+    printfn $"History: {tracker.History}"
