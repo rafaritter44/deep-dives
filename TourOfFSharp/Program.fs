@@ -478,5 +478,5 @@ module DefiningClasses =
         member this.Length = length
         member this.Scale(k) = Vector2D(k * this.DX, k * this.DY)
     let vector1 = Vector2D(3.0, 4.0)
-    let vector2 = vector1.Scale(10.0)
+    let vector2 = vector1.Scale 10.0
     printfn $"Length of vector1: %.2f{vector1.Length}\nLength of vector2: %.2f{vector2.Length}"
