@@ -484,8 +484,7 @@ module DefiningClasses =
 module DefiningGenericClasses =
     type StateTracker<'T>(initialElement: 'T) =
         let mutable states = [ initialElement ]
-        member _.UpdateState newState =
-            states <- newState :: states
+        member _.UpdateState newState = states <- newState :: states
         member _.History = states
         member _.Current = states.Head
     let tracker = StateTracker 10
