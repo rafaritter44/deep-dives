@@ -469,3 +469,14 @@ module UnitsOfMeasure =
     let val3 = val2 * mile.asMeter
 
     printfn $"After a %.2f{val1} race, I would walk %.2f{val2} miles, which would be %.2f{val3} meters."
+
+module DefiningClasses =
+    type Vector2D(dx : double, dy : double) =
+        let length = sqrt (dx*dx + dy*dy)
+        member this.DX = dx
+        member this.DY = dy
+        member this.Length = length
+        member this.Scale(k) = Vector2D(k * this.DX, k * this.DY)
+    let vector1 = Vector2D(3.0, 4.0)
+    let vector2 = vector1.Scale(10.0)
+    printfn $"Length of vector1: %f{vector1.Length}\nLength of vector2: %f{vector2.Length}"
