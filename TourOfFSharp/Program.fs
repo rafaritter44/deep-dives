@@ -480,3 +480,13 @@ module DefiningClasses =
     let vector1 = Vector2D(3.0, 4.0)
     let vector2 = vector1.Scale 10.0
     printfn $"Length of vector1: %.2f{vector1.Length}\nLength of vector2: %.2f{vector2.Length}"
+
+module DefiningGenericClasses =
+    type StateTracker<'T>(initialElement: 'T) =
+        let mutable states = [ initialElement ]
+        member this.UpdateState newState =
+            states <- newState :: states
+        member this.History = states
+        member this.Current = states.Head
+    let tracker = StateTracker 10
+    tracker.UpdateState 17
