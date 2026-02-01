@@ -505,5 +505,5 @@ module ImplementingInterfaces =
 
     let interfaceImplementation =
         { new System.IDisposable with
-            member this.Dispose() = printfn "disposed" }
+            member _.Dispose() = printfn "disposed" }
     interfaceImplementation.Dispose()
