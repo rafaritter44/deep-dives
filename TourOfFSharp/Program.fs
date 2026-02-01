@@ -498,3 +498,7 @@ module ImplementingInterfaces =
         member this.ReadLine() = file.ReadLine()
         interface System.IDisposable with
             member this.Dispose() = file.Close()
+    let readFile = new ReadFile()
+    let line = readFile.ReadLine()
+    printfn $"{line}"
+    (readFile :> System.IDisposable).Dispose()
