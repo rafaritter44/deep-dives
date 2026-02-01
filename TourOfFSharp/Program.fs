@@ -491,3 +491,10 @@ module DefiningGenericClasses =
     tracker.UpdateState 17
     printfn $"Current: {tracker.Current}"
     printfn $"History: {tracker.History}"
+
+module ImplementingInterfaces =
+    type ReadFile() =
+        let file = new System.IO.StreamReader("readme.txt")
+        member this.ReadLine() = file.ReadLine()
+        interface System.IDisposable with
+            member this.Dispose() = file.Close()
