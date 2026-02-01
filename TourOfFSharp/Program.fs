@@ -495,9 +495,9 @@ module DefiningGenericClasses =
 module ImplementingInterfaces =
     type ReadFile() =
         let file = new System.IO.StreamReader("readme.txt")
-        member this.ReadLine() = file.ReadLine()
+        member _.ReadLine() = file.ReadLine()
         interface System.IDisposable with
-            member this.Dispose() = file.Close()
+            member _.Dispose() = file.Close()
     let line =
         use readFile = new ReadFile()
         readFile.ReadLine()
