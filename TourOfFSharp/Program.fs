@@ -502,3 +502,7 @@ module ImplementingInterfaces =
         use readFile = new ReadFile()
         readFile.ReadLine()
     printfn $"{line}"
+
+    let interfaceImplementation =
+        { new System.IDisposable with
+            member this.Dispose() = printfn "disposed" }
