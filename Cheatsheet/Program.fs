@@ -11,3 +11,4 @@
     let suspiciousRecords =
         records
         |> Seq.filter (fun x -> x.Age >= 150)
+    printfn $"%A{suspiciousRecords}"
