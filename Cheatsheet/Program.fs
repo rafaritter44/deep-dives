@@ -1,2 +1,5 @@
-﻿// For more information see https://aka.ms/fsharp-console-apps
-printfn "Hello from F#"
+﻿module AnonymousFunctions =
+    let isDescending xs =
+        xs
+        |> List.pairwise
+        |> List.forall (fun (x, y) -> x > y)
