@@ -28,3 +28,4 @@
 module UnitType =
     let getCurrentDateTime () = System.DateTime.Now
     let currentDateTime = getCurrentDateTime()
+    printfn $"{currentDateTime}"
