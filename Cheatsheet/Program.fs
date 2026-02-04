@@ -22,3 +22,4 @@
         |> List.map _.Name
     let uppercaseNames =
         people |> List.map _.Name.ToUpperInvariant()
+    printfn $"{names}\n{names'}\n{uppercaseNames}"
