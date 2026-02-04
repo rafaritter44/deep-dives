@@ -29,3 +29,9 @@ module UnitType =
     let getCurrentDateTime () = System.DateTime.Now
     let currentDateTime = getCurrentDateTime()
     printfn $"{currentDateTime}"
+
+module ExplicitTyping =
+    let countWordsStartingWithLetter (theString: string) (theLetter: char) : int =
+        theString.Split ' '
+        |> Seq.where (fun (word: string) -> word.StartsWith theLetter)  // explicit typing in a lambda
+        |> Seq.length
