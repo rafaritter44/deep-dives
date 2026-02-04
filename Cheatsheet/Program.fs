@@ -36,3 +36,7 @@ module ExplicitTyping =
         |> Seq.where (fun (word: string) -> word.StartsWith theLetter)  // explicit typing in a lambda
         |> Seq.length
     printfn $"""{countWordsStartingWithLetter "test this string" 't'}"""
+
+    let anonRecordFunc (record: {| Count: int; LeftAndRight: bigint * bigint |}) =
+        printfn $"{record}"
+    anonRecordFunc {| Count = 1; LeftAndRight = 10I, 20I |}
