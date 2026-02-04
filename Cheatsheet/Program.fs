@@ -24,3 +24,7 @@
     let uppercaseNames =
         people |> List.map _.Name.ToUpperInvariant()
     printfn $"{names}\n{names'}\n{uppercaseNames}"
+
+module UnitType =
+    let getCurrentDateTime () = System.DateTime.Now
+    let currentDateTime = getCurrentDateTime()
