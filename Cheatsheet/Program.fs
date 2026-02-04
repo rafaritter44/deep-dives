@@ -35,3 +35,4 @@ module ExplicitTyping =
         theString.Split ' '
         |> Seq.where (fun (word: string) -> word.StartsWith theLetter)  // explicit typing in a lambda
         |> Seq.length
+    printfn $"""{countWordsStartingWithLetter "test this string" 't'}"""
