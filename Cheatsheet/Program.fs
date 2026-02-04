@@ -13,6 +13,7 @@
         |> Seq.filter (fun x -> x.Age >= 150)
     printfn $"%A{suspiciousRecords}"
 
+    // _.Property shorthand
     let people = Seq.toList records
     let names =
         people
