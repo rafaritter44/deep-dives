@@ -61,3 +61,11 @@ module RecursiveFunctions =
             else factTail2Helper (acc * x) (x - 1)
         factTail2Helper 1 x
     printfn $"{factTail2 10}"
+
+    let rec even x =
+        if x = 0 then true
+        else odd (x - 1)
+    and odd x =
+        if x = 0 then false
+        else even (x - 1)
+    printfn $"{even 100}\n{even 101}\n{odd 100}\n{odd 101}"
