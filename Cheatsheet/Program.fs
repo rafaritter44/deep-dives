@@ -40,3 +40,10 @@ module ExplicitTyping =
     let anonRecordFunc (record: {| Count: int; LeftAndRight: bigint * bigint |}) =
         printfn $"{record}"
     anonRecordFunc {| Count = 1; LeftAndRight = 10I, 20I |}
+
+module RecursiveFunctions =
+    [<TailCall>]
+    let rec fact x =
+        if x < 1 then 1
+        else x * fact (x - 1)
+    printfn $"{fact 10}"
