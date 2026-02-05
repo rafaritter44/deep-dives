@@ -54,3 +54,10 @@ module RecursiveFunctions =
         else factTail (acc * x) (x - 1)
     let factTail1 = factTail 1
     printfn $"{factTail1 10}"
+
+    let factTail2 x =
+        let rec factTail2Helper acc x =
+            if x < 1 then acc
+            else factTail2Helper (acc * x) (x - 1)
+        factTail2Helper 1 x
+    printfn $"{factTail2 10}"
