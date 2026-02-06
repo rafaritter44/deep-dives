@@ -75,3 +75,12 @@ module StaticallyResolvedTypeParameters =
     let integerAdd = add 1 2
     let floatAdd = add 1.0f 2.0f
     printfn $"%d{integerAdd}\n%.1f{floatAdd}"
+
+    type RequestA = { Id: string; StringValue: string }
+    type RequestB = { Id: string; IntValue: int }
+    let requestA: RequestA = { Id = "A"; StringValue = "Value" }
+    let requestB: RequestB = { Id = "B"; IntValue = 42 }
+    let inline getId<'T when 'T : (member Id: string)> (x: 'T) = x.Id
+    let idA = getId requestA
+    let idB = getId requestB
+    printfn $"{idA}\n{idB}"
