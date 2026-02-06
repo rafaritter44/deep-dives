@@ -69,3 +69,9 @@ module RecursiveFunctions =
         if x = 0 then false
         else even (x - 1)
     printfn $"{even 100}\n{even 101}\n{odd 100}\n{odd 101}"
+
+module StaticallyResolvedTypeParameters =
+    let inline add x y = x + y
+    let integerAdd = add 1 2
+    let floatAdd = add 1.0f 2.0f
+    printfn $"%d{integerAdd}\n%.1f{floatAdd}"
