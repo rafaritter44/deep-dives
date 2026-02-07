@@ -90,3 +90,10 @@ module Lists =
     let list2 = [10..20..90]
     let list3 = list1 @ list2
     printfn $"{list3}"
+
+    let matchList = function
+        | [] -> "empty"
+        | [ 3 ] -> "single item (3)"
+        | [ _; 4 ] -> "two items (second item is 4)"
+        | head :: tail -> $"head: {head}; tail: {tail}"
+    printfn $"{matchList []}\n{matchList [ 3 ]}\n{matchList [ -1; 4 ]}\n{matchList [1; 2; 3]}"
