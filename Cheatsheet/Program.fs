@@ -84,3 +84,9 @@ module StaticallyResolvedTypeParameters =
     let idA = getId requestA
     let idB = getId requestB
     printfn $"{idA}\n{idB}"
+
+module Lists =
+    let list1 = [1..2..9]
+    let list2 = [10..20..90]
+    let list3 = list1 @ list2
+    printfn $"{list3}"
