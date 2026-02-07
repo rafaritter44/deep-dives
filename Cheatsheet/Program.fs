@@ -104,3 +104,9 @@ module Lists =
         | [] -> 0
         | head :: tail -> head + sumEachItem tail
     printfn $"{sumEachItem [1; 2; 3]}"
+
+    [<TailCall>]
+    let rec sumEachItem2 = function
+        | [] -> 0
+        | head :: tail -> head + sumEachItem2 tail
+    printfn $"{sumEachItem2 [1; 2; 3]}"
