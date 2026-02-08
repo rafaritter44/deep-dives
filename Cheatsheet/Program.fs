@@ -133,3 +133,13 @@ module CollectionComprehension =
         }
     comprehendedSequence |> Seq.iter (printf "%A;")
     printfn ""
+
+module Tuples =
+    // Construction
+    let numberAndWord = (1, "Hello")
+    let numberAndWordAndNow = (1, "Hello", System.DateTime.Now)
+
+    // Deconstruction
+    let (number, word) = numberAndWord
+    let (_, _, now) = numberAndWordAndNow
+    printfn $"{number},{word},{now}"
