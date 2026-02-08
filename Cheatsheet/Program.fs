@@ -115,6 +115,7 @@ module Lists =
     listComprehension |> List.iter (printf "%A;")
     printfn ""
 
+    // yield is optional in a do, but is being used explicitly here
     let comprehendedList = [
         for i in 0..4 do
             yield 2 * i + 1
