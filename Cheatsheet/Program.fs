@@ -98,14 +98,12 @@ module Lists =
         | head :: tail -> $"head: {head}; tail: {tail}"
     printfn $"{matchList []}\n{matchList [ 3 ]}\n{matchList [ -1; 4 ]}\n{matchList [1; 2; 3]}"
 
-    [<TailCall>]
     let rec sumEachItem (list: int list) =
         match list with
         | [] -> 0
         | head :: tail -> head + sumEachItem tail
     printfn $"{sumEachItem [1; 2; 3]}"
 
-    [<TailCall>]
     let rec sumEachItem2 = function
         | [] -> 0
         | head :: tail -> head + sumEachItem2 tail
