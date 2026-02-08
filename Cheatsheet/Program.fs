@@ -196,3 +196,12 @@ module DiscriminatedUnions =
     let orderId = Order "12"
     let (Order id) = orderId
     printfn $"Order ID: {id}"
+
+module PatternMatching =
+    let intValue = 2
+    let result =
+        match intValue with
+        | 0 -> "Zero"
+        | 1 | 2 -> "One or Two"
+        | x -> $"Something else: {x}"
+    printfn $"{result}"
