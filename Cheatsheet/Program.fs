@@ -153,3 +153,6 @@ module Tuples =
         | 2, word -> printfn $"Two: %s{word}"
         | _, word -> printfn $"Number: %s{word}"
     printNumberAndWord numberAndWord
+
+    let printNumberAndWord' (number, word) = printfn $"%d{number}: %s{word}"
+    printNumberAndWord' numberAndWord
