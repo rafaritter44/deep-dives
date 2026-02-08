@@ -212,3 +212,11 @@ module PatternMatching =
         | (_, 3) & (x, y) -> $"{x}, 3"
         | _ -> "Wildcard"
     printfn $"{result'}"
+
+    let num = -5
+    let result'' =
+        match num with
+        | 0 -> 0
+        | x when x < 0 -> -1
+        | x -> 1
+    printfn $"{result''}"
