@@ -162,3 +162,18 @@ module Tuples =
     let success, outParsedDateTime = System.DateTime.TryParse "2026/09/13"
     printfn $"{success},{outParsedDateTime}"
     printfn $"""{System.DateTime.TryParse "invalid"}"""
+
+module DiscriminatedUnions =
+    type Interaction =
+        | MouseClick of countOfClicks: int
+        | Keyboard of char
+        | KeyboardWithModifier of char * modifier: System.ConsoleModifiers
+    let interaction1 = MouseClick 1
+    let interaction2 = MouseClick (countOfClicks = 2)
+    let interaction3 = KeyboardWithModifier ('c', System.ConsoleModifiers.Control)
+    let interactionToString = function
+        | Keyboard chr -> $"Character: {chr}"
+        | KeyboardWithModifier (chr, modifier) -> $"Character: {modifier}+{chr}"
+        | MouseClick (countOfClicks = 1) -> "Click"
+        | MouseClick (countOfClicks = x) -> $"Clicked: {x}"
+    [ interaction1; interaction2; interaction3 ] |> List.map interactionToString |> String.concat "\n" |> printfn "%s"
