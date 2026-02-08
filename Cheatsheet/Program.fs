@@ -157,3 +157,7 @@ module Tuples =
     // Function parameter deconstruction
     let printNumberAndWord' (number, word) = printfn $"%d{number}: %s{word}"
     printNumberAndWord' numberAndWord
+
+    // C# out parameter
+    let success, outParsedDateTime = System.DateTime.TryParse "2026/09/13"
+    printfn $"{success},{outParsedDateTime}"
