@@ -179,6 +179,15 @@ module DiscriminatedUnions =
     [ interaction1; interaction2; interaction3 ] |> List.iter (interactionToString >> printfn "%s")
 
     let resultPatternMatch = function
-        | Ok value -> $"Input: %d{value}"
+        | Ok value -> $"Input: %.2f{value}"
         | Error msg -> $"Error: %s{msg}"
-    printfn $"""{resultPatternMatch (Ok 10)}; {resultPatternMatch (Error "An error occurred")}"""
+    printfn $"""{resultPatternMatch (Ok 10.0)}; {resultPatternMatch (Error "An error occurred")}"""
+
+    let divide x y =
+        if y = 0.0 then
+            Error "Cannot divide by zero"
+        else
+            Ok (x/y)
+    let printDivisionResult x y = divide x y |> (resultPatternMatch >> printfn "%s")
+    printDivisionResult 15 2
+    printDivisionResult 15 0
