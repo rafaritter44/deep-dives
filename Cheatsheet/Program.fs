@@ -146,3 +146,10 @@ module Tuples =
 
     // fst and snd functions for two-item tuples
     printfn $"{fst numberAndWord},{snd numberAndWord}"
+
+    // Pattern matching
+    let printNumberAndWord = function
+        | (1, word) -> printfn $"One: %s{word}"
+        | (2, word) -> printfn $"Two: %s{word}"
+        | (_, word) -> printfn $"Number: %s{word}"
+    printNumberAndWord numberAndWord
