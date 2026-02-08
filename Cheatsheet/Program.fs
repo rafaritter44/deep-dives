@@ -240,3 +240,16 @@ module Exceptions =
         | ex when guard -> printfn $"{ex.Message}"; false
         | ex -> printfn $"{ex.Message}"; false
     [1; 2; 3; 5; 6; 0] |> List.iter (tryWith true >> printfn "%b")
+
+    exception InnerError of string
+    exception OuterError of string
+    let handleErrors x y =
+        try
+            try
+                if x = y then raise (InnerError "inner")
+                else raise (OuterError "outer")
+            with
+            | InnerError str -> printfn "Error1 %s" str
+        finally
+            printfn "Always print this"
+    handleErrors 1 1
