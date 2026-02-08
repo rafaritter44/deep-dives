@@ -154,5 +154,6 @@ module Tuples =
         | _, word -> printfn $"Number: %s{word}"
     printNumberAndWord numberAndWord
 
+    // Function parameter deconstruction
     let printNumberAndWord' (number, word) = printfn $"%d{number}: %s{word}"
     printNumberAndWord' numberAndWord
