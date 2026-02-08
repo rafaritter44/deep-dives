@@ -114,3 +114,20 @@ module Lists =
     let listComprehension = [ for i in 0..4 -> 2 * i + 1 ]
     listComprehension |> List.iter (printf "%A;")
     printfn ""
+
+    let comprehendedList = [
+        for i in 0..4 do
+            yield 2 * i + 1
+        ]
+    let comprehendedArray = [|
+        for i in 0..4 do
+            yield 2 * i + 1
+        yield! comprehendedList
+        |]
+    let comprehendedSequence = seq {
+        let rnd = System.Random()
+        while rnd.Next(0, 5) > 0 do
+            comprehendedArray
+        }
+    comprehendedSequence |> Seq.iter (printf "%A;")
+    printfn ""
