@@ -111,6 +111,7 @@ module Lists =
         | head :: tail -> head + sumEachItem2 tail
     printfn $"{sumEachItem2 [1; 2; 3]}"
 
+module CollectionComprehension =
     let listComprehension = [ for i in 0..4 -> 2 * i + 1 ]
     listComprehension |> List.iter (printf "%A;")
     printfn ""
