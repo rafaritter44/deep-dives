@@ -205,3 +205,10 @@ module PatternMatching =
         | 1 | 2 -> "One or Two"
         | x -> $"Something else: {x}"
     printfn $"{result}"
+
+    let tupleValue = 2, 3
+    let result' =
+        match tupleValue with
+        | (_, 3) & (x, y) -> $"{x}, 3"
+        | _ -> "Wildcard"
+    printfn $"{result'}"
