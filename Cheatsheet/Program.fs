@@ -143,3 +143,6 @@ module Tuples =
     let (number, word) = numberAndWord
     let (_, _, now) = numberAndWordAndNow
     printfn $"{number},{word},{now}"
+
+    // fst and snd functions for two-item tuples
+    printfn $"{fst numberAndWord},{snd numberAndWord}"
