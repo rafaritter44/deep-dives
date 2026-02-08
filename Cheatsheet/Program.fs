@@ -191,3 +191,8 @@ module DiscriminatedUnions =
     let printDivisionResult x y = divide x y |> (resultPatternMatch >> printfn "%s")
     printDivisionResult 15 2
     printDivisionResult 15 0
+
+    type OrderId = Order of string
+    let orderId = Order "12"
+    let (Order id) = orderId
+    printfn $"Order ID: {id}"
