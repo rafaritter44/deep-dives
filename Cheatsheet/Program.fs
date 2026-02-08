@@ -177,3 +177,8 @@ module DiscriminatedUnions =
         | MouseClick (countOfClicks = 1) -> "Click"
         | MouseClick (countOfClicks = x) -> $"Clicked: {x}"
     [ interaction1; interaction2; interaction3 ] |> List.iter (interactionToString >> printfn "%s")
+
+    let resultPatternMatch = function
+        | Ok value -> $"Input: %d{value}"
+        | Error msg -> $"Error: %s{msg}"
+    printfn $"""{resultPatternMatch (Ok 10)}; {resultPatternMatch (Error "An error occurred")}"""
