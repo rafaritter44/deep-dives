@@ -161,3 +161,4 @@ module Tuples =
     // C# out parameter
     let success, outParsedDateTime = System.DateTime.TryParse "2026/09/13"
     printfn $"{success},{outParsedDateTime}"
+    printfn $"""{System.DateTime.TryParse "invalid"}"""
