@@ -176,4 +176,4 @@ module DiscriminatedUnions =
         | KeyboardWithModifier (chr, modifier) -> $"Character: {modifier}+{chr}"
         | MouseClick (countOfClicks = 1) -> "Click"
         | MouseClick (countOfClicks = x) -> $"Clicked: {x}"
-    [ interaction1; interaction2; interaction3 ] |> List.map interactionToString |> String.concat "\n" |> printfn "%s"
+    [ interaction1; interaction2; interaction3 ] |> List.iter (interactionToString >> printfn "%s")
