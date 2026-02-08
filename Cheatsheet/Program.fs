@@ -218,3 +218,25 @@ module PatternMatching =
         | x when x < 0 -> -1
         | x -> 1
     printfn $"{result''}"
+
+module Exceptions =
+    exception MyException of int * string
+    let tryWith guard number =
+        try
+            match number with
+            | 1 -> failwith "Message"
+            | 2 -> nullArg "ArgumentName"
+            | 3 -> invalidArg "ArgumentName" "Message"
+            | 4 -> invalidOp "Message"
+            | 5 -> raise(System.NotImplementedException "Message")
+            | 6 -> raise(MyException (0, "Message"))
+            | _ -> true
+        with
+        | :? System.ArgumentNullException -> printfn "NullException"; false
+        | :? System.ArgumentException as ex -> printfn $"{ex.Message}"; false
+        | :? System.InvalidOperationException as ex when guard -> printfn $"{ex.Message}"; reraise()
+        | MyException(num, str) when guard -> printfn $"{num}, {str}"; false
+        | MyException(num, str) -> printfn $"{num}, {str}"; reraise()
+        | ex when guard -> printfn $"{ex.Message}"; false
+        | ex -> printfn $"{ex.Message}"; false
+    [1; 2; 3; 5; 6; 0] |> List.iter (tryWith true >> printfn "%b")
