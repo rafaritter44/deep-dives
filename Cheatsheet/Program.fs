@@ -260,7 +260,7 @@ module Classes =
         member _.X = x
         member _.Y = y
         member _.Mag = mag
-        member _.Scale(s) =
+        member _.Scale s =
             Vector(x * s, y * s)
         static member (+) (a : Vector, b : Vector) =
             Vector(a.X + b.X, a.Y + b.Y)
