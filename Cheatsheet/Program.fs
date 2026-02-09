@@ -281,3 +281,14 @@ module Interfaces =
     let v1 = Vector(1.0, 2.0) :> IVector
     let v2 = v1.Scale 10 :?> Vector
     printfn $"X: {v2.X}; Y: {v2.Y}"
+
+    // Object expression
+    type ICustomer =
+        abstract Name : string
+        abstract Age : int
+    let createCustomer name age =
+        { new ICustomer with
+            member _.Name = name
+            member _.Age = age }
+    let customer = createCustomer "Rafael" 30
+    printfn $"{customer.Name} {customer.Age}"
