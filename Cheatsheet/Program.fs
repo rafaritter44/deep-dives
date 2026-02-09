@@ -253,3 +253,18 @@ module Exceptions =
         finally
             printfn "Always print this"
     handleErrors 1 1
+
+module Classes =
+    type Vector(x: float, y: float) =
+        let mag = sqrt(x * x + y * y)
+        member _.X = x
+        member _.Y = y
+        member _.Mag = mag
+        member _.Scale(s) =
+            Vector(x * s, y * s)
+        static member (+) (a : Vector, b : Vector) =
+            Vector(a.X + b.X, a.Y + b.Y)
+    let v1 = Vector(1.0, 2.0)
+    let v2 = v1.Scale 10
+    let v3 = v1 + v2
+    printfn $"{v3.Mag}"
