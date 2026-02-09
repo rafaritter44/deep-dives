@@ -268,3 +268,16 @@ module Classes =
     let v2 = v1.Scale 10
     let v3 = v1 + v2
     printfn $"{v3.Mag}"
+
+module Interfaces =
+    type IVector =
+        abstract Scale : float -> IVector
+    type Vector(x, y) =
+        interface IVector with
+            member _.Scale s =
+                Vector(x * s, y * s) :> IVector
+        member _.X = x
+        member _.Y = y
+    let v1 = Vector(1.0, 2.0) :> IVector
+    let v2 = v1.Scale 10 :?> Vector
+    printfn $"X: {v2.X}; Y: {v2.Y}"
