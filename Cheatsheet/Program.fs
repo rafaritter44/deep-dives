@@ -292,3 +292,14 @@ module Interfaces =
             member _.Age = age }
     let customer = createCustomer "Rafael" 30
     printfn $"{customer.Name} {customer.Age}"
+
+module ActivePatterns =
+    open System.Text.RegularExpressions
+    let (|EmailDomain|) email =
+        let match' = Regex.Match(email, "@(.*)$")
+        if match'.Success
+        then match'.Groups[1].ToString()
+        else ""
+    let (EmailDomain emailDomain) = "ritter@email.com"
+    let (EmailDomain emailDomain') = "invalid"
+    printfn $"Valid email domain: {emailDomain}\nInvalid email domain: {emailDomain'}"
