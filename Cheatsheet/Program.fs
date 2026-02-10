@@ -311,3 +311,11 @@ module ActivePatterns =
         real1 + real2
     let addRealOut = addReal Complex.ImaginaryOne Complex.ImaginaryOne
     printfn $"{addRealOut}"
+
+    let (|Default|) onNone value =
+        match value with
+        | None -> onNone
+        | Some e -> e
+    let (Default "random citizen" name) = None
+    let (Default "random citizen" name') = Some "Steve"
+    printfn $"{name}\n{name'}"
