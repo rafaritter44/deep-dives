@@ -303,3 +303,11 @@ module ActivePatterns =
     let (EmailDomain emailDomain) = "ritter@email.com"
     let (EmailDomain emailDomain') = "invalid"
     printfn $"Valid email domain: {emailDomain}\nInvalid email domain: {emailDomain'}"
+
+    open System.Numerics
+    let (|RealAndImaginary|) (x: Complex) =
+        x.Real, x.Imaginary
+    let addReal (RealAndImaginary (real1, _)) (RealAndImaginary (real2, _)) =  // conversion done in the parameters
+        real1 + real2
+    let addRealOut = addReal Complex.ImaginaryOne Complex.ImaginaryOne
+    printfn $"{addRealOut}"
