@@ -359,3 +359,16 @@ module DotNetTasks =
     printfn $"{fileContent}"
     let fileContent' = readFileTask.Result // Task is already completed. Returns same value immediately. No output.
     printfn $"{fileContent'}"
+
+module AsyncComputations =
+    let readFile filename = async {
+        do! Async.Sleep 1500
+        let! text = System.IO.File.ReadAllTextAsync filename |> Async.AwaitTask
+        printfn "Finished reading file"
+        return text
+    }
+    let readFiles = [ readFile "A"; readFile "B" ] |> Async.Parallel
+    let textOfFiles = readFiles |> Async.RunSynchronously // execute async computation
+    Array.iter (printfn "%s") textOfFiles
+    let textOfFiles' = readFiles |> Async.RunSynchronously // execute async computation again
+    Array.iter (printfn "%s") textOfFiles'
