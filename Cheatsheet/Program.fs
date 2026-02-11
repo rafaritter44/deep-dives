@@ -334,3 +334,14 @@ module ActivePatterns =
     match "ritter@email.com" with
     | Email email -> printfn $"{email}"
     | Phone phone -> printfn $"{phone}"
+
+    let (|DivisibleBy|_|) by n =
+        if n % by = 0
+        then Some DivisibleBy
+        else None
+    let fizzBuzz = function
+        | DivisibleBy 3 & DivisibleBy 5 -> "FizzBuzz"
+        | DivisibleBy 3 -> "Fizz"
+        | DivisibleBy 5 -> "Buzz"
+        | i -> string i
+    [0..10] |> List.iter (fizzBuzz >> printfn "%s")
