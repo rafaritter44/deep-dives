@@ -384,3 +384,21 @@ module AsyncComputations =
     Array.iter (printfn "%s") textOfFiles
     let textOfFiles' = readFiles |> Async.RunSynchronously // execute async computation again
     Array.iter (printfn "%s") textOfFiles'
+
+    open System.Threading.Tasks
+    let loop = async {
+        for cnt in [ 0 .. 9 ] do
+            printf $"{cnt}: And..."
+
+            do! Async.Sleep 500 // Async.Sleep implicitly receives and checks cts.Token
+
+            // when interoperating with Tasks, cancellationTokens need to be passed explicitly
+            let! ct = Async.CancellationToken
+            do! Task.Delay(500, cancellationToken = ct) |> Async.AwaitTask
+
+            printfn "Done"
+    }
+    let cts = new System.Threading.CancellationTokenSource 2500
+    try
+        Async.RunSynchronously (loop, System.Threading.Timeout.Infinite, cts.Token)
+    with :? System.OperationCanceledException -> printfn "Canceled"
