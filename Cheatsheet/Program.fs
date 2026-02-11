@@ -319,3 +319,12 @@ module ActivePatterns =
     let (Default "random citizen" name) = None
     let (Default "random citizen" name') = Some "Steve"
     printfn $"{name}\n{name'}"
+
+    let (|Even|Odd|) i =
+        if i % 2 = 0 then Even else Odd
+    let testNumber i =
+        match i with
+        | Even -> printfn "%d is even" i
+        | Odd -> printfn "%d is odd" i
+    testNumber 100
+    testNumber 101
