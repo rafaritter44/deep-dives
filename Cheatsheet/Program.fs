@@ -360,6 +360,18 @@ module DotNetTasks =
     let fileContent' = readFileTask.Result // Task is already completed. Returns same value immediately. No output.
     printfn $"{fileContent'}"
 
+    let loop (token: System.Threading.CancellationToken) = task {
+        for cnt in [ 0 .. 9 ] do
+            printf $"{cnt}: And..."
+            do! Task.Delay(1000, token)
+            printfn "Done"
+    }
+    let cts = new System.Threading.CancellationTokenSource 2500
+    let runningLoop = loop cts.Token
+    try
+        runningLoop.GetAwaiter().GetResult()
+    with :? System.OperationCanceledException -> printfn "Canceled"
+
 module AsyncComputations =
     let readFile filename = async {
         do! Async.Sleep 1500
