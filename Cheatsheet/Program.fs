@@ -345,3 +345,17 @@ module ActivePatterns =
         | DivisibleBy 5 -> "Buzz"
         | i -> string i
     [0..10] |> List.iter (fizzBuzz >> printfn "%s")
+
+module DotNetTasks =
+    open System.Threading.Tasks
+    let readFile filename ct = task {
+        printfn "Started reading task"
+        do! Task.Delay(1500, cancellationToken = ct)
+        let! text = System.IO.File.ReadAllTextAsync(filename, ct)
+        return text
+    }
+    let readFileTask = readFile "myfile.txt" System.Threading.CancellationToken.None
+    let fileContent = readFileTask.Result // Blocks thread and waits for content.
+    printfn $"{fileContent}"
+    let fileContent' = readFileTask.Result // Task is already completed. Returns same value immediately. No output.
+    printfn $"{fileContent'}"
