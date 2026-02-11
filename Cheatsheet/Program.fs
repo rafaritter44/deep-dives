@@ -328,3 +328,9 @@ module ActivePatterns =
         | Odd -> printfn "%d is odd" i
     testNumber 100
     testNumber 101
+
+    let (|Phone|Email|) (s:string) =
+        if s.Contains '@' then Email $"Email: {s}" else Phone $"Phone: {s}"
+    match "ritter@email.com" with
+    | Email email -> printfn $"{email}"
+    | Phone phone -> printfn $"{phone}"
