@@ -430,3 +430,12 @@ module Modules =
           expiration = 12, 2027 }
     Functions.processPayment (Card invalidCard)
     Functions.processPayment (Cash 100)
+
+module Namespaces =
+    MyNamespace.SubNamespace.Functions.addAndPrint 1 2
+    open MyNamespace
+    SubNamespace.Functions.addAndPrint 10 20
+    open MyNamespace.SubNamespace
+    Functions.addAndPrint 100 200
+    open MyNamespace.SubNamespace.Functions
+    addAndPrint 1000 2000
