@@ -402,3 +402,6 @@ module AsyncComputations =
     try
         Async.RunSynchronously (loop, System.Threading.Timeout.Infinite, cts.Token)
     with :? System.OperationCanceledException -> printfn "Canceled"
+
+module Modules =
+    Functions.sumOfSquares 10 |> printfn "%d"
