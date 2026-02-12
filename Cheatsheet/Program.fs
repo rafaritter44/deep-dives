@@ -445,3 +445,13 @@ module Namespaces =
     printfn $"{MyModule.myLet}"
     printfn $"{My2ndModule.myLet}"
     printfn $"{MyNewNamespace.My3rdModule.myLet}"
+
+module Open =
+    module Groceries =
+        type Fruit =
+            | Apple
+            | Banana
+    let fruit1 = Groceries.Apple
+    open Groceries
+    let fruit2 = Banana
+    printfn $"{fruit1}; {fruit2}"
