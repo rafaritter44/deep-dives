@@ -439,3 +439,5 @@ module Namespaces =
     Functions.addAndPrint 100 200
     open MyNamespace.SubNamespace.Functions
     addAndPrint 1000 2000
+    open MyNamespace.SubNamespace.Functions.SubModule
+    subtractAndPrint 1 2
