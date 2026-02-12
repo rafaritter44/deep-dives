@@ -497,3 +497,15 @@ module SmartConstructors =
     let unitQtyOpt = UnitQuantity.tryCreate 5
     let validQty = unitQtyOpt |> Option.defaultValue UnitQuantity.zero
     printfn $"{UnitQuantity.value validQty}"
+
+module RecursiveReference =
+    module rec CarModule =
+        exception OutOfGasException of Car // Car not defined yet; would be an error
+        type Car =
+            { make: string; model: string; hasGas: bool }
+            member self.Drive destination =
+                if not self.hasGas
+                then raise (OutOfGasException self)
+                else printfn $"Driving to {destination}."
+    let car: CarModule.Car = { make = "Honda"; model = "City"; hasGas = true }
+    car.Drive "Sao Paulo"
