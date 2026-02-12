@@ -483,3 +483,17 @@ module AccessibilityModifiers =
             let myPublicLet = $"Value: {myLet}"
         let myPublicLet = MySubModule.myPublicLet
     printfn "%s" MyModule.myPublicLet
+
+module SmartConstructors =
+    type UnitQuantity =
+        private UnitQuantity of int
+    module UnitQuantity = // common idiom: type companion module
+        let tryCreate qty =
+            if qty < 1 || qty > 100
+            then None
+            else Some (UnitQuantity qty)
+        let value (UnitQuantity uQty) = uQty
+        let zero = UnitQuantity 0
+    let unitQtyOpt = UnitQuantity.tryCreate 5
+    let validQty = unitQtyOpt |> Option.defaultValue UnitQuantity.zero
+    printfn $"{UnitQuantity.value validQty}"
