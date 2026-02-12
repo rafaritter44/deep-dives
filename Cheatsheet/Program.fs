@@ -475,3 +475,11 @@ module AutoOpen =
             | Banana
     let fruit = Banana
     printfn $"{fruit}"
+
+module AccessibilityModifiers =
+    module private MyModule =
+        module private MySubModule =
+            let private myLet = 10
+            let myPublicLet = $"Value: {myLet}"
+        let myPublicLet = MySubModule.myPublicLet
+    printfn "%s" MyModule.myPublicLet
