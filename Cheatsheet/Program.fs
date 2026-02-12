@@ -509,3 +509,16 @@ module RecursiveReference =
                 else printfn $"Driving to {destination}."
     let car: CarModule.Car = { make = "Honda"; model = "City"; hasGas = true }
     car.Drive "Sao Paulo"
+
+    type Person =
+        { Name: string; Address: Address }
+    and Address =
+        { Line1: string; Line2: string; Occupant: Person }
+    let rec person =
+        { Name = "John"
+          Address = address }
+    and address =
+        { Line1 = "Street 1"
+          Line2 = "Apt. 2"
+          Occupant = person }
+    printfn $"{person}"
