@@ -405,3 +405,4 @@ module AsyncComputations =
 
 module Modules =
     Functions.sumOfSquares 10 |> printfn "%d"
+    Functions.SubModule.add 1 2 |> printfn "%d"

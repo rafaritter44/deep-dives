@@ -6,3 +6,6 @@ and all code constructs within the file will be included in the module's definit
 module Functions
 
 let sumOfSquares n = seq {1..n} |> Seq.sumBy (fun x -> x * x) // Functions.sumOfSquares
+
+module SubModule =
+    let add a b = a + b
