@@ -464,3 +464,14 @@ module Open =
     open type System.Text.RegularExpressions.Regex // type
     let isHttp (url: string) = IsMatch(url, "^https?:") // Regex.IsMatch directly accessible
     printfn $"""{isHttp "http://example.com"}"""
+
+module AutoOpen =
+    (* Available to module declarations only, is the AutoOpen attribute,
+       which alleviates the need for an open. *)
+    [<AutoOpen>]
+    module Groceries =
+        type Fruit =
+            | Apple
+            | Banana
+    let fruit = Banana
+    printfn $"{fruit}"
