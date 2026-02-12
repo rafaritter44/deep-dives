@@ -406,3 +406,27 @@ module AsyncComputations =
 module Modules =
     Functions.sumOfSquares 10 |> printfn "%d"
     Functions.SubModule.add 1 2 |> printfn "%d"
+
+    module Money =
+        type CardInfo =
+            { number: string
+              expiration: int * int }
+        type Payment =
+            | Card of CardInfo
+            | Cash of int
+        module Functions =
+            let validCard (cardNumber: string) =
+                cardNumber.Length = 16 && (cardNumber[0], ['3';'4';'5';'6']) ||> List.contains
+            let processPayment = function
+                | Cash amount -> printfn $"Paid ${amount} with cash."
+                | Card card -> printfn $"Valid card? {validCard card.number}."
+    let validCard : Money.CardInfo =
+        { number = "6543210123456789"
+          expiration = 12, 2027 }
+    Money.Functions.processPayment (Money.Card validCard)
+    open Money
+    let invalidCard =
+        { number = "1234567890123456"
+          expiration = 12, 2027 }
+    Functions.processPayment (Card invalidCard)
+    Functions.processPayment (Cash 100)
