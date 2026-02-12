@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Namespaces.fs" />
     <Compile Include="TopLevelModuleNamespace.fs" />
     <Compile Include="SingleModuleFile.fs" />
     <Compile Include="Program.fs" />

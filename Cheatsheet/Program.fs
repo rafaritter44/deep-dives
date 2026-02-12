@@ -441,3 +441,7 @@ module Namespaces =
     addAndPrint 1000 2000
     open MyNamespace.SubNamespace.Functions.SubModule
     subtractAndPrint 1 2
+
+    printfn $"{MyModule.myLet}"
+    printfn $"{My2ndModule.myLet}"
+    printfn $"{MyNewNamespace.My3rdModule.myLet}"
