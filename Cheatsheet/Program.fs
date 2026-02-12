@@ -452,6 +452,11 @@ module Open =
             | Apple
             | Banana
     let fruit1 = Groceries.Apple
-    open Groceries
+    open Groceries // module
     let fruit2 = Banana
     printfn $"{fruit1}; {fruit2}"
+
+    open System.Diagnostics  // namespace
+    let stopwatch = Stopwatch.StartNew() // Stopwatch is accessible
+    stopwatch.Stop()
+    printfn $"{stopwatch.Elapsed}"
