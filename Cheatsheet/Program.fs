@@ -460,3 +460,7 @@ module Open =
     let stopwatch = Stopwatch.StartNew() // Stopwatch is accessible
     stopwatch.Stop()
     printfn $"{stopwatch.Elapsed}"
+
+    open type System.Text.RegularExpressions.Regex // type
+    let isHttp (url: string) = IsMatch(url, "^https?:") // Regex.IsMatch directly accessible
+    printfn $"""{isHttp "http://example.com"}"""
