@@ -9,9 +9,8 @@ POC ideas:
     - https://github.com/dotnet-websharper/core
 - HTTP Client: System.Net.Http.HttpClient
 - SQL:
-    - https://github.com/linq2db/linq2db
-    - https://github.com/fsprojects/SQLProvider/
-    - https://github.com/JordanMarr/SqlHydra
+    - https://github.com/DapperLib/Dapper
+    - https://github.com/npgsql/npgsql
 - Tests:
     - https://github.com/haf/expecto
     - https://github.com/fscheck/FsCheck
