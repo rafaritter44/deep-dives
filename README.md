@@ -2,7 +2,6 @@
 
 POC ideas:
 - HTTP Server:
-    - https://github.com/giraffe-fsharp/Giraffe
     - https://github.com/FalcoFramework/Falco
     - https://github.com/Lanayx/Oxpecker
     - https://github.com/SuaveIO/suave
