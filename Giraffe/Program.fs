@@ -93,7 +93,7 @@ let configureApp (app : IApplicationBuilder) =
         app .UseGiraffeErrorHandler errorHandler)
         .UseCors(configureCors)
         .UseStaticFiles()
-        .UseGiraffe(webApp)
+        .UseGiraffe webApp
 
 let configureServices (services : IServiceCollection) =
     services.AddCors()    |> ignore
