@@ -116,7 +116,7 @@ let main args =
                     .UseWebRoot(webRoot)
                     .Configure(Action<IApplicationBuilder> configureApp)
                     .ConfigureServices(configureServices)
-                    .ConfigureLogging(configureLogging)
+                    .ConfigureLogging configureLogging
                     |> ignore)
         .Build()
         .Run()
