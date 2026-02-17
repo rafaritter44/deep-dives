@@ -2,7 +2,6 @@
 
 POC ideas:
 - HTTP Server:
-    - https://github.com/FalcoFramework/Falco
     - https://github.com/Lanayx/Oxpecker
     - https://github.com/SuaveIO/suave
     - https://github.com/dotnet-websharper/core
