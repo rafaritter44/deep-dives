@@ -62,6 +62,8 @@ let webApp =
             choose [
                 route "/" >=> indexHandler "world"
                 routef "/hello/%s" indexHandler
+                route "/ping" >=> text "pong"
+                route "/test" >=> htmlFile "WebRoot/pages/test.html"
             ]
         setStatusCode 404 >=> text "Not Found" ]
 
