@@ -3,9 +3,11 @@ open Falco.Routing
 open Microsoft.AspNetCore.Builder
 
 let wapp = WebApplication.Create()
+let endpoints =
+    [
+        get "/" (Response.ofPlainText "Hello World!")
+    ]
 
 wapp.UseRouting()
-    .UseFalco([
-        get "/" (Response.ofPlainText "Hello World!")
-    ])
+    .UseFalco(endpoints)
     .Run(Response.ofPlainText "Not found")
