@@ -1,4 +1,5 @@
 open Falco
+open Falco.Markup
 open Falco.Routing
 open Microsoft.AspNetCore.Builder
 
@@ -7,6 +8,12 @@ let wapp = WebApplication.Create()
 let greetingHandler name : HttpHandler =
     let message = sprintf "Hello, %s!" name
     Response.ofPlainText message
+
+let form =
+    Templates.html5 "en" [] [
+        _form [ _method_ "post" ] [
+            _input [ _name_ "name" ]
+            _input [ _type_ "submit"] ] ]
 
 let endpoints =
     [
@@ -17,6 +24,9 @@ let endpoints =
             let message = sprintf "Hello, %s!" name
             Response.ofPlainText message ctx)
         mapGet "/hello2/{name:alpha}" (fun route -> route.GetString "name") greetingHandler
+        all "/form" [
+            GET, Response.ofHtml form
+            POST, Response.ofEmpty ]
     ]
 
 wapp.UseRouting()
