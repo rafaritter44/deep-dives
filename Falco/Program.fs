@@ -3,6 +3,11 @@ open Falco.Routing
 open Microsoft.AspNetCore.Builder
 
 let wapp = WebApplication.Create()
+
+let greetingHandler name : HttpHandler =
+    let message = sprintf "Hello, %s!" name
+    Response.ofPlainText message
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -11,6 +16,7 @@ let endpoints =
             let name = route.GetString "name"
             let message = sprintf "Hello, %s!" name
             Response.ofPlainText message ctx)
+        mapGet "/hello2/{name:alpha}" (fun route -> route.GetString "name") greetingHandler
     ]
 
 wapp.UseRouting()
