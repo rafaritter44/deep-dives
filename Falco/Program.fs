@@ -15,6 +15,16 @@ let form =
             _input [ _name_ "name" ]
             _input [ _type_ "submit"] ] ]
 
+let htmlHandler : HttpHandler =
+    let html =
+        _html [ _lang_ "en" ] [
+            _head [] []
+            _body [] [
+                _h1' "Sample App" // shorthand for: _h1 [] [ Text.raw "Sample App" ]
+            ]
+        ]
+    Response.ofHtml html
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -27,6 +37,7 @@ let endpoints =
         all "/form" [
             GET, Response.ofHtml form
             POST, Response.ofEmpty ]
+        get "/html" htmlHandler
     ]
 
 wapp.UseRouting()
