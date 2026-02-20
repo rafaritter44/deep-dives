@@ -1,9 +1,13 @@
 open Falco
 open Falco.Markup
 open Falco.Routing
+open Falco.Security
 open Microsoft.AspNetCore.Builder
+open Microsoft.Extensions.DependencyInjection
 
-let wapp = WebApplication.Create()
+let builder = WebApplication.CreateBuilder()
+builder.Services.AddAntiforgery() |> ignore
+let wapp = builder.Build()
 
 let greetingHandler name : HttpHandler =
     let message = sprintf "Hello, %s!" name
@@ -25,6 +29,22 @@ let htmlHandler : HttpHandler =
         ]
     Response.ofHtml html
 
+// Automatically protect against XSS attacks
+let secureHtmlHandler : HttpHandler =
+    let html token =
+        _html [] [
+            _body [] [
+                _form [ _method_ "post" ] [
+                    _input [ _name_ "first_name" ]
+                    _input [ _name_ "last_name" ]
+                    // using the CSRF HTML helper
+                    Xsrf.antiforgeryInput token
+                    _input [ _type_ "submit"; _value_ "Submit" ]
+                ]
+            ]
+        ]
+    Response.ofHtmlCsrf html
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -38,6 +58,7 @@ let endpoints =
             GET, Response.ofHtml form
             POST, Response.ofEmpty ]
         get "/html" htmlHandler
+        get "/secureHtml" secureHtmlHandler
     ]
 
 wapp.UseRouting()
