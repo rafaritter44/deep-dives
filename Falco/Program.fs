@@ -48,6 +48,13 @@ let secureHtmlHandler : HttpHandler =
 let htmlStringHandler : HttpHandler =
     Response.ofHtmlString "<html><body><h1>Test</h1></body></html>"
 
+let fragmentHandler : HttpHandler =
+    let html =
+        _div [ _id_ "greeting" ] [
+            _h1 [ _id_ "heading" ] [ _text "Hello, World!" ]
+        ]
+    Response.ofFragment "heading" html
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -63,6 +70,7 @@ let endpoints =
         get "/html" htmlHandler
         get "/secureHtml" secureHtmlHandler
         get "/htmlString" htmlStringHandler
+        get "/htmlFragment" fragmentHandler
     ]
 
 wapp.UseRouting()
