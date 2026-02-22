@@ -71,6 +71,12 @@ let jsonOptionsHandler : HttpHandler =
     let name = { First = "John"; Last = null }
     Response.ofJsonOptions options name
 
+let oldUrlHandler : HttpHandler =
+    Response.redirectPermanently "/new-url" // HTTP 301
+
+let redirectUrlHandler : HttpHandler =
+    Response.redirectTemporarily "/new-url" // HTTP 302
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -89,6 +95,9 @@ let endpoints =
         get "/htmlFragment" fragmentHandler
         get "/json" jsonHandler
         get "/jsonOptions" jsonOptionsHandler
+        get "/301" oldUrlHandler
+        get "/302" redirectUrlHandler
+        get "/new-url" (Response.ofPlainText "New URL")
     ]
 
 wapp.UseRouting()
