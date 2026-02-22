@@ -45,6 +45,9 @@ let secureHtmlHandler : HttpHandler =
         ]
     Response.ofHtmlCsrf html
 
+let htmlStringHandler : HttpHandler =
+    Response.ofHtmlString "<html><body><h1>Test</h1></body></html>"
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -59,6 +62,7 @@ let endpoints =
             POST, Response.ofEmpty ]
         get "/html" htmlHandler
         get "/secureHtml" secureHtmlHandler
+        get "/htmlString" htmlStringHandler
     ]
 
 wapp.UseRouting()
