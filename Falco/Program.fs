@@ -4,6 +4,8 @@ open Falco.Routing
 open Falco.Security
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.DependencyInjection
+open System.Text.Json
+open System.Text.Json.Serialization
 
 let builder = WebApplication.CreateBuilder()
 builder.Services.AddAntiforgery() |> ignore
@@ -55,6 +57,20 @@ let fragmentHandler : HttpHandler =
         ]
     Response.ofFragment "heading" html
 
+type Person =
+    { First : string
+      Last  : string }
+
+let jsonHandler : HttpHandler =
+    let name = { First = "John"; Last = "Doe" }
+    Response.ofJson name
+
+let jsonOptionsHandler : HttpHandler =
+    let options = JsonSerializerOptions()
+    options.DefaultIgnoreCondition <- JsonIgnoreCondition.WhenWritingNull
+    let name = { First = "John"; Last = null }
+    Response.ofJsonOptions options name
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -71,6 +87,8 @@ let endpoints =
         get "/secureHtml" secureHtmlHandler
         get "/htmlString" htmlStringHandler
         get "/htmlFragment" fragmentHandler
+        get "/json" jsonHandler
+        get "/jsonOptions" jsonOptionsHandler
     ]
 
 wapp.UseRouting()
