@@ -4,6 +4,8 @@ open Falco.Routing
 open Falco.Security
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Net.Http.Headers
+open System.IO
 open System.Text.Json
 open System.Text.Json.Serialization
 
@@ -77,6 +79,19 @@ let oldUrlHandler : HttpHandler =
 let redirectUrlHandler : HttpHandler =
     Response.redirectTemporarily "/new-url" // HTTP 302
 
+let inlineBinaryHandler : HttpHandler =
+    let contentType = "image/png"
+    let headers = [ HeaderNames.CacheControl,  "no-store, max-age=0" ]
+    let bytes = File.ReadAllBytes "fsharp-logo.png"
+    Response.ofBinary contentType headers bytes
+
+let attachmentHandler : HttpHandler =
+    let filename = "fsharp-logo.png"
+    let contentType = "image/png"
+    let headers = [ HeaderNames.CacheControl,  "no-store, max-age=0" ]
+    let bytes = File.ReadAllBytes filename
+    Response.ofAttachment filename contentType headers bytes
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -98,6 +113,8 @@ let endpoints =
         get "/301" oldUrlHandler
         get "/302" redirectUrlHandler
         get "/new-url" (Response.ofPlainText "New URL")
+        get "/inlineBinary" inlineBinaryHandler
+        get "/attachment" attachmentHandler
     ]
 
 wapp.UseRouting()
