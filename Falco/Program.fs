@@ -3,8 +3,10 @@ open Falco.Markup
 open Falco.Routing
 open Falco.Security
 open Microsoft.AspNetCore.Builder
+open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Net.Http.Headers
+open System
 open System.IO
 open System.Text.Json
 open System.Text.Json.Serialization
@@ -104,6 +106,12 @@ let handlerWithCookie : HttpHandler =
     Response.withCookie "greeted" "1"
     >> Response.ofPlainText "Hello, cookies!"
 
+let handlerWithCookieOptions : HttpHandler =
+    let options = CookieOptions()
+    options.Expires <- DateTime.Now.AddMinutes 1
+    Response.withCookieOptions options "greeted" "1"
+    >> Response.ofPlainText "Hello, cookie options!"
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -130,6 +138,7 @@ let endpoints =
         get "/notFound" notFoundHandler
         get "/headers" handlerWithHeaders
         get "/cookie" handlerWithCookie
+        get "/cookieOptions" handlerWithCookieOptions
     ]
 
 wapp.UseRouting()
