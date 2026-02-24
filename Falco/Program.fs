@@ -92,6 +92,10 @@ let attachmentHandler : HttpHandler =
     let bytes = File.ReadAllBytes filename
     Response.ofAttachment filename contentType headers bytes
 
+let notFoundHandler : HttpHandler =
+    Response.withStatusCode 404
+    >> Response.ofPlainText "Not Found"
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -115,6 +119,7 @@ let endpoints =
         get "/new-url" (Response.ofPlainText "New URL")
         get "/inlineBinary" inlineBinaryHandler
         get "/attachment" attachmentHandler
+        get "/notFound" notFoundHandler
     ]
 
 wapp.UseRouting()
