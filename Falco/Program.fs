@@ -96,6 +96,10 @@ let notFoundHandler : HttpHandler =
     Response.withStatusCode 404
     >> Response.ofPlainText "Not Found"
 
+let handlerWithHeaders : HttpHandler =
+    Response.withHeaders [ "Content-Language", "en-us" ]
+    >> Response.ofPlainText "Hello, headers!"
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -120,6 +124,7 @@ let endpoints =
         get "/inlineBinary" inlineBinaryHandler
         get "/attachment" attachmentHandler
         get "/notFound" notFoundHandler
+        get "/headers" handlerWithHeaders
     ]
 
 wapp.UseRouting()
