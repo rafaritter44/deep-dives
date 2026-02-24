@@ -100,6 +100,10 @@ let handlerWithHeaders : HttpHandler =
     Response.withHeaders [ "Content-Language", "en-us" ]
     >> Response.ofPlainText "Hello, headers!"
 
+let handlerWithCookie : HttpHandler =
+    Response.withCookie "greeted" "1"
+    >> Response.ofPlainText "Hello, cookies!"
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -125,6 +129,7 @@ let endpoints =
         get "/attachment" attachmentHandler
         get "/notFound" notFoundHandler
         get "/headers" handlerWithHeaders
+        get "/cookie" handlerWithCookie
     ]
 
 wapp.UseRouting()
