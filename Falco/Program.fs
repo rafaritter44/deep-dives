@@ -122,6 +122,9 @@ let endpoints =
             Response.ofPlainText message ctx)
         mapGet "/hello2/{name:alpha}" (fun route -> route.GetString "name") greetingHandler
         mapGet "/hello3/{Name}" (fun r -> r?Name.AsString()) Response.ofPlainText
+        mapGet "/hello4/{Name}"
+            (fun r -> r.TryGetString "Name" |> Option.defaultValue "John")
+            Response.ofPlainText
         all "/form" [
             GET, Response.ofHtml form
             POST, Response.ofEmpty ]
