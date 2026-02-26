@@ -112,6 +112,13 @@ let handlerWithCookieOptions : HttpHandler =
     Response.withCookieOptions options "greeted" "1"
     >> Response.ofPlainText "Hello, cookie options!"
 
+let manualQueryHandler : HttpHandler = fun ctx ->
+    let q = Request.getQuery ctx
+    let person =
+        { First = q.GetString ("FirstName", "John") // Get value or return default value
+          Last  = q.GetString ("LastName", "Doe") }
+    Response.ofJson person ctx
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -143,6 +150,7 @@ let endpoints =
         get "/headers" handlerWithHeaders
         get "/cookie" handlerWithCookie
         get "/cookieOptions" handlerWithCookieOptions
+        get "/query" manualQueryHandler
     ]
 
 wapp.UseRouting()
