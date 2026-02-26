@@ -119,6 +119,13 @@ let manualQueryHandler : HttpHandler = fun ctx ->
           Last  = q.GetString ("LastName", "Doe") }
     Response.ofJson person ctx
 
+let mapQueryHandler : HttpHandler =
+    Request.mapQuery (fun q ->
+        let first = q.GetString ("FirstName", "John") // Get value or return default value
+        let last = q.GetString ("LastName", "Doe")
+        { First = first; Last = last })
+        Response.ofJson
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -151,6 +158,7 @@ let endpoints =
         get "/cookie" handlerWithCookie
         get "/cookieOptions" handlerWithCookieOptions
         get "/query" manualQueryHandler
+        get "/query2" mapQueryHandler
     ]
 
 wapp.UseRouting()
