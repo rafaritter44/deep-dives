@@ -135,6 +135,13 @@ let manualFormHandler : HttpHandler = fun ctx ->
         return! Response.ofJson person ctx
     }
 
+let mapFormHandler : HttpHandler =
+    Request.mapForm (fun f ->
+        let first = f.GetString ("first_name", "John") // Get value or return default value
+        let last = f.GetString ("last_name", "Doe")
+        { First = first; Last = last })
+        Response.ofJson
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -153,7 +160,8 @@ let endpoints =
             POST, Response.ofEmpty ]
         get "/html" htmlHandler
         get "/secureHtml" secureHtmlHandler
-        post "/secureHtml" manualFormHandler
+        // post "/secureHtml" manualFormHandler
+        post "/secureHtml" mapFormHandler
         get "/htmlString" htmlStringHandler
         get "/htmlFragment" fragmentHandler
         get "/json" jsonHandler
