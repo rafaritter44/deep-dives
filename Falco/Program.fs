@@ -142,6 +142,14 @@ let mapFormHandler : HttpHandler =
         { First = first; Last = last })
         Response.ofJson
 
+let mapFormSecureHandler : HttpHandler =
+    Request.mapFormSecure (fun f -> // Request.mapFormSecure will automatically validate CSRF token for you
+        let first = f.GetString ("first_name", "John") // Get value or return default value
+        let last = f.GetString ("last_name", "Doe")
+        { First = first; Last = last })
+        Response.ofJson
+        (Response.withStatusCode 400 >> Response.ofEmpty)
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -161,7 +169,8 @@ let endpoints =
         get "/html" htmlHandler
         get "/secureHtml" secureHtmlHandler
         // post "/secureHtml" manualFormHandler
-        post "/secureHtml" mapFormHandler
+        // post "/secureHtml" mapFormHandler
+        post "/secureHtml" mapFormSecureHandler
         get "/htmlString" htmlStringHandler
         get "/htmlFragment" fragmentHandler
         get "/json" jsonHandler
