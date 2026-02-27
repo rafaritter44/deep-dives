@@ -126,6 +126,15 @@ let mapQueryHandler : HttpHandler =
         { First = first; Last = last })
         Response.ofJson
 
+let manualFormHandler : HttpHandler = fun ctx ->
+    task {
+        let! f : FormData = Request.getForm ctx
+        let person =
+            { First = f.GetString ("first_name", "John") // Get value or return default value
+              Last = f.GetString ("last_name", "Doe") }
+        return! Response.ofJson person ctx
+    }
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -144,6 +153,7 @@ let endpoints =
             POST, Response.ofEmpty ]
         get "/html" htmlHandler
         get "/secureHtml" secureHtmlHandler
+        post "/secureHtml" manualFormHandler
         get "/htmlString" htmlStringHandler
         get "/htmlFragment" fragmentHandler
         get "/json" jsonHandler
