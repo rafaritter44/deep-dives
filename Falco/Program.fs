@@ -166,8 +166,7 @@ let imageUploadFormHandler : HttpHandler =
 let imageUploadHandler : HttpHandler =
     let formBinder (f : FormData) : IFormFile option =
         f.TryGetFile "profile_image"
-    let uploadImage (profileImage : IFormFile option) : HttpHandler =
-        match profileImage with
+    let uploadImage : IFormFile option -> HttpHandler = function
         | Some file -> Response.ofPlainText file.FileName
         | None -> Response.ofPlainText "No file"
     // Safely buffer the multipart form submission
