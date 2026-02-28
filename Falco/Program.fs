@@ -150,6 +150,34 @@ let mapFormSecureHandler : HttpHandler =
         Response.ofJson
         (Response.withStatusCode 400 >> Response.ofEmpty)
 
+let imageUploadFormHandler : HttpHandler =
+    let html token =
+        _html [] [
+            _body [] [
+                _form [ _method_ "post"; _enctype_ "multipart/form-data" ] [
+                    _input [ _type_ "file"; _name_ "profile_image" ]
+                    Xsrf.antiforgeryInput token
+                    _input [ _type_ "submit"; _value_ "Upload" ]
+                ]
+            ]
+        ]
+    Response.ofHtmlCsrf html
+
+let imageUploadHandler : HttpHandler =
+    let formBinder (f : FormData) : IFormFile option =
+        f.TryGetFile "profile_image"
+    let uploadImage (profileImage : IFormFile option) : HttpHandler =
+        fun ctx ->
+            task {
+                match profileImage with
+                | Some file ->
+                    return! Response.ofPlainText file.FileName ctx
+                | None ->
+                    return! Response.ofPlainText "No file" ctx
+            }
+    // Safely buffer the multipart form submission
+    Request.mapForm formBinder uploadImage
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -186,6 +214,8 @@ let endpoints =
         get "/cookieOptions" handlerWithCookieOptions
         get "/query" manualQueryHandler
         get "/query2" mapQueryHandler
+        get "/imageUpload" imageUploadFormHandler
+        post "/imageUpload" imageUploadHandler
     ]
 
 wapp.UseRouting()
