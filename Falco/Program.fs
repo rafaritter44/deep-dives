@@ -172,6 +172,12 @@ let imageUploadHandler : HttpHandler =
     // Safely buffer the multipart form submission
     Request.mapForm formBinder uploadImage
 
+let mapJsonHandler : HttpHandler =
+    let handleOk person : HttpHandler =
+        let message = sprintf "Hello, %s %s." person.First person.Last
+        Response.ofPlainText message
+    Request.mapJson handleOk
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -197,6 +203,7 @@ let endpoints =
         get "/htmlFragment" fragmentHandler
         get "/json" jsonHandler
         get "/jsonOptions" jsonOptionsHandler
+        post "/json" mapJsonHandler
         get "/301" oldUrlHandler
         get "/302" redirectUrlHandler
         get "/new-url" (Response.ofPlainText "New URL")
