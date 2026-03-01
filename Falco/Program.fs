@@ -178,6 +178,14 @@ let mapJsonHandler : HttpHandler =
         Response.ofPlainText message
     Request.mapJson handleOk
 
+let mapJsonOptionsHandler : HttpHandler =
+    let options = JsonSerializerOptions()
+    options.DefaultIgnoreCondition <- JsonIgnoreCondition.WhenWritingNull
+    let handleOk person : HttpHandler =
+        let message = sprintf "Hello, %s %s." person.First person.Last
+        Response.ofPlainText message
+    Request.mapJsonOptions options handleOk
+
 let endpoints =
     [
         get "/" (Response.ofPlainText "Hello, World!")
@@ -204,6 +212,7 @@ let endpoints =
         get "/json" jsonHandler
         get "/jsonOptions" jsonOptionsHandler
         post "/json" mapJsonHandler
+        post "/jsonOptions" mapJsonOptionsHandler
         get "/301" oldUrlHandler
         get "/302" redirectUrlHandler
         get "/new-url" (Response.ofPlainText "New URL")
