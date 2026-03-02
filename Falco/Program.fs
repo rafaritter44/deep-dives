@@ -10,6 +10,7 @@ open System
 open System.IO
 open System.Text.Json
 open System.Text.Json.Serialization
+open Mvc.Controller
 
 let builder = WebApplication.CreateBuilder()
 builder.Services.AddAntiforgery() |> ignore
@@ -188,7 +189,7 @@ let mapJsonOptionsHandler : HttpHandler =
 
 let endpoints =
     [
-        get "/" (Response.ofPlainText "Hello, World!")
+        get "/hello" (Response.ofPlainText "Hello, World!")
         get "/hello/{name:alpha}" (fun ctx ->
             let route = Request.getRoute ctx
             let name = route.GetString "name"
@@ -229,5 +230,5 @@ let endpoints =
     ]
 
 wapp.UseRouting()
-    .UseFalco(endpoints)
+    .UseFalco(endpoints @ ErrorController.endpoints @ GreetingController.endpoints)
     .Run(Response.ofPlainText "Not found")
