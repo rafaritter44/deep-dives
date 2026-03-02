@@ -6,7 +6,6 @@ POC ideas:
     - https://github.com/SuaveIO/suave
     - https://github.com/dotnet-websharper/core
 - HTTP Client:
-    - System.Net.Http.HttpClient
     - https://github.com/fsprojects/FsHttp
 - SQL:
     - https://github.com/DapperLib/Dapper
