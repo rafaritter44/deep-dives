@@ -230,5 +230,5 @@ let endpoints =
     ]
 
 wapp.UseRouting()
-    .UseFalco(endpoints @ ErrorController.endpoints @ GreetingController.endpoints)
+    .UseFalco(endpoints @ ErrorController.endpoints @ GreetingController.endpoints @ Htmx.endpoints)
     .Run(Response.ofPlainText "Not found")
