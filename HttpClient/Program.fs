@@ -1,20 +1,25 @@
-﻿open System.Net.Http
+﻿open System.Collections.Generic
+open System.Net.Http
 open System.Text.Json
 open System.Threading.Tasks
+open Microsoft.AspNetCore.WebUtilities
 
 let client = new HttpClient()
 let baseUrl = "https://openholidaysapi.org/"
 let url path = baseUrl + path
 let jsonOptions = JsonSerializerOptions(PropertyNameCaseInsensitive = true)
 
-let get<'T> path : Task<'T> =
+let getWithQuery<'T> path (query : IDictionary<string,string>) : Task<'T> =
     task {
-        use! response = client.GetAsync(url path)
+        let uri = QueryHelpers.AddQueryString(url path, query)
+        use! response = client.GetAsync uri
         response.EnsureSuccessStatusCode() |> ignore
         use! stream = response.Content.ReadAsStreamAsync()
         let! result = JsonSerializer.DeserializeAsync<'T>(stream, jsonOptions)
         return result
     }
+
+let get<'T> path : Task<'T> = getWithQuery<'T> path (dict [])
 
 type Language = string
 type Name =
