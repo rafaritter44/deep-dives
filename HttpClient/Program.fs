@@ -28,4 +28,11 @@ type Country =
 let countries = (get<Country list> "Countries").Result
 printfn "%A" countries
 
+type LanguageObject =
+    { IsoCode : string
+      Name    : Name list }
+
+let languages = (get<LanguageObject list> "Languages").Result
+printfn "%A" languages
+
 client.Dispose()
