@@ -67,4 +67,6 @@ let queryParams = dict [
 let publicHolidays = (getWithQuery<PublicHoliday list> "PublicHolidays" queryParams).Result
 printfn "%A" publicHolidays
 
+(get "NonExistentEndpoint").Result |> printfn "%A"
+
 client.Dispose()
