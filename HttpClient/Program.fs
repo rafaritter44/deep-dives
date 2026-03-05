@@ -10,17 +10,20 @@ let baseUrl = "https://openholidaysapi.org/"
 let url path = baseUrl + path
 let jsonOptions = JsonSerializerOptions(PropertyNameCaseInsensitive = true)
 
-let getWithQuery<'T> path (query : IDictionary<string,string>) : Task<'T> =
+let getWithQuery<'T> path (query : IDictionary<string,string>) : Task<Result<'T, string>> =
     task {
         let uri = QueryHelpers.AddQueryString(url path, query)
         use! response = client.GetAsync uri
-        response.EnsureSuccessStatusCode() |> ignore
-        use! stream = response.Content.ReadAsStreamAsync()
-        let! result = JsonSerializer.DeserializeAsync<'T>(stream, jsonOptions)
-        return result
+        if response.IsSuccessStatusCode then
+            use! stream = response.Content.ReadAsStreamAsync()
+            let! result = JsonSerializer.DeserializeAsync<'T>(stream, jsonOptions)
+            return Ok result
+        else
+            let! body = response.Content.ReadAsStringAsync()
+            return Error (sprintf "HTTP %d: %s" (int response.StatusCode) body)
     }
 
-let get<'T> path : Task<'T> = getWithQuery<'T> path (dict [])
+let get<'T> path = getWithQuery<'T> path (dict [])
 
 type Language = string
 type Name =
