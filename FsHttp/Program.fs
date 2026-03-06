@@ -23,4 +23,5 @@ type Country =
       Name              : Name list
       OfficialLanguages : Language list }
 
-get<Country list> "Countries" |> Async.RunSynchronously |> printfn "%A"
+let countries = get<Country list> "Countries" |> Async.RunSynchronously
+printfn "%A" countries
