@@ -16,8 +16,8 @@ let getWithQuery<'T> path (query : IDictionary<string,string>) : Task<Result<'T,
         use! response = client.GetAsync uri
         if response.IsSuccessStatusCode then
             use! stream = response.Content.ReadAsStreamAsync()
-            let! result = JsonSerializer.DeserializeAsync<'T>(stream, jsonOptions)
-            return Ok result
+            let! typedResponse = JsonSerializer.DeserializeAsync<'T>(stream, jsonOptions)
+            return Ok typedResponse
         else
             let! body = response.Content.ReadAsStringAsync()
             return Error (sprintf "HTTP %d: %s" (int response.StatusCode) body)
