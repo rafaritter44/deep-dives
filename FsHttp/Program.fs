@@ -14,13 +14,13 @@ type Country =
       Name              : Name list
       OfficialLanguages : Language list }
 
-let get =
+let get<'T> path =
     let request = http {
-        GET (url "Countries")
+        GET (url path)
     }
     async {
         use! response = Request.sendAsync request
-        return! response |> Response.deserializeJsonWithAsync<Country list> jsonOptions
+        return! response |> Response.deserializeJsonWithAsync<'T> jsonOptions
     }
 
-get |> Async.RunSynchronously |> printfn "%A"
+get<Country list> "Countries" |> Async.RunSynchronously |> printfn "%A"
