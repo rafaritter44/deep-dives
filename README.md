@@ -5,8 +5,6 @@ POC ideas:
     - https://github.com/Lanayx/Oxpecker
     - https://github.com/SuaveIO/suave
     - https://github.com/dotnet-websharper/core
-- HTTP Client:
-    - https://github.com/fsprojects/FsHttp
 - SQL:
     - https://github.com/DapperLib/Dapper
     - https://github.com/npgsql/npgsql
