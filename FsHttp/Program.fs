@@ -25,3 +25,10 @@ type Country =
 
 let countries = get<Country list> "Countries" |> Async.RunSynchronously
 printfn "%A" countries
+
+type LanguageObject =
+    { IsoCode : string
+      Name    : Name list }
+
+let languages = get<LanguageObject list> "Languages" |> Async.RunSynchronously
+printfn "%A" languages
