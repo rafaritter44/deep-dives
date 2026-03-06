@@ -18,6 +18,5 @@ http {
     GET (url "Countries")
 }
 |> Request.send
-|> Response.toJson
-|> fun json -> json.Deserialize<Country list> jsonOptions
+|> Response.deserializeJsonWith<Country list> jsonOptions
 |> printfn "%A"
