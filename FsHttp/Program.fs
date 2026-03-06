@@ -14,9 +14,13 @@ type Country =
       Name              : Name list
       OfficialLanguages : Language list }
 
-http {
-    GET (url "Countries")
-}
-|> Request.send
-|> Response.deserializeJsonWith<Country list> jsonOptions
-|> printfn "%A"
+let get =
+    let request = http {
+        GET (url "Countries")
+    }
+    async {
+        use! response = Request.sendAsync request
+        return! response |> Response.deserializeJsonWithAsync<Country list> jsonOptions
+    }
+
+get |> Async.RunSynchronously |> printfn "%A"
