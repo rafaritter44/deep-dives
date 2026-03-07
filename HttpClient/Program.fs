@@ -47,7 +47,6 @@ printfn "%A" languages
 type Subdivision =
     { Code      : string
       ShortName : string }
-
 type PublicHoliday =
     { Id            : Guid
       Nationwide    : bool
