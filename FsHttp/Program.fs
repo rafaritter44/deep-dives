@@ -5,14 +5,17 @@ let baseUrl = "https://openholidaysapi.org/"
 let url path = baseUrl + path
 let jsonOptions = JsonSerializerOptions(PropertyNameCaseInsensitive = true)
 
-let get<'T> path =
+let getWithQuery<'T> path queryParams =
     let request = http {
         GET (url path)
+        query queryParams
     }
     async {
         use! response = Request.sendAsync request
         return! response |> Response.deserializeJsonWithAsync<'T> jsonOptions
     }
+
+let get<'T> path = getWithQuery<'T> path []
 
 type Language = string
 type Name =
