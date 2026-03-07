@@ -1,4 +1,5 @@
 ﻿open FsHttp
+open System
 open System.Text.Json
 
 let baseUrl = "https://openholidaysapi.org/"
@@ -35,3 +36,25 @@ type LanguageObject =
 
 let languages = get<LanguageObject list> "Languages" |> Async.RunSynchronously
 printfn "%A" languages
+
+type Subdivision =
+    { Code      : string
+      ShortName : string }
+type PublicHoliday =
+    { Id            : Guid
+      Nationwide    : bool
+      Type          : string
+      RegionalScope : string
+      TemporalScope : string
+      StartDate     : DateOnly
+      EndDate       : DateOnly
+      Name          : Name list
+      Subdivisions  : Subdivision list }
+
+let queryParams = [
+    "countryIsoCode", "BR"
+    "languageIsoCode", "PT"
+    "validFrom", "2025-01-01"
+    "validTo", "2025-12-31" ]
+let publicHolidays = getWithQuery<PublicHoliday list> "PublicHolidays" queryParams |> Async.RunSynchronously
+printfn "%A" publicHolidays
