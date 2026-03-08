@@ -64,3 +64,5 @@ let queryParams = [
     "validTo", "2025-12-31" ]
 let publicHolidays = getWithQuery<PublicHoliday list> "PublicHolidays" queryParams |> Async.RunSynchronously
 printfn "%A" publicHolidays
+
+get "NonExistentEndpoint" |> Async.RunSynchronously |> printfn "%A"
