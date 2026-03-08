@@ -1,5 +1,6 @@
 ﻿open FsHttp
 open System
+open System.Net
 open System.Text.Json
 
 let baseUrl = "https://openholidaysapi.org/"
@@ -13,7 +14,12 @@ let getWithQuery<'T> path queryParams =
     }
     async {
         use! response = Request.sendAsync request
-        return! response |> Response.deserializeJsonWithAsync<'T> jsonOptions
+        if response.statusCode = HttpStatusCode.OK then
+            let! typedResponse = response |> Response.deserializeJsonWithAsync<'T> jsonOptions
+            return Ok typedResponse
+        else
+            let! body = response.ToStringAsync None |> Async.AwaitTask
+            return Error (sprintf "HTTP %d: %s" (int response.statusCode) body)
     }
 
 let get<'T> path = getWithQuery<'T> path []
