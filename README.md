@@ -6,7 +6,6 @@ POC ideas:
     - https://github.com/SuaveIO/suave
     - https://github.com/dotnet-websharper/core
 - SQL:
-    - https://github.com/DapperLib/Dapper
     - https://github.com/npgsql/npgsql
 - Tests:
     - https://github.com/haf/expecto
