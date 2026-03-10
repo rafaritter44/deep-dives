@@ -8,8 +8,8 @@ let connectionString =
 let getConnection () =
     new NpgsqlConnection(connectionString) :> IDbConnection
 
-let test () =
+let testConnection () =
     use conn = getConnection()
     conn.QuerySingle<int> "SELECT 1"
 
-test() |> printfn "Result: %d"
+testConnection() |> printfn "Result: %d"
