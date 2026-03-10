@@ -17,7 +17,7 @@ testConnection() |> printfn "Result: %d"
 let createTable () =
     use conn = getConnection()
     let sql = """
-        CREATE TABLE users (
+        CREATE TABLE IF NOT EXISTS users (
             id SERIAL PRIMARY KEY,
             name TEXT NOT NULL
         )
