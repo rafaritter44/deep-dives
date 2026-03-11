@@ -55,3 +55,13 @@ let getUser id =
     conn.QuerySingle<User>(sql, {| id = id |})
 
 getUser 1 |> printfn "%A"
+
+let updateUser user =
+    use conn = getConnection()
+    let sql = "UPDATE users SET name = @Name WHERE id = @Id"
+    conn.Execute(sql, user) = 1
+
+let user =
+    { Id   = 1
+      Name = "Ritter" }
+updateUser user |> printfn "User updated: %b"
