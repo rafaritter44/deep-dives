@@ -33,8 +33,8 @@ let insertUser name =
 
 insertUser "Rafael" |> printfn "Inserted user %d"
 
-let getUsers () =
+let getUserNames () =
     use conn = getConnection()
     conn.Query<string> "SELECT name FROM users"
 
-getUsers() |> printfn "%A"
+getUserNames() |> printfn "%A"
