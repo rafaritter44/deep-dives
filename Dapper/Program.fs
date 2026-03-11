@@ -38,3 +38,13 @@ let getUserNames () =
     conn.Query<string> "SELECT name FROM users"
 
 getUserNames() |> printfn "%A"
+
+type User =
+    { Id   : int
+      Name : string }
+
+let getUsers () =
+    use conn = getConnection()
+    conn.Query<User> "SELECT id, name FROM users"
+
+getUsers() |> printfn "%A"
