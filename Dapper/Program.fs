@@ -10,9 +10,9 @@ let getConnection () =
 
 let testConnection () =
     use conn = getConnection()
-    conn.QuerySingle<int> "SELECT 1"
+    conn.QuerySingle<int> "SELECT 1" = 1
 
-testConnection() |> printfn "Result: %d"
+testConnection() |> printfn "Connection works: %b"
 
 let createTable () =
     use conn = getConnection()
