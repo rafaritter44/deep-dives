@@ -14,6 +14,15 @@ let testConnection () =
 
 testConnection() |> printfn "Connection works: %b"
 
+let testConnectionAsync () =
+    task {
+        use conn = getConnection()
+        let! result = conn.QuerySingleAsync<int> "SELECT 1"
+        return result = 1
+    }
+
+testConnectionAsync().Result |> printfn "Async connection works: %b"
+
 let createTable () =
     use conn = getConnection()
     let sql = """
