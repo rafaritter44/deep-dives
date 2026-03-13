@@ -103,7 +103,16 @@ let getUser id =
     let sql = "SELECT id, name FROM users WHERE id = @id"
     conn.QuerySingle<User>(sql, {| id = id |})
 
-getUser 1 |> printfn "%A"
+getUser 1 |> printfn "Got user: %A"
+
+let getUserAsync id =
+    task {
+        use conn = getConnection()
+        let sql = "SELECT id, name FROM users WHERE id = @id"
+        return! conn.QuerySingleAsync<User>(sql, {| id = id |})
+    }
+
+(getUserAsync 2).Result |> printfn "Got user async: %A"
 
 let updateUser user =
     use conn = getConnection()
