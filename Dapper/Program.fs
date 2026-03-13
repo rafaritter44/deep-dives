@@ -123,3 +123,16 @@ let user =
     { Id   = 1
       Name = "Ritter" }
 updateUser user |> printfn "User updated: %b"
+
+let updateUserAsync user =
+    task {
+        use conn = getConnection()
+        let sql = "UPDATE users SET name = @Name WHERE id = @Id"
+        let! result = conn.ExecuteAsync(sql, user)
+        return result = 1
+    }
+
+let userAsync =
+    { Id   = 1
+      Name = "R. R."}
+(updateUserAsync userAsync).Result |> printfn "User updated async: %b"
