@@ -70,7 +70,7 @@ let getUserNames () =
     use conn = getConnection()
     conn.Query<string> "SELECT name FROM users"
 
-getUserNames() |> printfn "Got users: %A"
+getUserNames() |> printfn "Got user names: %A"
 
 let getUserNamesAsync () =
     task {
@@ -78,7 +78,7 @@ let getUserNamesAsync () =
         return! conn.QueryAsync<string> "SELECT name FROM users"
     }
 
-getUserNamesAsync().Result |> printfn "Got users async: %A"
+getUserNamesAsync().Result |> printfn "Got user names async: %A"
 
 type User =
     { Id   : int
