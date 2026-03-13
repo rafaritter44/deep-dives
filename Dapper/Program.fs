@@ -35,6 +35,21 @@ let createTable () =
 
 createTable()
 
+let createTableAsync () =
+    task {
+        use conn = getConnection()
+        let sql = """
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL
+            )
+        """
+        let! _ = conn.ExecuteAsync sql
+        return ()
+    }
+
+createTableAsync().Result
+
 let insertUser name =
     use conn = getConnection()
     let sql = "INSERT INTO users (name) VALUES (@name) RETURNING id"
