@@ -57,6 +57,15 @@ let insertUser name =
 
 insertUser "Rafael" |> printfn "Inserted user %d"
 
+let insertUserAsync name =
+    task {
+        use conn = getConnection()
+        let sql = "INSERT INTO users (name) VALUES (@name) RETURNING id"
+        return! conn.QuerySingleAsync<int>(sql, {| name = name |})
+    }
+
+(insertUserAsync "Rafa").Result |> printfn "Inserted user async: %d"
+
 let getUserNames () =
     use conn = getConnection()
     conn.Query<string> "SELECT name FROM users"
