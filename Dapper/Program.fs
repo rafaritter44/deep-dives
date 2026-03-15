@@ -152,3 +152,21 @@ let runTransaction userId =
         reraise()
 
 runTransaction 1 |> printfn "Transaction completed: %b"
+
+let runTransactionAsync userId =
+    task {
+        use conn = getConnection()
+        conn.Open()
+        use tx = conn.BeginTransaction IsolationLevel.Serializable
+        try
+            let! user = conn.QuerySingleAsync<User>("SELECT id, name FROM users WHERE id = @id", {| id = userId |}, tx)
+            let updatedUser = { user with Name = user.Name + " (updated by async transaction)" }
+            let! updateResult = conn.ExecuteAsync("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
+            tx.Commit()
+            return updateResult = 1
+        with ex ->
+            tx.Rollback()
+            return raise ex
+    }
+
+(runTransactionAsync 2).Result |> printfn "Async transaction completed: %b"
