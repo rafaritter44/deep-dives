@@ -146,12 +146,12 @@ let runTransaction userId =
         let updatedUser = { user with Name = user.Name + " (updated by transaction)" }
         let updateResult = conn.Execute("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
         tx.Commit()
-        updateResult = 1
-    with _ ->
+        Ok (updateResult = 1)
+    with ex ->
         tx.Rollback()
-        reraise()
+        Error ex
 
-runTransaction 1 |> printfn "Transaction completed: %b"
+runTransaction 1 |> printfn "Transaction completed: %A"
 
 let runTransactionAsync userId =
     task {
@@ -163,10 +163,10 @@ let runTransactionAsync userId =
             let updatedUser = { user with Name = user.Name + " (updated by async transaction)" }
             let! updateResult = conn.ExecuteAsync("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
             tx.Commit()
-            return updateResult = 1
+            return Ok (updateResult = 1)
         with ex ->
             tx.Rollback()
-            return raise ex
+            return Error ex
     }
 
-(runTransactionAsync 2).Result |> printfn "Async transaction completed: %b"
+(runTransactionAsync 2).Result |> printfn "Async transaction completed: %A"
