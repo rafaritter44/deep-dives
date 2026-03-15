@@ -110,10 +110,12 @@ let getUserAsync id =
     task {
         use conn = getConnection()
         let sql = "SELECT id, name FROM users WHERE id = @id"
-        return! conn.QuerySingleAsync<User>(sql, {| id = id |})
+        let! result = conn.QuerySingleOrDefaultAsync<User>(sql, {| id = id |})
+        return Option.ofObj result
     }
 
 (getUserAsync 2).Result |> printfn "Got user async: %A"
+(getUserAsync 200).Result |> printfn "Didn't get user async: %A"
 
 let updateUser user =
     use conn = getConnection()
