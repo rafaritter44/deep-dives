@@ -1,4 +1,5 @@
 ﻿open System.Data
+open System.Threading.Tasks
 open Dapper
 open Npgsql
 
@@ -167,9 +168,13 @@ let runTransactionAsync userId =
         conn.Open()
         use tx = conn.BeginTransaction IsolationLevel.Serializable
         try
-            let! user = conn.QuerySingleAsync<User>("SELECT id, name FROM users WHERE id = @id", {| id = userId |}, tx)
-            let updatedUser = { user with Name = user.Name + " (updated by async transaction)" }
-            let! updateResult = conn.ExecuteAsync("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
+            let! user = conn.QuerySingleOrDefaultAsync<User>("SELECT id, name FROM users WHERE id = @id", {| id = userId |}, tx)
+            let! updateResult =
+                if isNull (box user) then
+                    Task.FromResult 0
+                else
+                    let updatedUser = { user with Name = user.Name + " (updated by async transaction)" }
+                    conn.ExecuteAsync("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
             tx.Commit()
             return Ok (updateResult = 1)
         with ex ->
@@ -178,3 +183,4 @@ let runTransactionAsync userId =
     }
 
 (runTransactionAsync 2).Result |> printfn "Async transaction completed: %A"
+(runTransactionAsync 200).Result |> printfn "Async transaction failed: %A"
