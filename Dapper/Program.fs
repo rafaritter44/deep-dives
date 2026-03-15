@@ -145,9 +145,13 @@ let runTransaction userId =
     conn.Open()
     use tx = conn.BeginTransaction IsolationLevel.Serializable
     try
-        let user = conn.QuerySingle<User>("SELECT id, name FROM users WHERE id = @id", {| id = userId |}, tx)
-        let updatedUser = { user with Name = user.Name + " (updated by transaction)" }
-        let updateResult = conn.Execute("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
+        let user = conn.QuerySingleOrDefault<User>("SELECT id, name FROM users WHERE id = @id", {| id = userId |}, tx)
+        let updateResult =
+            if isNull (box user) then
+                0
+            else
+                let updatedUser = { user with Name = user.Name + " (updated by transaction)" }
+                conn.Execute("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
         tx.Commit()
         Ok (updateResult = 1)
     with ex ->
@@ -155,6 +159,7 @@ let runTransaction userId =
         Error ex
 
 runTransaction 1 |> printfn "Transaction completed: %A"
+runTransaction 100 |> printfn "Transaction failed: %A"
 
 let runTransactionAsync userId =
     task {
