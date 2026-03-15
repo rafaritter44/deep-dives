@@ -90,7 +90,7 @@ let getUsers () =
 
 getUsers() |> printfn "Got users: %A"
 
-let getUsersAsync() =
+let getUsersAsync () =
     task {
         use conn = getConnection()
         return! conn.QueryAsync<User> "SELECT id, name FROM users"
@@ -133,6 +133,22 @@ let updateUserAsync user =
     }
 
 let userAsync =
-    { Id   = 1
+    { Id   = 2
       Name = "R. R."}
 (updateUserAsync userAsync).Result |> printfn "User updated async: %b"
+
+let runTransaction userId =
+    use conn = getConnection()
+    conn.Open()
+    use tx = conn.BeginTransaction IsolationLevel.Serializable
+    try
+        let user = conn.QuerySingle<User>("SELECT id, name FROM users WHERE id = @id", {| id = userId |}, tx)
+        let updatedUser = { user with Name = user.Name + " (updated by transaction)" }
+        let updateResult = conn.Execute("UPDATE users SET name = @Name WHERE id = @Id", updatedUser, tx)
+        tx.Commit()
+        updateResult = 1
+    with _ ->
+        tx.Rollback()
+        reraise()
+
+runTransaction 1 |> printfn "Transaction completed: %b"
