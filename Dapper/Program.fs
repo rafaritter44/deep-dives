@@ -101,9 +101,10 @@ getUsersAsync().Result |> printfn "Got users async: %A"
 let getUser id =
     use conn = getConnection()
     let sql = "SELECT id, name FROM users WHERE id = @id"
-    conn.QuerySingle<User>(sql, {| id = id |})
+    conn.QuerySingleOrDefault<User>(sql, {| id = id |}) |> Option.ofObj
 
 getUser 1 |> printfn "Got user: %A"
+getUser 100 |> printfn "Didn't get user: %A"
 
 let getUserAsync id =
     task {
