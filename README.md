@@ -8,3 +8,4 @@ POC ideas:
 - Tests:
     - https://github.com/fscheck/FsCheck
 - Configuration: Microsoft.Extensions.Configuration
+- Dependency manager: https://github.com/fsprojects/Paket
