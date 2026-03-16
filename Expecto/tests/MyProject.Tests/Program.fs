@@ -1,2 +1,11 @@
-﻿// For more information see https://aka.ms/fsharp-console-apps
-printfn "Hello from F#"
+﻿open Expecto
+
+let tests =
+  test "A simple test" {
+    let subject = "Hello, World!"
+    Expect.equal subject "Hello, World!" "The strings should be equal."
+  }
+
+[<EntryPoint>]
+let main args =
+  runTestsWithCLIArgs [] args tests
