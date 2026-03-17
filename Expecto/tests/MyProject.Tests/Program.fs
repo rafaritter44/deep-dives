@@ -1,10 +1,14 @@
 ﻿open Expecto
 
 let tests =
-  test "A simple test" {
-    let subject = "Hello, World!"
-    Expect.equal subject "Hello, World!" "The strings should be equal."
-  }
+  testList "A test list" [
+    test "A test" {
+        let actual = 2+2
+        let expected = 4
+        let message = "2+2 = 4"
+        Expect.equal actual expected message
+    }
+  ]
 
 [<EntryPoint>]
 let main args =
