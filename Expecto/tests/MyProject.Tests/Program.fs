@@ -19,6 +19,12 @@ let tests =
             let message = "2+2 = 4"
             Expect.equal actual expected message
         }
+        testTask "A task test" {
+            let! actual = task { return 2+2 }
+            let expected = 4
+            let message = "2+2 = 4"
+            Expect.equal actual expected message
+        }
     ]
 
 [<EntryPoint>]
