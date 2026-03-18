@@ -8,15 +8,19 @@ let tests =
             let actual = 2+2
             Expect.equal actual expected message
         }
-        testCase "A test case" <| fun () ->
-            let actual = 2+2
-            Expect.equal actual expected message
         testAsync "An async test" {
             let! actual = async { return 2+2 }
             Expect.equal actual expected message
         }
         testTask "A task test" {
             let! actual = task { return 2+2 }
+            Expect.equal actual expected message
+        }
+        testCase "A test case" <| fun () ->
+            let actual = 2+2
+            Expect.equal actual expected message
+        testCaseAsync "An async test case" <| async {
+            let! actual = async { return 2+2 }
             Expect.equal actual expected message
         }
     ]
