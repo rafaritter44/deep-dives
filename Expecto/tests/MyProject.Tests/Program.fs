@@ -8,12 +8,17 @@ let tests =
             let message = "2+2 = 4"
             Expect.equal actual expected message
         }
-
         testCase "A test case" <| fun () ->
             let actual = 2+2
             let expected = 4
             let message = "2+2 = 4"
             Expect.equal actual expected message
+        testAsync "An async test" {
+            let! actual = async { return 2+2 }
+            let expected = 4
+            let message = "2+2 = 4"
+            Expect.equal actual expected message
+        }
     ]
 
 [<EntryPoint>]
