@@ -23,6 +23,11 @@ let tests =
             let! actual = async { return 2+2 }
             Expect.equal actual expected message
         }
+        testCaseTask "A task test case" <| fun () ->
+            task {
+                let! actual = task { return 2+2 }
+                Expect.equal actual expected message
+            }
     ]
 
 [<EntryPoint>]
