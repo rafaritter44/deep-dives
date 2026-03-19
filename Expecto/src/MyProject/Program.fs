@@ -1,2 +1,8 @@
-﻿// For more information see https://aka.ms/fsharp-console-apps
-printfn "Hello from F#"
+﻿module MyProject.Program
+
+open MyProject.Math
+
+[<EntryPoint>]
+let main _ =
+    printfn "%d" <| add 2 2
+    0
