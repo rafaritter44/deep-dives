@@ -7,6 +7,7 @@ let tests =
     let expected = 4
     let message = "2+2 = 4"
     testList "A test list" [
+        // Tests
         test "A test" {
             let actual = add 2 2
             Expect.equal actual expected message
@@ -19,6 +20,8 @@ let tests =
             let! actual = task { return add 2 2 }
             Expect.equal actual expected message
         }
+
+        // Test cases
         testCase "A test case" <| fun () ->
             let actual = add 2 2
             Expect.equal actual expected message
@@ -31,4 +34,9 @@ let tests =
                 let! actual = task { return add 2 2 }
                 Expect.equal actual expected message
             }
+
+        // Test theories
+        testTheory "A test theory" [(1,1),2; (2,2),4] <| fun ((a,b), expected) ->
+            let actual = add a b
+            Expect.equal actual expected message
     ]
