@@ -44,4 +44,9 @@ let tests =
                 let! actual = async { return add a b }
                 Expect.equal actual expected message
             }
+        testTheoryTask "A task test theory" [(1,1),2; (2,2),4] <| fun ((a,b), expected) ->
+            task {
+                let! actual = async { return add a b }
+                Expect.equal actual expected message
+            }
     ]
