@@ -49,4 +49,9 @@ let tests =
                 let! actual = async { return add a b }
                 Expect.equal actual expected message
             }
+
+        // Pending test
+        ptest "A pending test" {
+            failtest "This test is not implemented yet."
+        }
     ]
