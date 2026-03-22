@@ -54,4 +54,11 @@ let tests =
         ptest "A pending test" {
             failtest "This test is not implemented yet."
         }
+
+        // Property-based tests
+        testProperty "A test property" <| fun a b ->
+            add a b = add b a
+        testPropertyWithConfig { FsCheckConfig.defaultConfig with maxTest = 10000 } "A test property with config" <|
+            fun a b c->
+                multiply a (add b c) = add (multiply a b) (multiply a c)
     ]
