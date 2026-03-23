@@ -61,4 +61,10 @@ let tests =
         testPropertyWithConfig { FsCheckConfig.defaultConfig with maxTest = 10000 } "A test property with config" <|
             fun a b c->
                 multiply a (add b c) = add (multiply a b) (multiply a c)
+
+        // Expectations
+        test "A test with many expectations" {
+            let divideByZero () = divide 1 0 |> ignore
+            Expect.throws divideByZero "Division by zero should throw."
+        }
     ]
