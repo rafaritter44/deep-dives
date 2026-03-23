@@ -68,5 +68,7 @@ let tests =
             let divideByZeroMsg = "Division by zero should throw."
             Expect.throws divideByZero divideByZeroMsg
             Expect.throwsT<System.DivideByZeroException> divideByZero divideByZeroMsg
+            let divideByZeroExnMsg = Expect.throwsC divideByZero (fun exn -> exn.Message)
+            Expect.equal divideByZeroExnMsg "Attempted to divide by zero." divideByZeroMsg
         }
     ]
