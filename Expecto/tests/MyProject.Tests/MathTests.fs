@@ -65,6 +65,8 @@ let tests =
         // Expectations
         test "A test with many expectations" {
             let divideByZero () = divide 1 0 |> ignore
-            Expect.throws divideByZero "Division by zero should throw."
+            let divideByZeroMsg = "Division by zero should throw."
+            Expect.throws divideByZero divideByZeroMsg
+            Expect.throwsT<System.DivideByZeroException> divideByZero divideByZeroMsg
         }
     ]
