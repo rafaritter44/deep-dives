@@ -20,6 +20,8 @@ psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/rename-colu
 
 Renaming a column from the base table won't affect the view. You can try querying the view again and you'll notice that it still works. The underlying query was automatically updated along with the base table.
 
+Also notice that even though the column name in the base table has changed, the column name in the view has not changed.
+
 ## Rename table
 
 ```
