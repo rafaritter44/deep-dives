@@ -1,0 +1,1 @@
+alter table p drop column p_name;

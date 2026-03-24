@@ -1,0 +1,1 @@
+alter view person_name rename to p_name;
