@@ -86,6 +86,7 @@ let tests =
             Expect.isDescending [3; 2; 2; 1] "This sequence is descending."
             Expect.isEmpty [] "This sequence is empty."
             Expect.isNonEmpty [0] "This sequence is not empty."
+            Expect.contains [1; 2; 3] 2 "This sequence contains the given element."
 
             // String expectations
             Expect.stringContains "abcdef" "bcd" "This string contains the given substring."
