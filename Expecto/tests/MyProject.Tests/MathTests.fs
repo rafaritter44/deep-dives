@@ -64,11 +64,15 @@ let tests =
 
         // Expectations
         test "A test with many expectations" {
+            // Expect.throws
             let divideByZero () = divide 1 0 |> ignore
             let divideByZeroMsg = "Division by zero should throw."
             Expect.throws divideByZero divideByZeroMsg
             Expect.throwsT<System.DivideByZeroException> divideByZero divideByZeroMsg
             let divideByZeroExnMsg = Expect.throwsC divideByZero (fun exn -> exn.Message)
             Expect.equal divideByZeroExnMsg "Attempted to divide by zero." divideByZeroMsg
+
+            // Expect.exists
+            Expect.exists [-1; 0; 1] (fun n -> n > 0) "There is some positive number."
         }
     ]
