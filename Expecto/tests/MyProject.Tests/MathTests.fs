@@ -85,6 +85,9 @@ let tests =
             Expect.isAscending [1; 2; 2; 3] "This sequence is ascending."
             Expect.isDescending [3; 2; 2; 1] "This sequence is descending."
 
+            // String expectations
+            Expect.stringContains "abcdef" "bcd" "This string contains the given substring."
+
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
         }
