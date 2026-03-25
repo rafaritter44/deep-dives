@@ -72,7 +72,9 @@ let tests =
             let divideByZeroExnMsg = Expect.throwsC divideByZero (fun exn -> exn.Message)
             Expect.equal divideByZeroExnMsg "Attempted to divide by zero." divideByZeroMsg
 
-            // Expect.exists
-            Expect.exists [-1; 0; 1] (fun n -> n > 0) "There is some positive number."
+            // Expect.exists and Expect.all
+            let isPositive n = n > 0
+            Expect.exists [-1; 0; 1] isPositive "There is some positive number."
+            Expect.all [1; 2; 3] isPositive "All numbers are positive."
         }
     ]
