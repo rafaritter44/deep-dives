@@ -99,5 +99,9 @@ let tests =
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
+
+            // Result expectations
+            let okValue = Expect.wantOk (Ok 1) "The result is Ok."
+            Expect.equal okValue 1 "This Ok result contains the specified value."
         }
     ]
