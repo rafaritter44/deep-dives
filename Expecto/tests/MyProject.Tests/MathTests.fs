@@ -87,6 +87,7 @@ let tests =
             Expect.isEmpty [] "This sequence is empty."
             Expect.isNonEmpty [0] "This sequence is not empty."
             Expect.contains [1; 2; 3] 2 "This sequence contains the given element."
+            Expect.containsAll [1; 2; 3] [|3; 2|] "This sequence contains all the given elements."
 
             // String expectations
             Expect.stringContains "abcdef" "bcd" "This string contains the given substring."
