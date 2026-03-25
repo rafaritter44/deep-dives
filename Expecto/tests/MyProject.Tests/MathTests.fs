@@ -83,6 +83,7 @@ let tests =
             Expect.sequenceStarts [1; 2; 3] [|1; 2|] "This sequence starts with the given prefix."
             Expect.sequenceContainsOrder [1; 2; 3; 4; 5] [|2; 4; 5|] "This sequence contains these elements in the given order."
             Expect.isAscending [1; 2; 2; 3] "This sequence is ascending."
+            Expect.isDescending [3; 2; 2; 1] "This sequence is descending."
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
