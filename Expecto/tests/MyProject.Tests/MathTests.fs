@@ -90,6 +90,7 @@ let tests =
             Expect.stringStarts "abcdef" "abc" "This string starts with the given prefix."
             Expect.stringEnds "abdef" "def" "This string ends with the given suffix."
             Expect.stringHasLength "abcdef" 6 "This string has the given length."
+            Expect.isNotEmpty " " "This string is not empty."
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
