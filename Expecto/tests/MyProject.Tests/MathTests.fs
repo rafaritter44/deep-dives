@@ -103,5 +103,7 @@ let tests =
             // Result expectations
             let okValue = Expect.wantOk (Ok 1) "The result is Ok."
             Expect.equal okValue 1 "This Ok result contains the specified value."
+            let errorValue = Expect.wantError (Error 2) "The result is Error."
+            Expect.equal errorValue 2 "This Error results contains the specified value."
         }
     ]
