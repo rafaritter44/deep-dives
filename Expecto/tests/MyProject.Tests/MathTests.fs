@@ -76,5 +76,6 @@ let tests =
             let isPositive n = n > 0
             Expect.exists [-1; 0; 1] isPositive "There is some positive number."
             Expect.all [1; 2; 3] isPositive "All numbers are positive."
+            Expect.allEqual [0; 0; 0] 0 "All numbers are equal to zero."
         }
     ]
