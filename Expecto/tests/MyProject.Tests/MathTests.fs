@@ -80,6 +80,7 @@ let tests =
 
             // Sequence comparison
             Expect.sequenceEqual [1; 2] [|1; 2|] "The values in these sequences are the same."
+            Expect.sequenceStarts [1; 2; 3] [|1; 2|] "This sequence starts with the given prefix."
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
