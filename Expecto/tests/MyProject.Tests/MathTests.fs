@@ -91,6 +91,7 @@ let tests =
             Expect.stringEnds "abdef" "def" "This string ends with the given suffix."
             Expect.stringHasLength "abcdef" 6 "This string has the given length."
             Expect.isNotEmpty " " "This string is not empty."
+            Expect.isNotWhitespace " . " "This string is not blank."
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
