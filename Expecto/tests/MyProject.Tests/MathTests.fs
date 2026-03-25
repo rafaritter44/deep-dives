@@ -64,7 +64,7 @@ let tests =
 
         // Expectations
         test "A test with many expectations" {
-            // Expect.throws
+            // Exception expectations
             let divideByZero () = divide 1 0 |> ignore
             let divideByZeroMsg = "Division by zero should throw."
             Expect.throws divideByZero divideByZeroMsg
@@ -72,7 +72,7 @@ let tests =
             let divideByZeroExnMsg = Expect.throwsC divideByZero (fun exn -> exn.Message)
             Expect.equal divideByZeroExnMsg "Attempted to divide by zero." divideByZeroMsg
 
-            // Expect.exists and Expect.all
+            // Quantifiers
             let isPositive n = n > 0
             Expect.exists [-1; 0; 1] isPositive "There is some positive number."
             Expect.all [1; 2; 3] isPositive "All numbers are positive."
