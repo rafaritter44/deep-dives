@@ -84,6 +84,7 @@ let tests =
             Expect.sequenceContainsOrder [1; 2; 3; 4; 5] [|2; 4; 5|] "This sequence contains these elements in the given order."
             Expect.isAscending [1; 2; 2; 3] "This sequence is ascending."
             Expect.isDescending [3; 2; 2; 1] "This sequence is descending."
+            Expect.isEmpty [] "This sequence is empty."
 
             // String expectations
             Expect.stringContains "abcdef" "bcd" "This string contains the given substring."
