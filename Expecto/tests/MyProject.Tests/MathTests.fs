@@ -78,10 +78,11 @@ let tests =
             Expect.all [1; 2; 3] isPositive "All numbers are positive."
             Expect.allEqual [0; 0; 0] 0 "All numbers are equal to zero."
 
-            // Sequence comparison
+            // Sequence expectations
             Expect.sequenceEqual [1; 2] [|1; 2|] "The values in these sequences are the same."
             Expect.sequenceStarts [1; 2; 3] [|1; 2|] "This sequence starts with the given prefix."
             Expect.sequenceContainsOrder [1; 2; 3; 4; 5] [|2; 4; 5|] "This sequence contains these elements in the given order."
+            Expect.isAscending [1; 2; 2; 3] "This sequence is ascending."
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
