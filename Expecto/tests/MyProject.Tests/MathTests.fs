@@ -88,6 +88,7 @@ let tests =
             // String expectations
             Expect.stringContains "abcdef" "bcd" "This string contains the given substring."
             Expect.stringStarts "abcdef" "abc" "This string starts with the given prefix."
+            Expect.stringEnds "abdef" "def" "This string ends with the given suffix."
 
             // Float comparison
             Expect.floatClose Accuracy.low 2.001 2.002 "These floats are close enough."
