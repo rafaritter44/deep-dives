@@ -16,7 +16,7 @@ ghci hello.hs
 main
 ```
 
-Or:
+Or simply:
 
 ```
 runghc hello.hs
