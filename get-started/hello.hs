@@ -10,3 +10,8 @@ main = do
 
   let double x = x + x
   print (double 2)
+  let map f list =
+        case list of
+            [] -> []
+            x : xs -> f x : map f xs
+  print (map double [1,2,3])
