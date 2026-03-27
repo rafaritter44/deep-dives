@@ -1,3 +1,4 @@
+main :: IO ()
 main = do
   print (6 + 3^2 * 4)
   let xs = take 10 (filter even [43..])
