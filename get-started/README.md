@@ -21,3 +21,9 @@ Or simply:
 ```
 runghc hello.hs
 ```
+
+Use the `-Wall` flag to emit warnings about the code. For example:
+
+```
+runghc -Wall hello.hs
+```
