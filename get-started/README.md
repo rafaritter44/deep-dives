@@ -15,3 +15,9 @@ Or:
 ghci hello.hs
 main
 ```
+
+Or:
+
+```
+runghc hello.hs
+```
