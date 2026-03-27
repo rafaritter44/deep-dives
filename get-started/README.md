@@ -2,12 +2,14 @@
 
 Source: https://www.haskell.org/get-started/
 
+Run:
+
 ```
 ghc hello.hs
 ./hello
 ```
 
-Or
+Or:
 
 ```
 ghci hello.hs
