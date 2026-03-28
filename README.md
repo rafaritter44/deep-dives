@@ -1,7 +1,6 @@
 # Haskell POCs
 
 Resources:
-- https://www.seas.upenn.edu/~cis1940/spring13/lectures.html
 - https://learnyouahaskell.github.io/chapters.html
 - https://hackage-content.haskell.org/package/CheatSheet-1.11/src/CheatSheet.pdf
 
