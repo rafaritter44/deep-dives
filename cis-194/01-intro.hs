@@ -10,3 +10,8 @@ main = do
     let _y :: Int
         _y = _y + 1
     putStrLn "_y results in an infinite recursion"
+
+    let smallestInt, biggestInt :: Int
+        smallestInt = minBound
+        biggestInt = maxBound
+    print (smallestInt, biggestInt)
