@@ -12,8 +12,8 @@ main = do
   let double :: Int -> Int
       double x = x + x
   print (double 2)
-  let map f list =
+  let myMap f list =
         case list of
             [] -> []
-            x : xs -> f x : map f xs
-  print (map double [1,2,3])
+            x : xs -> f x : myMap f xs
+  print (myMap double [1,2,3])
