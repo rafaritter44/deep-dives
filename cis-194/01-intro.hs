@@ -41,3 +41,7 @@ main = do
         c2 = 'Ø'
         c3 = 'ダ'
     print (c1, c2, c3)
+
+    let s :: String
+        s = "Hello, Haskell!"
+    putStrLn s
