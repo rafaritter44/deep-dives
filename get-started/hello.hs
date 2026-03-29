@@ -7,7 +7,7 @@ main = do
   print (sum xs)
 
   putStrLn "Hello, everybody!"
-  putStrLn ("Please look at my favorite odd numbers: " ++ show (filter odd [10..20]))
+  putStrLn ("Please look at my favorite odd numbers: " ++ show (filter odd [10..20] :: [Int]))
 
   let double x = x + x
   print (double 2)
