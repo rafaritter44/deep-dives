@@ -15,3 +15,7 @@ main = do
         smallestInt = minBound
         biggestInt = maxBound
     print (smallestInt, biggestInt)
+
+    let n :: Integer
+        n = 1234567890987654321987340982334987349872349874534
+    print n
