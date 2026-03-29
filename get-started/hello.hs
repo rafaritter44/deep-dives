@@ -1,6 +1,6 @@
 main :: IO ()
 main = do
-  print (6 + 3^2 * 4)
+  print (6 + 3^2 * 4 :: Int)
   let evenNums :: [Int]
       evenNums = take 10 (filter even [43..])
   print evenNums
