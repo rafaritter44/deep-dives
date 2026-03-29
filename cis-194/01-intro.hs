@@ -19,3 +19,7 @@ main = do
     let n :: Integer
         n = 1234567890987654321987340982334987349872349874534
     print n
+
+    let reallyBig :: Integer
+        reallyBig = 2^(2^(2^(2^2)))
+    print reallyBig
