@@ -25,3 +25,8 @@ main = do
     let numDigits :: Int
         numDigits = length (show reallyBig)
     print numDigits
+
+    let d1, d2 :: Double
+        d1 = 4.5387
+        d2 = 6.2831e-4
+    print (d1, d2)
