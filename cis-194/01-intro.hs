@@ -30,3 +30,8 @@ main = do
         d1 = 4.5387
         d2 = 6.2831e-4
     print (d1, d2)
+
+    let b1, b2 :: Bool
+        b1 = True
+        b2 = False
+    print (b1, b2)
