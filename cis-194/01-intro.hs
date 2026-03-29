@@ -22,4 +22,6 @@ main = do
 
     let reallyBig :: Integer
         reallyBig = 2^(2^(2^(2^2)))
-    print reallyBig
+    let numDigits :: Int
+        numDigits = length (show reallyBig)
+    print numDigits
