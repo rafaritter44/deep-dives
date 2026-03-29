@@ -35,3 +35,9 @@ main = do
         b1 = True
         b2 = False
     print (b1, b2)
+
+    let c1, c2, c3 :: Char
+        c1 = 'x'
+        c2 = 'Ø'
+        c3 = 'ダ'
+    print (c1, c2, c3)
