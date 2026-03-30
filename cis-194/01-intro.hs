@@ -45,3 +45,7 @@ main = do
     let s :: String
         s = "Hello, Haskell!"
     putStrLn s
+
+    print (mod 19 3)
+    print (19 `mod` 3)
+    print ((-3) * (-7))
