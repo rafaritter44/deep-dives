@@ -49,3 +49,4 @@ main = do
     print (mod 19 3 :: Int)
     print (19 `mod` 3 :: Int)
     print ((-3) * (-7) :: Int)
+    print (8.7 / 3.1 :: Double)
