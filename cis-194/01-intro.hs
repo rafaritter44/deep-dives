@@ -52,3 +52,8 @@ main = do
     print (8.7 / 3.1 :: Double)
     print (div 12 5 :: Int)
     print (12 `div` 5 :: Int)
+
+    print ('a' == 'a')
+    print (16 /= 3)
+    print ((5 > 3) && ('p' <= 'q'))
+    print ("Haskell" > "C++")
