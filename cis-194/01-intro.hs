@@ -68,3 +68,14 @@ main = do
             | n `mod` 2 == 0 = n `div` 2
             | otherwise      = 3*n + 1
     print (hailstone 1, hailstone 2)
+
+    let foo :: Integer -> Integer
+        foo 0 = 16
+        foo 1
+          | "Haskell" > "C++" = 3
+          | otherwise         = 4
+        foo n
+          | n < 0           = 0
+          | n `mod` 17 == 2 = -43
+          | otherwise       = n + 3
+    print (foo 0, foo 1, foo (-1), foo 19, foo 20)
