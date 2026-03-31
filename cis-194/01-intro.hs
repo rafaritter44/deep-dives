@@ -63,10 +63,14 @@ main = do
         sumtorial n = n + sumtorial (n-1)
     print (sumtorial 3)
 
+    let isEven :: Integer -> Bool
+        isEven n
+            | n `mod` 2 == 0 = True
+            | otherwise      = False
     let hailstone :: Integer -> Integer
         hailstone n
-            | n `mod` 2 == 0 = n `div` 2
-            | otherwise      = 3*n + 1
+            | isEven n  = n `div` 2
+            | otherwise = 3*n + 1
     print (hailstone 1, hailstone 2)
 
     let foo :: Integer -> Integer
