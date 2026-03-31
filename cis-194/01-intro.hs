@@ -57,3 +57,8 @@ main = do
     print (16 /= 3)
     print ((5 > 3) && ('p' <= 'q'))
     print ("Haskell" > "C++")
+
+    let sumtorial :: Integer -> Integer
+        sumtorial 0 = 0
+        sumtorial n = n + sumtorial (n-1)
+    print (sumtorial 3)
