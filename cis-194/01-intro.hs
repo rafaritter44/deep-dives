@@ -90,3 +90,7 @@ main = do
     let sumPair :: (Int, Int) -> Int
         sumPair (a, b) = a + b
     print (sumPair (1, 2))
+
+    let f :: Int -> Int -> Int -> Int
+        f n1 n2 n3 = n1 + n2 + n3
+    print (f 1 2 3)
