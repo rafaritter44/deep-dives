@@ -83,3 +83,7 @@ main = do
           | n `mod` 17 == 2 = -43
           | otherwise       = n + 3
     print (foo 0, foo 1, foo (-1), foo 19, foo 20)
+
+    let p :: (Int, Char)
+        p = (3, 'x')
+    print p
