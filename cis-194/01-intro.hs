@@ -94,3 +94,9 @@ main = do
     let f :: Int -> Int -> Int -> Int
         f n1 n2 n3 = n1 + n2 + n3
     print (f 1 2 3)
+
+    let nums, range, range2 :: [Integer]
+        nums   = [1,2,3,19]
+        range  = [1..100]
+        range2 = [2,4..100]
+    print (nums, range, range2)
