@@ -87,3 +87,6 @@ main = do
     let p :: (Int, Char)
         p = (3, 'x')
     print p
+    let sumPair :: (Int, Int) -> Int
+        sumPair (a, b) = a + b
+    print (sumPair (1, 2))
