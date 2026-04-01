@@ -100,3 +100,9 @@ main = do
         range  = [1..100]
         range2 = [2,4..100]
     print (nums, range, range2)
+
+    let hello1 :: [Char]
+        hello1 = ['h', 'e', 'l', 'l', 'o']
+    let hello2 :: String
+        hello2 = "hello"
+    print (hello1 == hello2)
