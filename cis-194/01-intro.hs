@@ -106,3 +106,10 @@ main = do
     let hello2 :: String
         hello2 = "hello"
     print (hello1 == hello2)
+
+    let emptyList, list1, list2, list3 :: [Int]
+        emptyList = []
+        list1 = 1 : []
+        list2 = 3 : (1 : [])
+        list3 = 2 : 3 : 4 : []
+    print (emptyList, list1, list2, list3)
