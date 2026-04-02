@@ -125,7 +125,7 @@ main = do
     print (intListLength [1..1000])
 
     let sumEveryTwo :: [Integer] -> [Integer]
-        sumEveryTwo []         = []
-        sumEveryTwo (x:[])     = [x]
-        sumEveryTwo (x:y:zs) = (x + y) : sumEveryTwo zs
+        sumEveryTwo []       = []
+        sumEveryTwo [x]      = [x]
+        sumEveryTwo (x:y:zs) = (x+y) : sumEveryTwo zs
     print (sumEveryTwo [1..21])
