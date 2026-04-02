@@ -113,3 +113,8 @@ main = do
         list2 = 3 : (1 : [])
         list3 = 2 : 3 : 4 : []
     print (emptyList, list1, list2, list3)
+
+    let hailstoneSeq :: Integer -> [Integer]
+        hailstoneSeq 1 = [1]
+        hailstoneSeq n = n : hailstoneSeq (hailstone n)
+    print (hailstoneSeq 27)
