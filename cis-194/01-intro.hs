@@ -128,4 +128,4 @@ main = do
         sumEveryTwo []         = []
         sumEveryTwo (x:[])     = [x]
         sumEveryTwo (x:y:zs) = (x + y) : sumEveryTwo zs
-    print (sumEveryTwo [1..20])
+    print (sumEveryTwo [1..21])
