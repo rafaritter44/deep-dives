@@ -118,3 +118,8 @@ main = do
         hailstoneSeq 1 = [1]
         hailstoneSeq n = n : hailstoneSeq (hailstone n)
     print (hailstoneSeq 27)
+
+    let intListLength :: [Integer] -> Integer
+        intListLength []     = 0
+        intListLength (_:xs) = 1 + intListLength xs
+    print (intListLength [1..1000])
