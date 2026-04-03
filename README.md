@@ -5,43 +5,44 @@
 ### Features
 
 1. Joins
-2. Aggregate Functions
-3. Window functions
-4. CTEs
-5. Triggers
-6. Stored Procedures
-7. Date/Time Types
-8. Range Types
-9. Domain Types
-10. User-Defined Types
-11. Constraints
-12. Locks
-13. Merge
-14. Materialized Views
-15. Roles
-16. Databases and Schemas
-17. Prepared Statements
-18. Explain
-19. Full Text Search
-20. Partitioning
-21. Copy
-22. Tablespaces
-23. Listen/Notify
-24. Backup/Restore
-25. Unlogged Tables
-26. Skip Locked
-27. pgbench
+1. Subqueries
+1. Aggregate Functions
+1. Window functions
+1. CTEs
+1. Triggers
+1. Stored Procedures
+1. Date/Time Types
+1. Range Types
+1. Domain Types
+1. User-Defined Types
+1. Constraints
+1. Locks
+1. Merge
+1. Materialized Views
+1. Roles
+1. Databases and Schemas
+1. Prepared Statements
+1. Explain
+1. Full Text Search
+1. Partitioning
+1. Copy
+1. Tablespaces
+1. Listen/Notify
+1. Backup/Restore
+1. Unlogged Tables
+1. Skip Locked
+1. pgbench
 
 ### Extensions
 
 1. pg_textsearch
-2. TimescaleDB
-3. PostgREST
-4. PostGIS
-5. postgres_fdw
-6. pg_cron
-7. pg_stat_statements
-8. pgcrypto
-9. pg_partman
-10. pgvector
-11. Resume Citus POCs from here: https://github.com/citusdata/citus?tab=readme-ov-file#creating-distributed-tables-with-co-location
+1. TimescaleDB
+1. PostgREST
+1. PostGIS
+1. postgres_fdw
+1. pg_cron
+1. pg_stat_statements
+1. pgcrypto
+1. pg_partman
+1. pgvector
+1. Resume Citus POCs from here: https://github.com/citusdata/citus?tab=readme-ov-file#creating-distributed-tables-with-co-location
