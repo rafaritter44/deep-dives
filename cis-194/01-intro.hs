@@ -129,3 +129,7 @@ main = do
         sumEveryTwo [x]      = [x]
         sumEveryTwo (x:y:zs) = (x+y) : sumEveryTwo zs
     print (sumEveryTwo [1..21])
+
+    let hailstoneLen :: Integer -> Integer
+        hailstoneLen n = intListLength (hailstoneSeq n) - 1
+    print (hailstoneLen 27)
