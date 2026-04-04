@@ -22,6 +22,7 @@
 1. Constraints
 1. Locks
 1. Merge
+1. Updatable Views
 1. Materialized Views
 1. Roles
 1. Databases and Schemas
@@ -50,3 +51,8 @@
 1. pg_partman
 1. pgvector
 1. Resume Citus POCs from here: https://github.com/citusdata/citus?tab=readme-ov-file#creating-distributed-tables-with-co-location
+
+### Other
+
+1. PgDog
+1. PgBouncer
