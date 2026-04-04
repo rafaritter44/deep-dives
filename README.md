@@ -4,7 +4,6 @@
 
 ### Features
 
-1. Case
 1. Logical Operators (all, and, any, between, exists, in, like, not, or, some)
 1. Auto Increment
 1. Null Functions
