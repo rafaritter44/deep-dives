@@ -6,7 +6,6 @@
 
 1. Logical Operators (all, and, any, between, exists, in, like, not, or, some)
 1. Auto Increment
-1. Null Functions
 1. Aggregate Functions
 1. Joins (implicit, inner, left, right, full, self, cross) -- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN
 1. Union
