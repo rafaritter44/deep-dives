@@ -20,6 +20,7 @@
 1. Domain Types
 1. User-Defined Types
 1. Constraints
+1. Temporal Constraints
 1. Locks
 1. Merge
 1. Updatable Views
