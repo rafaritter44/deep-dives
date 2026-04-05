@@ -10,7 +10,7 @@
 1. Aggregate Functions
 1. Joins (implicit, inner, left, right, full, self, cross) -- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN
 1. Union
-1. Subqueries
+1. Subqueries
 1. Window Functions
 1. CTEs
 1. Triggers
