@@ -6,6 +6,12 @@
 psql "postgres://postgres:example@localhost/postgres" -f queries/count.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/count-group-by.sql
+```
+
 ## MAX
 
 ```
@@ -46,12 +52,6 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/having-aggregat
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/having-grouped.sql
-```
-
-## Aggregate function without GROUP BY
-
-```
-psql "postgres://postgres:example@localhost/postgres" -f queries/no-group-by.sql
 ```
 
 ## GROUPING SETS
