@@ -7,5 +7,5 @@ values ('A', -1),
        ('B', 4),
        ('B', 5),
        ('B', null),
-       (null, 10),
+       (null, 6),
        (null, null);
