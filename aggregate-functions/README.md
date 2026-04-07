@@ -18,6 +18,12 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/count-group-by.
 psql "postgres://postgres:example@localhost/postgres" -f queries/max.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/max-group-by.sql
+```
+
 ## MIN
 
 ```
