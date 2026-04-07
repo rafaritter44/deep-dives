@@ -30,6 +30,12 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/max-group-by.sq
 psql "postgres://postgres:example@localhost/postgres" -f queries/min.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/min-group-by.sql
+```
+
 ## SUM
 
 ```
