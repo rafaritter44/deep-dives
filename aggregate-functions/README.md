@@ -54,10 +54,22 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/sum-group-by.sq
 psql "postgres://postgres:example@localhost/postgres" -f queries/avg.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/avg-group-by.sql
+```
+
 ## STRING_AGG
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/string-agg.sql
+```
+
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/string-agg-group-by.sql
 ```
 
 ## HAVING on aggregated column
