@@ -42,6 +42,12 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/min-group-by.sq
 psql "postgres://postgres:example@localhost/postgres" -f queries/sum.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/sum-group-by.sql
+```
+
 ## AVG
 
 ```
