@@ -78,10 +78,22 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/string-agg-grou
 psql "postgres://postgres:example@localhost/postgres" -f queries/having-aggregated.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/having-aggregated-group-by.sql
+```
+
 ## HAVING on grouped column
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/having-grouped.sql
+```
+
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/having-grouped-group-by.sql
 ```
 
 ## GROUPING SETS
