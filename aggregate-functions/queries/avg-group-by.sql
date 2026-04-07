@@ -1,5 +1,5 @@
 select coalesce(str, 'None') as str,
-       sum(id)               as id_sum,
-       sum(num)              as num_sum
+       round(avg(id), 2)     as id_avg,
+       round(avg(num), 2)    as num_avg
 from test
 group by str;
