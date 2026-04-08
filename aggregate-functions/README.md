@@ -96,6 +96,12 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/having-grouped.
 psql "postgres://postgres:example@localhost/postgres" -f queries/filter.sql
 ```
 
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/filter-group-by.sql
+```
+
 ## GROUPING SETS
 
 ```
