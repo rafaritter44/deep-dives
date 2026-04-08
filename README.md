@@ -13,6 +13,7 @@
 1. Window Functions
 1. CTEs
 1. Triggers
+1. Constraint Triggers
 1. Stored Procedures
 1. Date/Time Types (sum(interval))
 1. Range Types (range_agg, range_intersect_agg)
