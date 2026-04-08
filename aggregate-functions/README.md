@@ -90,12 +90,6 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/having-aggregat
 psql "postgres://postgres:example@localhost/postgres" -f queries/having-grouped.sql
 ```
 
-With GROUP BY:
-
-```
-psql "postgres://postgres:example@localhost/postgres" -f queries/having-grouped-group-by.sql
-```
-
 ## GROUPING SETS
 
 ```
