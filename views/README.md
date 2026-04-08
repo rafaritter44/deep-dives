@@ -1,4 +1,4 @@
-# View
+# Views
 
 ## Query table v1
 
