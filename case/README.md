@@ -1,18 +1,18 @@
 # Case
 
-## Case expression
+## CASE expression
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/case.sql
 ```
 
-## Switch-like case expression
+## Switch-like CASE expression
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/switch.sql
 ```
 
-## Case expression with alias
+## CASE expression with alias
 
 When a name is not specified for the case column, Postgres uses "case" as the column name.
 

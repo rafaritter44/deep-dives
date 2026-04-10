@@ -1,12 +1,12 @@
 # Coalesce
 
-## Coalesce function
+## COALESCE function
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/coalesce.sql
 ```
 
-## Coalesce function with alias
+## COALESCE function with alias
 
 When a name is not specified for the coalesce column, Postgres uses "coalesce" as the column name.
 
