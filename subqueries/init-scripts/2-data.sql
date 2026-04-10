@@ -1,6 +1,6 @@
 insert into department (d_no, d_name)
 values (1, 'Engineering'),
-       (2, 'Marketing')
+       (2, 'Marketing'),
        (3, 'HR');
 
 insert into employee (e_no, e_name, salary, d_no)
