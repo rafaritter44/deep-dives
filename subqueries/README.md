@@ -1,11 +1,5 @@
 # Subqueries
 
-scalar subquery vs. derived table
-derived table example: group
-scalar subquery:
-SELECT name, (SELECT max(pop) FROM cities WHERE cities.state = states.name)
-    FROM states;
-
 all:
 SELECT department_id, AVG(SALARY)
 FROM employees GROUP BY department_id
