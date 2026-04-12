@@ -1,4 +1,4 @@
-# Subqueries
+# Subqueries (WIP)
 
 all:
 SELECT department_id, AVG(SALARY)
