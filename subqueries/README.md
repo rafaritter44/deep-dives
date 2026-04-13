@@ -65,19 +65,45 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/select.sql
 psql "postgres://postgres:example@localhost/postgres" -f queries/from.sql
 ```
 
-## EXISTS
+## Correlated subqueries
+
+### In the WHERE clause
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-where.sql
+```
+
+### In the SELECT clause
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-select.sql
+```
+
+### In the FROM clause (LATERAL)
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-from.sql
+```
+
+### EXISTS (semi-join)
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/exists.sql
 ```
 
-## IN
+### NOT EXISTS (anti-join)
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/not-exists.sql
+```
+
+## IN (semi-join)
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/in.sql
 ```
 
-## NOT IN
+## NOT IN (anti-join)
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/not-in.sql
@@ -103,24 +129,4 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/all.sql
 
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/row.sql
-```
-
-## Correlated subqueries
-
-### In the WHERE clause
-
-```
-psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-where.sql
-```
-
-### In the SELECT clause
-
-```
-psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-select.sql
-```
-
-### In the FROM clause (LATERAL)
-
-```
-psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-from.sql
 ```
