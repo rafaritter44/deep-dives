@@ -32,13 +32,6 @@ WHERE department_id NOT IN
 WHERE manager_id
 BETWEEN 100 AND 200);
 
-exists:
-SELECT employee_id, first_name, last_name, job_id, department_id
-FROM employees E
-WHERE EXISTS
-(SELECT * FROM employees
-WHERE manager_id = E.employee_id);
-
 row subquery:
 SELECT first_name
 FROM employees
