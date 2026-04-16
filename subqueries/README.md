@@ -17,14 +17,6 @@ WHERE department_id= ANY
 (SELECT DEPARTMENT_ID
 FROM departments WHERE location_id=1700);
 
-not in:
-SELECT first_name, last_name,department_id
-FROM employees
-WHERE department_id NOT IN
-(SELECT DEPARTMENT_ID FROM departments
-WHERE manager_id
-BETWEEN 100 AND 200);
-
 row subquery:
 SELECT first_name
 FROM employees
