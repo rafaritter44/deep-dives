@@ -87,6 +87,8 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/in.sql
 psql "postgres://postgres:example@localhost/postgres" -f queries/not-in.sql
 ```
 
+Note that if the left-hand expression yields null, or if there are no equal right-hand values and at least one right-hand row yields null, the result of the `NOT IN` construct will be null, not true. This is in accordance with SQL's normal rules for Boolean combinations of null values.
+
 ## ANY/SOME
 
 ```
