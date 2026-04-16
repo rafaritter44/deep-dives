@@ -7,15 +7,7 @@ HAVING AVG(SALARY)>=ALL
 (SELECT AVG(SALARY) FROM employees
 GROUP BY department_id);
 
-SOME is a synonym for ANY. IN is equivalent to = ANY.
 NOT IN is equivalent to <> ALL.
-
-any:
-SELECT first_name, last_name,department_id
-FROM employees
-WHERE department_id= ANY
-(SELECT DEPARTMENT_ID
-FROM departments WHERE location_id=1700);
 
 row subquery:
 SELECT first_name
@@ -98,6 +90,8 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/any.sql
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/some.sql
 ```
+
+`SOME` is a synonym for `ANY`. `IN` is equivalent to `= ANY`.
 
 ## ALL
 
