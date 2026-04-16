@@ -1,13 +1,5 @@
 # Subqueries (WIP)
 
-row subquery:
-SELECT first_name
-FROM employees
-WHERE ROW(department_id, manager_id) =
-(SELECT department_id, manager_id
-FROM departments
-WHERE location_id = 1800);
-
 ## In the WHERE clause
 
 ```
@@ -91,9 +83,3 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/all.sql
 ```
 
 `NOT IN` is equivalent to `<> ALL`.
-
-## Single-Row Comparison
-
-```
-psql "postgres://postgres:example@localhost/postgres" -f queries/row.sql
-```
