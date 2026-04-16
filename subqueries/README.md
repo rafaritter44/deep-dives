@@ -1,14 +1,5 @@
 # Subqueries (WIP)
 
-all:
-SELECT department_id, AVG(SALARY)
-FROM employees GROUP BY department_id
-HAVING AVG(SALARY)>=ALL
-(SELECT AVG(SALARY) FROM employees
-GROUP BY department_id);
-
-NOT IN is equivalent to <> ALL.
-
 row subquery:
 SELECT first_name
 FROM employees
@@ -98,6 +89,8 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/some.sql
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/all.sql
 ```
+
+`NOT IN` is equivalent to `<> ALL`.
 
 ## Single-Row Comparison
 
