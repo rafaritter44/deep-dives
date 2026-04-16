@@ -17,13 +17,6 @@ WHERE department_id= ANY
 (SELECT DEPARTMENT_ID
 FROM departments WHERE location_id=1700);
 
-in:
-SELECT first_name, last_name,department_id
-FROM employees
-WHERE department_id IN
-(SELECT DEPARTMENT_ID FROM departments
-WHERE location_id=1800);
-
 not in:
 SELECT first_name, last_name,department_id
 FROM employees
