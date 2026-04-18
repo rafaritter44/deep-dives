@@ -53,7 +53,7 @@
 1. pgvector
 1. Resume Citus POCs from here: https://github.com/citusdata/citus?tab=readme-ov-file#creating-distributed-tables-with-co-location
 
-### Other
+### External Tools
 
 1. PgDog
 1. PgBouncer
