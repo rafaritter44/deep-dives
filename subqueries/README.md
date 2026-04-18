@@ -1,4 +1,4 @@
-# Subqueries (WIP)
+# Subqueries
 
 ## In the WHERE clause
 
