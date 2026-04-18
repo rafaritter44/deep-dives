@@ -7,6 +7,8 @@
 1. Joins (implicit, inner, left, right, full, self, cross, anti, natural, using) -- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN
 1. Window Functions
 1. CTEs (https://www.postgresql.org/docs/current/queries-with.html)
+1. Temporary Tables
+1. Functions
 1. Triggers
 1. Constraint Triggers
 1. Stored Procedures
@@ -34,6 +36,7 @@
 1. Unlogged Tables
 1. Skip Locked
 1. pgbench
+1. TABLE_DEE and TABLE_DUM
 
 ### Extensions
 
