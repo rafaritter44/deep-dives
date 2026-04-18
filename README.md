@@ -19,6 +19,7 @@
 1. Constraints
 1. Temporal Constraints
 1. Deferred Constraints
+1. Indexes
 1. Locks
 1. Merge
 1. Updatable Views
