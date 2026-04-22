@@ -18,8 +18,14 @@ isSmall SealingWax = True
 isSmall Cabbage    = True
 isSmall King       = False
 
+isSmall2 :: Thing -> Bool
+isSmall2 Ship = False
+isSmall2 King = False
+isSmall2 _    = True
+
 main :: IO ()
 main = do
     print shoe
     print listO'Things
     print (map isSmall listO'Things)
+    print (map isSmall2 listO'Things)
