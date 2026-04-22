@@ -40,6 +40,18 @@ failureToZero :: FailableDouble -> Double
 failureToZero Failure = 0
 failureToZero (OK d)  = d
 
+data Person = Person String Int Thing
+    deriving Show
+
+brent :: Person
+brent = Person "Brent" 31 SealingWax
+
+stan :: Person
+stan = Person "Stan" 94 Cabbage
+
+getAge :: Person -> Int
+getAge (Person _ a _) = a
+
 main :: IO ()
 main = do
     print shoe
@@ -49,3 +61,4 @@ main = do
     print (ex01, ex02)
     print (safeDiv 3 2, safeDiv 1 0)
     print (failureToZero ex01, failureToZero ex02)
+    print (map getAge [brent, stan])
