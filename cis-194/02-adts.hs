@@ -23,9 +23,19 @@ isSmall2 Ship = False
 isSmall2 King = False
 isSmall2 _    = True
 
+data FailableDouble = Failure
+                    | OK Double
+    deriving Show
+
+ex01 :: FailableDouble
+ex01 = Failure
+ex02 :: FailableDouble
+ex02 = OK 3.4
+
 main :: IO ()
 main = do
     print shoe
     print listO'Things
     print (map isSmall listO'Things)
     print (map isSmall2 listO'Things)
+    print (ex01, ex02)
