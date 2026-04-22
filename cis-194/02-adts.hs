@@ -32,6 +32,10 @@ ex01 = Failure
 ex02 :: FailableDouble
 ex02 = OK 3.4
 
+safeDiv :: Double -> Double -> FailableDouble
+safeDiv _ 0 = Failure
+safeDiv x y = OK (x / y)
+
 main :: IO ()
 main = do
     print shoe
@@ -39,3 +43,4 @@ main = do
     print (map isSmall listO'Things)
     print (map isSmall2 listO'Things)
     print (ex01, ex02)
+    print (safeDiv 3 2, safeDiv 1 0)
