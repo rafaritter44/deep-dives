@@ -72,6 +72,18 @@ With GROUP BY:
 psql "postgres://postgres:example@localhost/postgres" -f queries/string-agg-group-by.sql
 ```
 
+## ARRAY_AGG
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/array-agg.sql
+```
+
+With GROUP BY:
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/array-agg-group-by.sql
+```
+
 ## HAVING on aggregated column
 
 ```
