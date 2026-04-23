@@ -91,6 +91,10 @@ data IntList = Empty | Cons Int IntList
 intList :: IntList
 intList = Cons 1 (Cons 2 (Cons 3 Empty))
 
+intListProd :: IntList -> Int
+intListProd Empty      = 1
+intListProd (Cons x l) = x * intListProd l
+
 main :: IO ()
 main = do
     print shoe
@@ -108,3 +112,4 @@ main = do
     print ex03
     print (failureToZero' ex01, failureToZero' ex02)
     print intList
+    print (intListProd intList)
