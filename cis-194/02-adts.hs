@@ -70,6 +70,10 @@ foo Constr4         = "Constr4"
 baz :: Person -> String
 baz p@(Person n _ _) = "The name of (" ++ show p ++ ") is " ++ n
 
+checkFav :: Person -> String
+checkFav (Person n _ SealingWax) = n ++ ", you're my kind of person!"
+checkFav (Person n _ _)          = n ++ ", your favorite thing is lame."
+
 main :: IO ()
 main = do
     print shoe
@@ -83,3 +87,4 @@ main = do
     print algDataTypes
     print (map foo algDataTypes)
     print (map baz [brent, stan])
+    print (map checkFav [brent, stan])
