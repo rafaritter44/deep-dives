@@ -67,6 +67,9 @@ foo (Constr2 a)     = a
 foo (Constr3 a b c) = show (a, b, c)
 foo Constr4         = "Constr4"
 
+baz :: Person -> String
+baz p@(Person n _ _) = "The name of (" ++ show p ++ ") is " ++ n
+
 main :: IO ()
 main = do
     print shoe
@@ -79,3 +82,4 @@ main = do
     print (map getAge [brent, stan])
     print algDataTypes
     print (map foo algDataTypes)
+    print (map baz [brent, stan])
