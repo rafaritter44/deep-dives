@@ -95,6 +95,13 @@ intListProd :: IntList -> Int
 intListProd Empty      = 1
 intListProd (Cons x l) = x * intListProd l
 
+data Tree = Leaf Char
+          | Node Tree Int Tree
+    deriving Show
+
+tree :: Tree
+tree = Node (Leaf 'x') 1 (Node (Leaf 'y') 2 (Leaf 'z'))
+
 main :: IO ()
 main = do
     print shoe
@@ -113,3 +120,4 @@ main = do
     print (failureToZero' ex01, failureToZero' ex02)
     print intList
     print (intListProd intList)
+    print tree
