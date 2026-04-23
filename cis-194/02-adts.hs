@@ -80,6 +80,11 @@ ex03 = case "Hello" of
             ('H':s) -> length s
             _       -> 7
 
+failureToZero' :: FailableDouble -> Double
+failureToZero' x = case x of
+                        Failure -> 0
+                        OK d    -> d
+
 main :: IO ()
 main = do
     print shoe
@@ -95,3 +100,4 @@ main = do
     print (map baz [brent, stan])
     print (map checkFav [brent, stan])
     print ex03
+    print (failureToZero' ex01, failureToZero' ex02)
