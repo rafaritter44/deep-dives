@@ -52,6 +52,15 @@ stan = Person "Stan" 94 Cabbage
 getAge :: Person -> Int
 getAge (Person _ a _) = a
 
+data AlgDataType = Constr1 Int Int
+                 | Constr2 String
+                 | Constr3 Int Double String
+                 | Constr4
+    deriving Show
+
+algDataTypes :: [AlgDataType]
+algDataTypes = [Constr1 1 2, Constr2 "str", Constr3 1 2.5 "str", Constr4]
+
 main :: IO ()
 main = do
     print shoe
@@ -62,3 +71,4 @@ main = do
     print (safeDiv 3 2, safeDiv 1 0)
     print (failureToZero ex01, failureToZero ex02)
     print (map getAge [brent, stan])
+    print algDataTypes
