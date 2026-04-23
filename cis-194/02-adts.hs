@@ -61,6 +61,12 @@ data AlgDataType = Constr1 Int Int
 algDataTypes :: [AlgDataType]
 algDataTypes = [Constr1 1 2, Constr2 "str", Constr3 1 2.5 "str", Constr4]
 
+foo :: AlgDataType -> String
+foo (Constr1 x y)   = show [x, y]
+foo (Constr2 a)     = a
+foo (Constr3 a b c) = show (a, b, c)
+foo Constr4         = "Constr4"
+
 main :: IO ()
 main = do
     print shoe
@@ -72,3 +78,4 @@ main = do
     print (failureToZero ex01, failureToZero ex02)
     print (map getAge [brent, stan])
     print algDataTypes
+    print (map foo algDataTypes)
