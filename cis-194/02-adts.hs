@@ -85,6 +85,12 @@ failureToZero' x = case x of
                         Failure -> 0
                         OK d    -> d
 
+data IntList = Empty | Cons Int IntList
+    deriving Show
+
+intList :: IntList
+intList = Cons 1 (Cons 2 (Cons 3 Empty))
+
 main :: IO ()
 main = do
     print shoe
@@ -101,3 +107,4 @@ main = do
     print (map checkFav [brent, stan])
     print ex03
     print (failureToZero' ex01, failureToZero' ex02)
+    print intList
