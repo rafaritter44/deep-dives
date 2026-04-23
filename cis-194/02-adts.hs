@@ -74,6 +74,12 @@ checkFav :: Person -> String
 checkFav (Person n _ SealingWax) = n ++ ", you're my kind of person!"
 checkFav (Person n _ _)          = n ++ ", your favorite thing is lame."
 
+ex03 :: Int
+ex03 = case "Hello" of
+            []      -> 3
+            ('H':s) -> length s
+            _       -> 7
+
 main :: IO ()
 main = do
     print shoe
@@ -88,3 +94,4 @@ main = do
     print (map foo algDataTypes)
     print (map baz [brent, stan])
     print (map checkFav [brent, stan])
+    print ex03
