@@ -63,6 +63,7 @@ main = do
 
     let oneTwoThree :: [Int]
         oneTwoThree = [1, 2, 3]
+
     -- Partial functions (functions that crash for certain inputs)
     print (head oneTwoThree)
     print (tail oneTwoThree)
