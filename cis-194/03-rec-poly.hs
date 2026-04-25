@@ -50,3 +50,10 @@ main = do
     print (filterList even lst1)
     print (mapList even lst1)
     print (something, nothing)
+
+    -- Partial functions (functions that crash for certain inputs)
+    print (head [1, 2, 3] :: Int)
+    print (tail [1, 2, 3] :: [Int])
+    print (init [1, 2, 3] :: [Int])
+    print (last [1, 2, 3] :: Int)
+    print ([1, 2, 3] !! 1 :: Int)
