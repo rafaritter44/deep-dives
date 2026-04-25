@@ -42,6 +42,16 @@ something = Just "something"
 nothing :: Maybe String
 nothing = Nothing
 
+doStuff1 :: [Int] -> Int
+doStuff1 []  = 0
+doStuff1 [_] = 0
+doStuff1 xs  = head xs + head (tail xs)
+
+doStuff2 :: [Int] -> Int
+doStuff2 []        = 0
+doStuff2 [_]       = 0
+doStuff2 (x1:x2:_) = x1 + x2
+
 main :: IO ()
 main = do
     print (mapIntList abs intList)
@@ -57,3 +67,6 @@ main = do
     print (init [1, 2, 3] :: [Int])
     print (last [1, 2, 3] :: Int)
     print ([1, 2, 3] !! 1 :: Int)
+
+    print (doStuff1 [1, 2, 3])
+    print (doStuff2 [1, 2, 3])
