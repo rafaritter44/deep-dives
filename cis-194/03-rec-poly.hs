@@ -61,12 +61,14 @@ main = do
     print (mapList even lst1)
     print (something, nothing)
 
+    let oneTwoThree :: [Int]
+        oneTwoThree = [1, 2, 3]
     -- Partial functions (functions that crash for certain inputs)
-    print (head [1, 2, 3] :: Int)
-    print (tail [1, 2, 3] :: [Int])
-    print (init [1, 2, 3] :: [Int])
-    print (last [1, 2, 3] :: Int)
-    print ([1, 2, 3] !! 1 :: Int)
+    print (head oneTwoThree)
+    print (tail oneTwoThree)
+    print (init oneTwoThree)
+    print (last oneTwoThree)
+    print (oneTwoThree !! 1)
 
-    print (doStuff1 [1, 2, 3])
-    print (doStuff2 [1, 2, 3])
+    print (doStuff1 oneTwoThree)
+    print (doStuff2 oneTwoThree)
