@@ -56,6 +56,25 @@ safeHead :: [a] -> Maybe a
 safeHead []    = Nothing
 safeHead (x:_) = Just x
 
+data NonEmptyList a = NEL a [a]
+    deriving Show
+
+nel :: NonEmptyList Int
+nel = NEL 1 [2, 3]
+
+nelToList :: NonEmptyList a -> [a]
+nelToList (NEL x xs) = x:xs
+
+listToNel :: [a] -> Maybe (NonEmptyList a)
+listToNel []     = Nothing
+listToNel (x:xs) = Just $ NEL x xs
+
+headNEL :: NonEmptyList a -> a
+headNEL (NEL a _) = a
+
+tailNEL :: NonEmptyList a -> [a]
+tailNEL (NEL _ as) = as
+
 main :: IO ()
 main = do
     print (mapIntList abs intList)
@@ -78,3 +97,8 @@ main = do
     print (doStuff1 oneTwoThree)
     print (doStuff2 oneTwoThree)
     print (safeHead oneTwoThree)
+    print nel
+    print $ nelToList nel
+    print $ listToNel oneTwoThree
+    print $ headNEL nel
+    print $ tailNEL nel
