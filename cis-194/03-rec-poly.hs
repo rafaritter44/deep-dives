@@ -52,6 +52,10 @@ doStuff2 []        = 0
 doStuff2 [_]       = 0
 doStuff2 (x1:x2:_) = x1 + x2
 
+safeHead :: [a] -> Maybe a
+safeHead []    = Nothing
+safeHead (x:_) = Just x
+
 main :: IO ()
 main = do
     print (mapIntList abs intList)
@@ -73,3 +77,4 @@ main = do
 
     print (doStuff1 oneTwoThree)
     print (doStuff2 oneTwoThree)
+    print (safeHead oneTwoThree)
