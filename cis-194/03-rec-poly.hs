@@ -32,9 +32,14 @@ filterList p (C x xs)
     | p x       = C x (filterList p xs)
     | otherwise = filterList p xs
 
+mapList :: (a -> b) -> List a -> List b
+mapList _ E        = E
+mapList f (C x xs) = C (f x) (mapList f xs)
+
 main :: IO ()
 main = do
     print (mapIntList abs intList)
     print (filterIntList even intList)
     print (lst1, lst2, lst3)
     print (filterList even lst1)
+    print (mapList even lst1)
