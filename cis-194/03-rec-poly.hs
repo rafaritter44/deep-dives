@@ -36,6 +36,12 @@ mapList :: (a -> b) -> List a -> List b
 mapList _ E        = E
 mapList f (C x xs) = C (f x) (mapList f xs)
 
+something :: Maybe String
+something = Just "something"
+
+nothing :: Maybe String
+nothing = Nothing
+
 main :: IO ()
 main = do
     print (mapIntList abs intList)
@@ -43,3 +49,4 @@ main = do
     print (lst1, lst2, lst3)
     print (filterList even lst1)
     print (mapList even lst1)
+    print (something, nothing)
