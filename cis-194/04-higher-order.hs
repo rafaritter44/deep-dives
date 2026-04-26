@@ -10,6 +10,9 @@ greaterThan100_2 xs = filter (\x -> x > 100) xs
 greaterThan100_3 :: [Integer] -> [Integer]
 greaterThan100_3 xs = filter (>100) xs
 
+myTest :: [Integer] -> Bool
+myTest xs = even (length (greaterThan100 xs))
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -21,3 +24,4 @@ main = do
     print $ (>100) 102
     print $ (100>) 102
     print $ map (*6) [1..5]
+    print $ myTest integers
