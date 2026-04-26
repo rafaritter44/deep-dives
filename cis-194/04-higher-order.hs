@@ -34,6 +34,9 @@ foobar (x:xs)
     | x > 3     = (7*x + 2) + foobar xs
     | otherwise = foobar xs
 
+foobar' :: [Integer] -> Integer
+foobar' = sum . map (\x -> 7*x + 2) . filter (>3)
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -54,3 +57,4 @@ main = do
     print $ uncurry (+) (2,3)
     print $ f''' 1 2
     print $ foobar integers
+    print $ foobar' integers
