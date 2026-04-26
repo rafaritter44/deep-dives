@@ -28,6 +28,12 @@ f'' (x,y) = 2*x + y
 f''' :: Int -> Int -> Int
 f''' x = \y -> 2*x + y
 
+foobar :: [Integer] -> Integer
+foobar []       = 0
+foobar (x:xs)
+    | x > 3     = (7*x + 2) + foobar xs
+    | otherwise = foobar xs
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -47,3 +53,4 @@ main = do
     print $ curry f'' 1 2
     print $ uncurry (+) (2,3)
     print $ f''' 1 2
+    print $ foobar integers
