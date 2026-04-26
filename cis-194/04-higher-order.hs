@@ -25,6 +25,9 @@ f' x y = 2*x + y
 f'' :: (Int,Int) -> Int
 f'' (x,y) = 2*x + y
 
+f''' :: Int -> Int -> Int
+f''' x = \y -> 2*x + y
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -43,3 +46,4 @@ main = do
     print $ f'' (1,2)
     print $ curry f'' 1 2
     print $ uncurry (+) (2,3)
+    print $ f''' 1 2
