@@ -37,6 +37,18 @@ foobar (x:xs)
 foobar' :: [Integer] -> Integer
 foobar' = sum . map (\x -> 7*x + 2) . filter (>3)
 
+sum' :: [Integer] -> Integer
+sum' []     = 0
+sum' (x:xs) = x + sum' xs
+
+product' :: [Integer] -> Integer
+product' [] = 1
+product' (x:xs) = x * product' xs
+
+length' :: [a] -> Int
+length' []     = 0
+length' (_:xs) = 1 + length' xs
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -58,3 +70,6 @@ main = do
     print $ f''' 1 2
     print $ foobar integers
     print $ foobar' integers
+    print $ sum' integers
+    print $ product' integers
+    print $ length' integers
