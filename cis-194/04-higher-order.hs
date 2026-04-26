@@ -22,6 +22,9 @@ f x y = 2*x + y
 f' :: Int -> (Int -> Int)
 f' x y = 2*x + y
 
+f'' :: (Int,Int) -> Int
+f'' (x,y) = 2*x + y
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -37,3 +40,4 @@ main = do
     print $ myTest' integers
     print $ f 1 2
     print $ f' 1 2
+    print $ f'' (1,2)
