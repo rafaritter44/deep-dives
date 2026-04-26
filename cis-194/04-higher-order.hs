@@ -49,6 +49,19 @@ length' :: [a] -> Int
 length' []     = 0
 length' (_:xs) = 1 + length' xs
 
+fold :: b -> (a -> b -> b) -> [a] -> b
+fold z f []     = z
+fold z f (x:xs) = f x (fold z f xs)
+
+sum'' :: [Integer] -> Integer
+sum'' = fold 0 (+)
+
+product'' :: [Integer] -> Integer
+product'' = fold 1 (*)
+
+length'' :: [a] -> Integer
+length'' = fold 0 (\_ s -> 1 + s)
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -73,3 +86,6 @@ main = do
     print $ sum' integers
     print $ product' integers
     print $ length' integers
+    print $ sum'' integers
+    print $ product'' integers
+    print $ length'' integers
