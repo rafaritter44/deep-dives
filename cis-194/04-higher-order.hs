@@ -42,3 +42,4 @@ main = do
     print $ f' 1 2
     print $ f'' (1,2)
     print $ curry f'' 1 2
+    print $ uncurry (+) (2,3)
