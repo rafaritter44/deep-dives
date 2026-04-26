@@ -62,6 +62,12 @@ product'' = fold 1 (*)
 length'' :: [a] -> Integer
 length'' = fold 0 (\_ s -> 1 + s)
 
+length''' :: [a] -> Integer
+length''' = fold 0 (\_ -> (1+))
+
+length'''' :: [a] -> Integer
+length'''' = fold 0 (const (1+))
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -89,3 +95,5 @@ main = do
     print $ sum'' integers
     print $ product'' integers
     print $ length'' integers
+    print $ length''' integers
+    print $ length'''' integers
