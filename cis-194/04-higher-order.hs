@@ -16,6 +16,12 @@ myTest xs = even (length (greaterThan100 xs))
 myTest' :: [Integer] -> Bool
 myTest' = even . length . greaterThan100
 
+f :: Int -> Int -> Int
+f x y = 2*x + y
+
+f' :: Int -> (Int -> Int)
+f' x y = 2*x + y
+
 main :: IO ()
 main = do
     let integers :: [Integer]
@@ -29,3 +35,5 @@ main = do
     print $ map (*6) [1..5]
     print $ myTest integers
     print $ myTest' integers
+    print $ f 1 2
+    print $ f' 1 2
