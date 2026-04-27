@@ -34,8 +34,8 @@ f3' = G' 'a'
 f4' :: Foo'
 f4' = G' 'b'
 
-
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
     print $ f1' == f1' && f1' /= f2' && f2' /= f3' && f3' /= f4' && f4' == f4'
+    print (f1', f2', f3', f4')
