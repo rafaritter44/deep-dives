@@ -19,6 +19,23 @@ f3 = G 'a'
 f4 :: Foo
 f4 = G 'b'
 
+data Foo' = F' Int | G' Char
+    deriving (Eq, Ord, Show)
+
+f1' :: Foo'
+f1' = F' 1
+
+f2' :: Foo'
+f2' = F' 2
+
+f3' :: Foo'
+f3' = G' 'a'
+
+f4' :: Foo'
+f4' = G' 'b'
+
+
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
+    print $ f1' == f1' && f1' /= f2' && f2' /= f3' && f3' /= f4' && f4' == f4'
