@@ -5,7 +5,7 @@ instance Eq Foo where
     (G c1) == (G c2) = c1 == c2
     _ == _ = False
 
-    foo1 /= foo2 = not (foo1 == foo2)
+    -- foo1 /= foo2 = not (foo1 == foo2)
 
 f1 :: Foo
 f1 = F 1
