@@ -40,6 +40,10 @@ class Listable a where
 instance Listable Int where
     toList x = [x]
 
+instance Listable Bool where
+    toList True  = [1]
+    toList False = [0]
+
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
@@ -47,3 +51,4 @@ main = do
     print [f1', f2', f3', f4']
     print $ f1' < f2' && f2' < f3' && f3' < f4'
     print $ toList (1 :: Int)
+    print $ map toList [True, False]
