@@ -16,3 +16,4 @@ main :: IO ()
 main = do
     print $ f1 maybeInteger
     print $ f2 maybeInteger
+    print $ take 3 (repeat 7)
