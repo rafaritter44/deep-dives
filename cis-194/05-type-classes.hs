@@ -47,6 +47,15 @@ instance Listable Bool where
 instance Listable [Int] where
     toList = id
 
+data Tree a = Empty | Node a (Tree a) (Tree a)
+
+instance Listable (Tree Int) where
+    toList Empty        = []
+    toList (Node x l r) = toList l ++ [x] ++ toList r
+
+tree :: Tree Int
+tree = Node 1 (Node 2 Empty Empty) Empty
+
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
@@ -56,3 +65,4 @@ main = do
     print $ toList (1 :: Int)
     print $ map toList [True, False]
     print $ toList ([1,2,3] :: [Int])
+    print $ toList tree
