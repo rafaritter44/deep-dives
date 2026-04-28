@@ -44,6 +44,9 @@ instance Listable Bool where
     toList True  = [1]
     toList False = [0]
 
+instance Listable [Int] where
+    toList = id
+
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
@@ -52,3 +55,4 @@ main = do
     print $ f1' < f2' && f2' < f3' && f3' < f4'
     print $ toList (1 :: Int)
     print $ map toList [True, False]
+    print $ toList ([1,2,3] :: [Int])
