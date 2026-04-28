@@ -56,6 +56,9 @@ instance Listable (Tree Int) where
 tree :: Tree Int
 tree = Node 1 (Node 2 Empty Empty) Empty
 
+sumL :: Listable a => a -> Int
+sumL x = sum (toList x)
+
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
@@ -66,3 +69,4 @@ main = do
     print $ map toList [True, False]
     print $ toList ([1,2,3] :: [Int])
     print $ toList tree
+    print $ sumL tree
