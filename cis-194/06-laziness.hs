@@ -31,3 +31,5 @@ main = do
     print $ take 3 (repeat 7)
     print $ False &&  (34^9784346 > 34987345)
     print $ False &&! (34^9784346 > 34987345)
+    print $ False &&  (head [] == 'x')
+    -- print $ False &&! (head [] == 'x')
