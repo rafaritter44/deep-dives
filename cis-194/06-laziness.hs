@@ -12,8 +12,22 @@ safeHead (x:_) = Just x
 maybeInteger :: Maybe Integer
 maybeInteger = safeHead [3 ^ (500 :: Integer), 49]
 
+{-
+(&&) :: Bool -> Bool -> Bool
+True  && x = x
+False && _ = False
+-}
+
+(&&!) :: Bool -> Bool -> Bool
+True  &&! True  = True
+True  &&! False = False
+False &&! True  = False
+False &&! False = False
+
 main :: IO ()
 main = do
     print $ f1 maybeInteger
     print $ f2 maybeInteger
     print $ take 3 (repeat 7)
+    print $ False &&  (34^9784346 > 34987345)
+    print $ False &&! (34^9784346 > 34987345)
