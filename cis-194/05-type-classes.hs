@@ -62,6 +62,9 @@ sumL x = sum (toList x)
 foo :: (Listable a, Ord a) => a -> a -> Bool
 foo x y = sum (toList x) == sum (toList y) || x < y
 
+instance (Listable a, Listable b) => Listable (a,b) where
+    toList (x,y) = toList x ++ toList y
+
 main :: IO ()
 main = do
     print $ f1 == f1 && f1 /= f2 && f2 /= f3 && f3 /= f4 && f4 == f4
@@ -74,3 +77,4 @@ main = do
     print $ toList tree
     print $ sumL tree
     print $ foo False True
+    print $ toList (False, (True, tree))
