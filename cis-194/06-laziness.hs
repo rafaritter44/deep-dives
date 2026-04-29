@@ -24,6 +24,10 @@ True  &&! False = False
 False &&! True  = False
 False &&! False = False
 
+if' :: Bool -> a -> a -> a
+if' True  x _ = x
+if' False _ y = y
+
 main :: IO ()
 main = do
     print $ f1 maybeInteger
@@ -33,3 +37,4 @@ main = do
     print $ False &&! (34^9784346 > 34987345)
     print $ False &&  (head [] == 'x')
     -- print $ False &&! (head [] == 'x')
+    print $ map (\test -> if' test 1 0) [True, False]
