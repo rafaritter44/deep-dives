@@ -37,4 +37,4 @@ main = do
     print $ False &&! (34^9784346 > 34987345)
     print $ False &&  (head [] == 'x')
     -- print $ False &&! (head [] == 'x')
-    print $ map (\test -> if' test 1 0) [True, False]
+    print $ map (\test -> if' test 't' 'f') [True, False]
