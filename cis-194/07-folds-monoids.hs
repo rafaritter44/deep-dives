@@ -105,6 +105,21 @@ lst = [1,5,8,23,423,99]
 sum :: Integer
 sum = getSum . mconcat . map Sum $ lst
 
+newtype Product a = Product a
+    deriving (Eq, Ord, Num, Show)
+
+getProduct :: Product a -> a
+getProduct (Product a) = a
+
+instance Num a => Semigroup (Product a) where
+    (<>) = (*)
+
+instance Num a => Monoid (Product a) where
+    mempty = Product 1
+
+prod :: Integer
+prod = getProduct . mconcat . map Product $ lst
+
 main :: IO ()
 main = do
     print integerTree
@@ -123,3 +138,4 @@ main = do
     print $ "ab" <> "cd" <> "ef"
     print $ "ab" ++ "cd" ++ "ef"
     print Main.sum
+    print prod
