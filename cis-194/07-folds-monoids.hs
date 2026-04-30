@@ -87,6 +87,24 @@ instance Monoid [a] where
   mappend = (++)
 -}
 
+newtype Sum a = Sum a
+    deriving (Eq, Ord, Num, Show)
+
+getSum :: Sum a -> a
+getSum (Sum a) = a
+
+instance Num a => Semigroup (Sum a) where
+    (<>) = (+)
+
+instance Num a => Monoid (Sum a) where
+    mempty = Sum 0
+
+lst :: [Integer]
+lst = [1,5,8,23,423,99]
+
+sum :: Integer
+sum = getSum . mconcat . map Sum $ lst
+
 main :: IO ()
 main = do
     print integerTree
@@ -104,3 +122,4 @@ main = do
     print $ numLiterals expr
     print $ "ab" <> "cd" <> "ef"
     print $ "ab" ++ "cd" ++ "ef"
+    print Main.sum
