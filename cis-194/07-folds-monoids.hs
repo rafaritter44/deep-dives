@@ -46,6 +46,18 @@ treeMax = treeFold minBound (\l x r -> l `max` x `max` r)
 intTree :: Tree Int
 intTree = Node (Node (leaf 10) 20 Empty) 30 Empty
 
+data ExprT = Lit Integer
+           | Add ExprT ExprT
+           | Mul ExprT ExprT
+
+eval :: ExprT -> Integer
+eval (Lit i)     = i
+eval (Add e1 e2) = eval e1 + eval e2
+eval (Mul e1 e2) = eval e1 * eval e2
+
+expr :: ExprT
+expr = Mul (Lit 10) (Add (Lit 20) (Mul (Lit 30) (Lit 40)))
+
 main :: IO ()
 main = do
     print integerTree
@@ -58,3 +70,4 @@ main = do
     print $ treeDepth' integerTree
     print $ flatten' integerTree
     print $ treeMax intTree
+    print $ eval expr
