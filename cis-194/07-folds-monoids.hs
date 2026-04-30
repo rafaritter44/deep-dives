@@ -120,6 +120,15 @@ instance Num a => Monoid (Product a) where
 prod :: Integer
 prod = getProduct . mconcat . map Product $ lst
 
+{-
+instance (Monoid a, Monoid b) => Monoid (a,b) where
+    mempty = (mempty, mempty)
+    (a,b) `mappend` (c,d) = (a `mappend` c, b `mappend` d)
+-}
+
+lst2 :: [(Sum Integer, [Integer])]
+lst2 = [(1,[2,3]), (4,[5,6,7]), (8,[9]), (10,[])]
+
 main :: IO ()
 main = do
     print integerTree
@@ -139,3 +148,4 @@ main = do
     print $ "ab" ++ "cd" ++ "ef"
     print Main.sum
     print prod
+    print $ mconcat lst2
