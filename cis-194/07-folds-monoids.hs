@@ -66,6 +66,9 @@ exprTFold f g h (Mul e1 e2) = h (exprTFold f g h e1) (exprTFold f g h e2)
 eval' :: ExprT -> Integer
 eval' = exprTFold id (+) (*)
 
+numLiterals :: ExprT -> Int
+numLiterals = exprTFold (const 1) (+) (+)
+
 main :: IO ()
 main = do
     print integerTree
@@ -80,3 +83,4 @@ main = do
     print $ treeMax intTree
     print $ eval expr
     print $ eval' expr
+    print $ numLiterals expr
