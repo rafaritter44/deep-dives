@@ -21,8 +21,8 @@ flatten :: Tree a -> [a]
 flatten Empty        = []
 flatten (Node l x r) = flatten l ++ [x] ++ flatten r
 
-tree :: Tree Integer
-tree = Node (Node (leaf 10) 20 Empty) 30 Empty
+integerTree :: Tree Integer
+integerTree = Node (Node (leaf 10) 20 Empty) 30 Empty
 
 treeFold :: b -> (b -> a -> b -> b) -> Tree a -> b
 treeFold e _ Empty        = e
@@ -40,14 +40,21 @@ treeDepth' = treeFold 0 (\l _ r -> 1 + max l r)
 flatten' :: Tree a -> [a]
 flatten' = treeFold [] (\l x r -> l ++ [x] ++ r)
 
+treeMax :: (Ord a, Bounded a) => Tree a -> a
+treeMax = treeFold minBound (\l x r -> l `max` x `max` r)
+
+intTree :: Tree Int
+intTree = Node (Node (leaf 10) 20 Empty) 30 Empty
+
 main :: IO ()
 main = do
-    print tree
-    print $ treeSize tree
-    print $ treeSum tree
-    print $ treeDepth tree
-    print $ flatten tree
-    print $ treeSize' tree
-    print $ treeSum' tree
-    print $ treeDepth' tree
-    print $ flatten' tree
+    print integerTree
+    print $ treeSize integerTree
+    print $ treeSum integerTree
+    print $ treeDepth integerTree
+    print $ flatten integerTree
+    print $ treeSize' integerTree
+    print $ treeSum' integerTree
+    print $ treeDepth' integerTree
+    print $ flatten' integerTree
+    print $ treeMax intTree
