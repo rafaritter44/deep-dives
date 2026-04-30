@@ -69,6 +69,18 @@ eval' = exprTFold id (+) (*)
 numLiterals :: ExprT -> Int
 numLiterals = exprTFold (const 1) (+) (+)
 
+{-
+class Monoid m where
+    mempty  :: m
+    mappend :: m -> m -> m
+
+    mconcat :: [m] -> m
+    mconcat = foldr mappend mempty
+
+(<>) :: Monoid m => m -> m -> m
+(<>) = mappend
+-}
+
 main :: IO ()
 main = do
     print integerTree
@@ -84,3 +96,4 @@ main = do
     print $ eval expr
     print $ eval' expr
     print $ numLiterals expr
+    print $ "abc" <> "def"
