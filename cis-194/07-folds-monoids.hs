@@ -96,4 +96,4 @@ main = do
     print $ eval expr
     print $ eval' expr
     print $ numLiterals expr
-    print $ "abc" <> "def"
+    print $ "ab" <> "cd" <> "ef"
