@@ -58,6 +58,14 @@ eval (Mul e1 e2) = eval e1 * eval e2
 expr :: ExprT
 expr = Mul (Lit 10) (Add (Lit 20) (Mul (Lit 30) (Lit 40)))
 
+exprTFold :: (Integer -> b) -> (b -> b -> b) -> (b -> b -> b) -> ExprT -> b
+exprTFold f _ _ (Lit i)     = f i
+exprTFold f g h (Add e1 e2) = g (exprTFold f g h e1) (exprTFold f g h e2)
+exprTFold f g h (Mul e1 e2) = h (exprTFold f g h e1) (exprTFold f g h e2)
+
+eval' :: ExprT -> Integer
+eval' = exprTFold id (+) (*)
+
 main :: IO ()
 main = do
     print integerTree
@@ -71,3 +79,4 @@ main = do
     print $ flatten' integerTree
     print $ treeMax intTree
     print $ eval expr
+    print $ eval' expr
