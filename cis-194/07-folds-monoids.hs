@@ -81,6 +81,12 @@ class Monoid m where
 (<>) = mappend
 -}
 
+{-
+instance Monoid [a] where
+  mempty  = []
+  mappend = (++)
+-}
+
 main :: IO ()
 main = do
     print integerTree
@@ -97,3 +103,4 @@ main = do
     print $ eval' expr
     print $ numLiterals expr
     print $ "ab" <> "cd" <> "ef"
+    print $ "ab" ++ "cd" ++ "ef"
