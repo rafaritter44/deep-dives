@@ -132,19 +132,19 @@ lst2 = [(1,[2,3]), (4,[5,6,7]), (8,[9]), (10,[])]
 lst3 :: [[Integer]]
 lst3 = [[1,2,3],[4,5],[],[6]]
 
-newtype And = And Bool
+newtype All = All Bool
 
-getAnd :: And -> Bool
-getAnd (And a) = a
+getAll :: All -> Bool
+getAll (All a) = a
 
-instance Semigroup And where
-    And x <> And y = And (x && y)
+instance Semigroup All where
+    All x <> All y = All (x && y)
 
-instance Monoid And where
-    mempty = And True
+instance Monoid All where
+    mempty = All True
 
-and :: Bool
-and = getAnd . mconcat . map And $ [True, True, False]
+all :: Bool
+all = getAll . mconcat . map All $ [True, True, False]
 
 main :: IO ()
 main = do
@@ -167,4 +167,4 @@ main = do
     print prod
     print $ mconcat lst2
     print $ mconcat lst3
-    print Main.and
+    print Main.all
