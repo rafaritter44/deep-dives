@@ -1,2 +1,2 @@
 main :: IO ()
-main = putStrLn "Hello" >> putStrLn "World"
+main = putStrLn "Please enter a number: " >> (readLn >>= (\(n :: Integer) -> print (n+1)))
