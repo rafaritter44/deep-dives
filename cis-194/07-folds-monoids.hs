@@ -132,6 +132,20 @@ lst2 = [(1,[2,3]), (4,[5,6,7]), (8,[9]), (10,[])]
 lst3 :: [[Integer]]
 lst3 = [[1,2,3],[4,5],[],[6]]
 
+newtype And = And Bool
+
+getAnd :: And -> Bool
+getAnd (And a) = a
+
+instance Semigroup And where
+    And x <> And y = And (x && y)
+
+instance Monoid And where
+    mempty = And True
+
+and :: Bool
+and = getAnd . mconcat . map And $ [True, True, False]
+
 main :: IO ()
 main = do
     print integerTree
@@ -153,3 +167,4 @@ main = do
     print prod
     print $ mconcat lst2
     print $ mconcat lst3
+    print Main.and
