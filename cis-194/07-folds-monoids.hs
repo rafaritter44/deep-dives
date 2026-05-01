@@ -129,6 +129,9 @@ instance (Monoid a, Monoid b) => Monoid (a,b) where
 lst2 :: [(Sum Integer, [Integer])]
 lst2 = [(1,[2,3]), (4,[5,6,7]), (8,[9]), (10,[])]
 
+lst3 :: [[Integer]]
+lst3 = [[1,2,3],[4,5],[],[6]]
+
 main :: IO ()
 main = do
     print integerTree
@@ -149,3 +152,4 @@ main = do
     print Main.sum
     print prod
     print $ mconcat lst2
+    print $ mconcat lst3
