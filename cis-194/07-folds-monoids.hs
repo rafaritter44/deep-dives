@@ -146,6 +146,20 @@ instance Monoid All where
 all :: Bool
 all = getAll . mconcat . map All $ [True, True, False]
 
+newtype Any = Any Bool
+
+getAny :: Any -> Bool
+getAny (Any a) = a
+
+instance Semigroup Any where
+    Any x <> Any y = Any (x || y)
+
+instance Monoid Any where
+    mempty = Any False
+
+any :: Bool
+any = getAny . mconcat . map Any $ [False, False, True]
+
 main :: IO ()
 main = do
     print integerTree
@@ -168,3 +182,4 @@ main = do
     print $ mconcat lst2
     print $ mconcat lst3
     print Main.all
+    print Main.any
