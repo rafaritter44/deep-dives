@@ -18,3 +18,4 @@ main = putStrLn "Please enter a number: " >> (readLn >>= (\(n :: Integer) -> pri
     >> print d
     >> print d'
     >> print d''
+    >> print (field1 d', field2 d'')
