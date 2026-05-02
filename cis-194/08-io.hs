@@ -16,6 +16,9 @@ d' = C' { field3' = True, field2' = 123, field1' = "abc" }
 d'' :: D'
 d'' = C' "abc" 123 True
 
+foo :: D' -> IO ()
+foo (C' { field1' = x}) = print x
+
 main :: IO ()
 main = putStrLn "Please enter a number: " >> (readLn >>= (\(n :: Integer) -> print (n+1)))
     >> print d
@@ -24,3 +27,4 @@ main = putStrLn "Please enter a number: " >> (readLn >>= (\(n :: Integer) -> pri
     >> print d''
     >> print (field1' d', field2' d'')
     >> print d' { field3' = False }
+    >> foo d'
