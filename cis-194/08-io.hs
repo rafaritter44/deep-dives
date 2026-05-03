@@ -20,7 +20,7 @@ foo :: D' -> IO ()
 foo (C' { field1' = x}) = print x
 
 main :: IO ()
-main = putStrLn "Please enter a number: " >> (readLn >>= (\(n :: Integer) -> print (n+1)))
+main = putStrLn "Please enter a number:" >> (readLn >>= (\(n :: Integer) -> print (n+1)))
     >> print d
     >> print (field2 d)
     >> print d'
