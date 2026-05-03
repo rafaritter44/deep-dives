@@ -21,4 +21,4 @@ main :: IO ()
 main = do
     print funny
     print $ Main.fmap succ (Just (1 :: Int))
-    print $ Main.fmap succ ([1,2,3] :: [Int])
+    print $ Main.fmap pred ([1,2,3] :: [Int])
