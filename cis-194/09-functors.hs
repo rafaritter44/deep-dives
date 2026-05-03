@@ -11,7 +11,14 @@ instance Main.Functor Maybe where
     fmap _ Nothing  = Nothing
     fmap h (Just a) = Just (h a)
 
+instance Main.Functor [] where
+    fmap _ []     = []
+    fmap f (x:xs) = f x : Main.fmap f xs
+    -- or just
+    -- fmap = map
+
 main :: IO ()
 main = do
     print funny
     print $ Main.fmap succ (Just (1 :: Int))
+    print $ Main.fmap succ ([1,2,3] :: [Int])
