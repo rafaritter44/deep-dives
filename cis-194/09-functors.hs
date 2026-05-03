@@ -21,6 +21,9 @@ instance Main.Functor IO where
     -- fmap f ioa = ioa >>= (\a -> return (f a))
     fmap f ioa = ioa >>= (return . f)
 
+instance Main.Functor ((->) e) where
+    fmap = (.)
+
 main :: IO ()
 main = do
     print funny
@@ -28,3 +31,4 @@ main = do
     print $ Main.fmap pred ([1,2,3] :: [Int])
     putStrLn "Enter some text:"
     Main.fmap length getLine >>= print
+    print $ Main.fmap (+3) length "abc"
