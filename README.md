@@ -21,6 +21,7 @@
 1. Deferred Constraints
 1. Indexes
 1. Locks
+1. Transactions
 1. Merge
 1. Updatable Views
 1. Materialized Views
