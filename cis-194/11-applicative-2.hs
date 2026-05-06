@@ -95,3 +95,4 @@ main = do
     print ex01
     print $ pair (Just "a") (Just "b")
     print $ pair ["a", "b"] ["1", "2", "3"]
+    print $ getZipList $ pair (ZipList ["a", "b"]) (ZipList ["1", "2", "3"])
