@@ -98,3 +98,4 @@ main = do
     print $ getZipList $ pair (ZipList ["a", "b"]) (ZipList ["1", "2", "3"])
     putStrLn "Enter two lines of text:"
     pair getLine getLine >>= print
+    print $ pair succ pred (0 :: Integer)
