@@ -54,9 +54,36 @@ instance Applicative ZipList where
 employees2 :: [Employee]
 employees2 = getZipList $ Employee <$> ZipList names <*> ZipList phones
 
+{-
+instance Functor ((->) e) where
+    fmap = (.)
+
+instance Applicative ((->) e) where
+    pure    = const
+    f <*> x = \e -> (f e) (x e)
+-}
+
+data BigRecord = BR { getName         :: Name
+                    , getSSN          :: String
+                    , getSalary       :: Integer
+                    , getPhone        :: String
+                    , getLicensePlate :: String
+                    , getNumSickDays  :: Int
+                    }
+
+r :: BigRecord
+r = BR "Brent" "XXX-XX-XXX4" 600000000 "555-1234" "JGX-55T3" 2
+
+getEmp :: BigRecord -> Employee
+getEmp = Employee <$> getName <*> getPhone
+
+ex01 :: Employee
+ex01 = getEmp r
+
 main :: IO ()
 main = do
     print employees1
     print n
     print (m1, m2)
     print employees2
+    print ex01
