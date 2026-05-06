@@ -94,3 +94,4 @@ main = do
     print employees2
     print ex01
     print $ pair (Just "a") (Just "b")
+    print $ pair ["a", "b"] ["1", "2", "3"]
