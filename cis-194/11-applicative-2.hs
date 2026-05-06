@@ -80,6 +80,12 @@ getEmp = Employee <$> getName <*> getPhone
 ex01 :: Employee
 ex01 = getEmp r
 
+pair :: Applicative f => f a -> f b -> f (a,b)
+-- pair fa fb = (\x y -> (x,y)) <$> fa <*> fb
+-- pair fa fb = (,) <$> fa <*> fb
+-- pair fa fb = liftA2 (,) fa fb
+pair = liftA2 (,)
+
 main :: IO ()
 main = do
     print employees1
@@ -87,3 +93,4 @@ main = do
     print (m1, m2)
     print employees2
     print ex01
+    print $ pair (Just "a") (Just "b")
