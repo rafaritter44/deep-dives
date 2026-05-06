@@ -1,3 +1,5 @@
+import Control.Applicative
+
 {-
 class Functor f where
     fmap :: (a -> b) -> f a -> f b
@@ -40,8 +42,21 @@ m1, m2 :: Maybe Integer
 m1 = (Just 3 .+ Just 5) .* Just 8
 m2 = (Just 3 .+ Nothing) .* Just 8
 
+{-
+newtype ZipList a = ZipList { getZipList :: [a] }
+    deriving (Eq, Show, Functor)
+
+instance Applicative ZipList where
+    pure                      = ZipList . repeat
+    ZipList fs <*> ZipList xs = ZipList (zipWith ($) fs xs)
+-}
+
+employees2 :: [Employee]
+employees2 = getZipList $ Employee <$> ZipList names <*> ZipList phones
+
 main :: IO ()
 main = do
     print employees1
     print n
     print (m1, m2)
+    print employees2
