@@ -27,17 +27,21 @@ phones = ["555-5555", "123-456-7890", "555-4321"]
 employees1 :: [Employee]
 employees1 = Employee <$> names <*> phones
 
-(.+) :: [Integer] -> [Integer] -> [Integer]
+(.+), (.*) :: (Applicative f, Num a) => f a -> f a -> f a
 (.+) = liftA2 (+) -- addition lifted to some Applicative context
-
-(.*) :: [Integer] -> [Integer] -> [Integer]
 (.*) = liftA2 (*) -- same for multiplication
 
 -- nondeterministic arithmetic
 n :: [Integer]
 n = ([4,5] .* pure 2) .+ [6,1] -- (either 4 or 5) times 2, plus either 6 or 1
 
+-- and some possibly-failing arithmetic too, just for fun
+m1, m2 :: Maybe Integer
+m1 = (Just 3 .+ Just 5) .* Just 8
+m2 = (Just 3 .+ Nothing) .* Just 8
+
 main :: IO ()
 main = do
     print employees1
     print n
+    print (m1, m2)
