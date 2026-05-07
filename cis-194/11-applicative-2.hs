@@ -102,6 +102,9 @@ sequenceA :: Applicative f => [f a] -> f [a]
 sequenceA = mapA id
 -}
 
+replicateA :: Applicative f => Int -> f a -> f [a]
+replicateA n fa = sequenceA (replicate n fa)
+
 main :: IO ()
 main = do
     print employees1
@@ -139,3 +142,12 @@ main = do
     print $ getZipList $ sequenceA [ZipList ["a", "b"], ZipList ["1", "2", "3"]]
     putStrLn "Enter two lines of text:"
     sequenceA [getLine, getLine] >>= print
+    print $ sequenceA [(+3), (*10)] (1 :: Integer)
+
+    -- replicateA
+    print $ replicateA 3 (Just "a")
+    print $ replicateA 3 ["a", "b"]
+    print $ getZipList $ replicateA 3 (ZipList ["a", "b"])
+    putStrLn "Enter two lines of text:"
+    replicateA 2 getLine >>= print
+    print $ replicateA 3 (++ "!") "a"
