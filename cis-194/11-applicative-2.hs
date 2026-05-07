@@ -92,6 +92,11 @@ pair = liftA2 (,)
 (*>) = liftA2 (\_ b -> b)
 -}
 
+mapA :: Applicative f => (a -> f b) -> ([a] -> f [b])
+-- mapA _ []     = pure []
+-- mapA f (x:xs) = (:) <$> f x <*> mapA f xs
+mapA = traverse
+
 main :: IO ()
 main = do
     print employees1
@@ -99,15 +104,26 @@ main = do
     print (m1, m2)
     print employees2
     print ex01
+
+    -- pair
     print $ pair (Just "a") (Just "b")
     print $ pair ["a", "b"] ["1", "2", "3"]
     print $ getZipList $ pair (ZipList ["a", "b"]) (ZipList ["1", "2", "3"])
     putStrLn "Enter two lines of text:"
     pair getLine getLine >>= print
     print $ pair succ pred (0 :: Integer)
+
+    -- *>
     print $ Just "a" *> Just "b"
     print $ ["a", "b"] *> ["1", "2", "3"]
     print $ getZipList $ ZipList ["a", "b"] *> ZipList ["1", "2", "3"]
     putStrLn "Enter two lines of text:"
     getLine *> getLine >>= print
     print $ (succ *> pred) (0 :: Integer)
+
+    -- mapA
+    print $ mapA Just ["a", "b"]
+    print $ mapA (++ "!") ["a", "b"]
+    print $ getZipList $ mapA ZipList ["a", "b"]
+    putStrLn "Enter two lines of text:"
+    mapA (const getLine) ["a", "b"] >>= print
