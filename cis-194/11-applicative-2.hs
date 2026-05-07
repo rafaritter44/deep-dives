@@ -86,6 +86,12 @@ pair :: Applicative f => f a -> f b -> f (a,b)
 -- pair fa fb = liftA2 (,) fa fb
 pair = liftA2 (,)
 
+{-
+(*>) :: Applicative f => f a -> f b -> f b
+-- fa *> fb = (\_ b -> b) <$> fa <*> fb
+(*>) = liftA2 (\_ b -> b)
+-}
+
 main :: IO ()
 main = do
     print employees1
@@ -99,3 +105,8 @@ main = do
     putStrLn "Enter two lines of text:"
     pair getLine getLine >>= print
     print $ pair succ pred (0 :: Integer)
+    print $ Just "a" *> Just "b"
+    print $ ["a", "b"] *> ["1", "2", "3"]
+    print $ getZipList $ ZipList ["a", "b"] *> ZipList ["1", "2", "3"]
+    putStrLn "Enter two lines of text:"
+    getLine *> getLine >>= print
