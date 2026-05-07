@@ -97,6 +97,11 @@ mapA :: Applicative f => (a -> f b) -> ([a] -> f [b])
 -- mapA f (x:xs) = (:) <$> f x <*> mapA f xs
 mapA = traverse
 
+{-
+sequenceA :: Applicative f => [f a] -> f [a]
+sequenceA = mapA id
+-}
+
 main :: IO ()
 main = do
     print employees1
@@ -127,3 +132,10 @@ main = do
     print $ getZipList $ mapA ZipList ["a", "b"]
     putStrLn "Enter two lines of text:"
     mapA (const getLine) ["a", "b"] >>= print
+
+    -- sequenceA
+    print $ sequenceA [Just "a", Just "b"]
+    print $ sequenceA [["a", "b"], ["1", "2", "3"]]
+    print $ getZipList $ sequenceA [ZipList ["a", "b"], ZipList ["1", "2", "3"]]
+    putStrLn "Enter two lines of text:"
+    sequenceA [getLine, getLine] >>= print
