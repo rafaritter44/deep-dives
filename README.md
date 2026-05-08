@@ -30,7 +30,6 @@
 1. Prepared Statements
 1. Explain
 1. Full Text Search
-1. Partitioning
 1. Copy
 1. Tablespaces
 1. Listen/Notify
