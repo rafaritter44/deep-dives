@@ -42,7 +42,6 @@
 ### Extensions
 
 1. pg_textsearch
-1. TimescaleDB
 1. PostgREST
 1. PostGIS
 1. postgres_fdw
