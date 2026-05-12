@@ -53,6 +53,9 @@ sequence (ma:mas) =
     return (a:as)
 -}
 
+replicateM :: Monad m => Int -> m a -> m [a]
+replicateM n m = sequence (replicate n m)
+
 main :: IO ()
 main = do
     print (ex01, ex02, ex03)
@@ -60,3 +63,4 @@ main = do
     print $ sequence [Just "a", Just "b", Just "c"]
     putStrLn "Enter two lines of text:"
     sequence [getLine, getLine] >>= print
+    print $ replicateM 3 ["abc", "def"]
