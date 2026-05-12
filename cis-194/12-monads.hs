@@ -44,7 +44,19 @@ addOneOrTwo x = [x+1, x+2]
 ex04 :: [Int]
 ex04 = [10,20,30] >>= addOneOrTwo
 
+{-
+sequence :: Monad m => [m a] -> m [a]
+sequence [] = return []
+sequence (ma:mas) =
+    ma >>= \a ->
+    sequence mas >>= \as ->
+    return (a:as)
+-}
+
 main :: IO ()
 main = do
     print (ex01, ex02, ex03)
     print ex04
+    print $ sequence [Just "a", Just "b", Just "c"]
+    putStrLn "Enter two lines of text:"
+    sequence [getLine, getLine] >>= print
