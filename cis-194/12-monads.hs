@@ -32,6 +32,19 @@ ex01 = return 7 >>= check >>= halve
 ex02 = return 12 >>= check >>= halve
 ex03 = return 12 >>= halve >>= check
 
+{-
+instance Monad [] where
+    return x = [x]
+    xs >>= k = concat (map k xs)
+-}
+
+addOneOrTwo :: Int -> [Int]
+addOneOrTwo x = [x+1, x+2]
+
+ex04 :: [Int]
+ex04 = [10,20,30] >>= addOneOrTwo
+
 main :: IO ()
 main = do
     print (ex01, ex02, ex03)
+    print ex04
