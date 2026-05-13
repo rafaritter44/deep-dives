@@ -22,3 +22,6 @@ main = do
     print $ take 1 [3,9,3]
     print $ take 5 [1,2]
     print $ take 0 [7,7,7]
+    print $ drop 3 [8,4,2,1,5,6]
+    print $ drop 0 [1,2,3,4]
+    print $ drop 100 [1,2,3,4]
