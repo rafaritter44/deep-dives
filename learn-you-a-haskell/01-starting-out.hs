@@ -27,3 +27,6 @@ main = do
     print $ drop 100 [1,2,3,4]
     print $ minimum [8,4,2,1,5,6]
     print $ maximum [1,9,2,3,4]
+    print $ sum [5,2,1,6,3,2,5,7]
+    print $ product [6,2,1,2]
+    print $ product [1,2,5,6,7,9,2,0]
