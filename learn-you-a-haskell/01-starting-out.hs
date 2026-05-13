@@ -17,3 +17,4 @@ main = do
     print $ length [5,4,3,2,1]
     print $ null [1,2,3]
     print $ null []
+    print $ reverse [5,4,3,2,1]
