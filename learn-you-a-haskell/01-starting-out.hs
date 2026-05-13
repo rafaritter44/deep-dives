@@ -15,3 +15,5 @@ main = do
     print $ last [5,4,3,2,1]
     print $ init [5,4,3,2,1]
     print $ length [5,4,3,2,1]
+    print $ null [1,2,3]
+    print $ null []
