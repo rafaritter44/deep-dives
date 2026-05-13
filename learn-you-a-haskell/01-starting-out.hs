@@ -19,3 +19,6 @@ main = do
     print $ null []
     print $ reverse [5,4,3,2,1]
     print $ take 3 [5,4,3,2,1]
+    print $ take 1 [3,9,3]
+    print $ take 5 [1,2]
+    print $ take 0 [7,7,7]
