@@ -4,3 +4,4 @@ main = do
     print $ "hello" ++ " " ++ "world"
     print $ 'A' : " SMALL CAT"
     print (5 : [1,2,3,4,5] :: [Integer])
+    print $ "0123456789" !! 7
