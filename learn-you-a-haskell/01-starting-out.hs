@@ -25,3 +25,5 @@ main = do
     print $ drop 3 [8,4,2,1,5,6]
     print $ drop 0 [1,2,3,4]
     print $ drop 100 [1,2,3,4]
+    print $ minimum [8,4,2,1,5,6]
+    print $ maximum [1,9,2,3,4]
