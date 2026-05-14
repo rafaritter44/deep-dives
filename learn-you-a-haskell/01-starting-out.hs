@@ -50,3 +50,5 @@ main = do
     let nouns = ["hobo","frog","communist"]
     let adjectives = ["lazy","grouchy","scheming"]
     print [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]
+    let length' xs = sum [1 | _ <- xs]
+    print $ (length' "abcdef", length' [1,2,3,4,5])
