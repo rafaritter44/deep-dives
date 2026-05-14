@@ -37,3 +37,4 @@ main = do
     print [0.1, 0.3..1]
     print $ take 10 (cycle [1,2,3])
     print $ take 12 (cycle "LOL ")
+    print $ take 10 (repeat 5)
