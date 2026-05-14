@@ -68,3 +68,4 @@ main = do
     print $ fst ("Wow", False)
     print $ snd (8,11)
     print $ snd ("Wow", False)
+    print $ zip [1,2,3,4,5] [5,5,5,5,5]
