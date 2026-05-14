@@ -40,3 +40,4 @@ main = do
     print $ take 10 (repeat 5)
     print $ replicate 10 5
     print [x*2 | x <- [1..10]]
+    print [x*2 | x <- [1..10], x*2 >= 12]
