@@ -39,3 +39,4 @@ main = do
     print $ take 12 (cycle "LOL ")
     print $ take 10 (repeat 5)
     print $ replicate 10 5
+    print [x*2 | x <- [1..10]]
