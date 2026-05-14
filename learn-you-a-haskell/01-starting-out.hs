@@ -51,4 +51,7 @@ main = do
     let adjectives = ["lazy","grouchy","scheming"]
     print [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]
     let length' xs = sum [1 | _ <- xs]
-    print $ (length' "abcdef", length' [1,2,3,4,5])
+    print (length' "abcdef", length' [1,2,3,4,5])
+    let removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+    print $ removeNonUppercase "Hahaha! Ahahaha!"
+    print $ removeNonUppercase "IdontLIKEFROGS"
