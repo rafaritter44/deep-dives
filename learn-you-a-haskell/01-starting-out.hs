@@ -38,3 +38,4 @@ main = do
     print $ take 10 (cycle [1,2,3])
     print $ take 12 (cycle "LOL ")
     print $ take 10 (repeat 5)
+    print $ replicate 10 5
