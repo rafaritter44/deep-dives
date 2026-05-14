@@ -45,3 +45,4 @@ main = do
     let boomBangs xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
     print $ boomBangs [7..13]
     print [x | x <- [10..20], x /= 13, x /= 15, x /= 19]
+    print [x*y | x <- [2,5,10], y <- [8,10,11]]
