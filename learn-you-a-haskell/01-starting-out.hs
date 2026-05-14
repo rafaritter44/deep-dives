@@ -47,3 +47,6 @@ main = do
     print [x | x <- [10..20], x /= 13, x /= 15, x /= 19]
     print [x*y | x <- [2,5,10], y <- [8,10,11]]
     print [x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50]
+    let nouns = ["hobo","frog","communist"]
+    let adjectives = ["lazy","grouchy","scheming"]
+    print [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]
