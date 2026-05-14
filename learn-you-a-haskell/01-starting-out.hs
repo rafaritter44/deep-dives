@@ -69,3 +69,4 @@ main = do
     print $ snd (8,11)
     print $ snd ("Wow", False)
     print $ zip [1,2,3,4,5] [5,5,5,5,5]
+    print $ zip [1 .. 5] ["one", "two", "three", "four", "five"]
