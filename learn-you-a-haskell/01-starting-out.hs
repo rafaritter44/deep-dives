@@ -1,5 +1,6 @@
 main :: IO ()
 main = do
+    -- Lists
     print ([1,2,3,4] ++ [9,10,11,12] :: [Integer])
     print $ "hello" ++ " " ++ "world"
     print $ 'A' : " SMALL CAT"
@@ -32,6 +33,8 @@ main = do
     print $ product [1,2,5,6,7,9,2,0]
     print $ 4 `elem` [3,4,5,6]
     print $ 10 `elem` [3,4,5,6]
+
+    -- Ranges
     print ([1..20], ['a'..'z'], ['K'..'Z'])
     print ([2,4..20], [3,6..20])
     print [0.1, 0.3..1]
@@ -39,6 +42,8 @@ main = do
     print $ take 12 (cycle "LOL ")
     print $ take 10 (repeat 5)
     print $ replicate 10 5
+
+    -- List comprehensions
     print [x*2 | x <- [1..10]]
     print [x*2 | x <- [1..10], x*2 >= 12]
     print [x | x <- [50..100], x `mod` 7 == 3]
