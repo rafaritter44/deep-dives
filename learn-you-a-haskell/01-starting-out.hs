@@ -32,3 +32,4 @@ main = do
     print $ product [1,2,5,6,7,9,2,0]
     print $ 4 `elem` [3,4,5,6]
     print $ 10 `elem` [3,4,5,6]
+    print ([1..20], ['a'..'z'], ['K'..'Z'])
