@@ -72,3 +72,7 @@ main = do
     print $ zip [1..5] ["one", "two", "three", "four", "five"]
     print $ zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
     print $ zip [1..] ["apple", "orange", "cherry", "mango"]
+    let triangles = [(a,b,c) | c <- [1..10], a <- [1..10], b <- [1..10]]
+    print triangles
+    let rightTriangles = [(a,b,c) | c <- [1..10], a <- [1..c], b <- [1..a], a^2 + b^2 == c^2]
+    print rightTriangles
