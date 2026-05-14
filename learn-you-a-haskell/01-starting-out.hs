@@ -35,3 +35,4 @@ main = do
     print ([1..20], ['a'..'z'], ['K'..'Z'])
     print ([2,4..20], [3,6..20])
     print [0.1, 0.3..1]
+    print $ take 10 (cycle [1,2,3])
