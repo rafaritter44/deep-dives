@@ -14,3 +14,8 @@ main = do
     print $ read "8.2" + 3.8
     print $ read "5" - 2
     print $ read "[1,2,3,4]" ++ [3]
+    print (read "5" :: Int)
+    print (read "5" :: Float)
+    print $ (read "5" :: Float) * 4
+    print (read "[1,2,3,4]" :: [Int])
+    print (read "(3, 'a')" :: (Int, Char))
