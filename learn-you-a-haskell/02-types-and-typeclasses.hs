@@ -7,3 +7,6 @@ main = do
     print $ "Abrakadabra" < "Zebra"
     print $ "Abrakadabra" `compare` "Zebra"
     print $ 5 `compare` 3
+    print $ show 3
+    print $ show 5.334
+    print $ show True
