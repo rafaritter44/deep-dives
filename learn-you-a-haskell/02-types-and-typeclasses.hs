@@ -10,3 +10,7 @@ main = do
     print $ show 3
     print $ show 5.334
     print $ show True
+    print $ read "True" || False
+    print $ read "8.2" + 3.8
+    print $ read "5" - 2
+    print $ read "[1,2,3,4]" ++ [3]
