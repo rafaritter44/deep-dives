@@ -36,3 +36,4 @@ main = do
     print ([2,4..20], [3,6..20])
     print [0.1, 0.3..1]
     print $ take 10 (cycle [1,2,3])
+    print $ take 12 (cycle "LOL ")
