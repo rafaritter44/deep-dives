@@ -19,3 +19,4 @@ main = do
     print $ (read "5" :: Float) * 4
     print (read "[1,2,3,4]" :: [Int])
     print (read "(3, 'a')" :: (Int, Char))
+    print (['a'..'e'], [LT .. GT], [3..5], succ 'B')
