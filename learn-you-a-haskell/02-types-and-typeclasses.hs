@@ -20,3 +20,7 @@ main = do
     print (read "[1,2,3,4]" :: [Int])
     print (read "(3, 'a')" :: (Int, Char))
     print (['a'..'e'], [LT .. GT], [3..5], succ 'B')
+    print (minBound :: Int)
+    print (maxBound :: Char)
+    print (maxBound :: Bool)
+    print (minBound :: Bool)
