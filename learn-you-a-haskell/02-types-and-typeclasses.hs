@@ -34,3 +34,4 @@ main = do
     print (maxBound :: Char)
     print (maxBound :: Bool)
     print (minBound :: Bool)
+    print (maxBound :: (Bool, Int, Char))
