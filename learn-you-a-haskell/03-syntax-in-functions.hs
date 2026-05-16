@@ -14,8 +14,15 @@ factorial :: (Integral a) => a -> a
 factorial 0 = 1
 factorial n = n * factorial (n - 1)
 
+charName :: Char -> String
+charName 'a' = "Albert"
+charName 'b' = "Broseph"
+charName 'c' = "Cecil"
+charName _   = "Unknown"
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
     print $ map sayMe ([1..6] :: [Int])
     print $ factorial (50 :: Integer)
+    print $ map charName ['a', 'b', 'c', 'd']
