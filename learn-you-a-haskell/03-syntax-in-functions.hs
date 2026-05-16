@@ -10,7 +10,12 @@ sayMe 4 = "Four!"
 sayMe 5 = "Five!"
 sayMe _ = "Not between 1 and 5"
 
+factorial :: (Integral a) => a -> a
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
     print $ map sayMe ([1..6] :: [Int])
+    print $ factorial (50 :: Integer)
