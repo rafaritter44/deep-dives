@@ -42,4 +42,4 @@ main = do
     print $ addVectors ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
     print $ addVectors' ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
     print [a+b | (a,b) <- xs]
-    print $ head' "abc"
+    print $ head' "Hello"
