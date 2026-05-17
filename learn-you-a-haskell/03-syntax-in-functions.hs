@@ -23,6 +23,9 @@ charName _   = "Unknown"
 addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
 addVectors a b = (fst a + fst b, snd a + snd b)
 
+addVectors' :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors' (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -30,3 +33,4 @@ main = do
     print $ factorial (50 :: Integer)
     print $ map charName ['a', 'b', 'c', 'd']
     print $ addVectors ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
+    print $ addVectors' ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
