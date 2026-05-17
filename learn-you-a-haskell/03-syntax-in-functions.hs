@@ -33,6 +33,12 @@ head' :: [a] -> a
 head' [] = error "Can't call head on an empty list, dummy!"
 head' (x:_) = x
 
+tell :: (Show a) => [a] -> String
+tell [] = "The list is empty"
+tell [x] = "The list has one element: " ++ show x
+tell [x,y] = "The list has two elements: " ++ show x ++ " and " ++ show y
+tell (x:y:_) = "This list is long. The first two elements are: " ++ show x ++ " and " ++ show y
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -43,3 +49,4 @@ main = do
     print $ addVectors' ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
     print [a+b | (a,b) <- xs]
     print $ head' "Hello"
+    print $ map tell ["", "a", "ab", "abc", "abcd"]
