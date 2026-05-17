@@ -20,9 +20,13 @@ charName 'b' = "Broseph"
 charName 'c' = "Cecil"
 charName _   = "Unknown"
 
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors a b = (fst a + fst b, snd a + snd b)
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
     print $ map sayMe ([1..6] :: [Int])
     print $ factorial (50 :: Integer)
     print $ map charName ['a', 'b', 'c', 'd']
+    print $ addVectors ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
