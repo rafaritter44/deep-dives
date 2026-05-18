@@ -43,6 +43,10 @@ length' :: (Num b) => [a] -> b
 length' [] = 0
 length' (_:xs) = 1 + length' xs
 
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -55,3 +59,4 @@ main = do
     print $ head' "Hello"
     print $ map tell ["", "a", "ab", "abc", "abcd"]
     print (length' "Hello" :: Int)
+    print (sum' [1,2,3,4,5] :: Int)
