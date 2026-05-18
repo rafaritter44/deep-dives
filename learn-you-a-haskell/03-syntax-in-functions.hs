@@ -26,8 +26,8 @@ addVectors a b = (fst a + fst b, snd a + snd b)
 addVectors' :: (Num a) => (a, a) -> (a, a) -> (a, a)
 addVectors' (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
 
-xs :: [(Int, Int)]
-xs = [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]
+tuples :: [(Int, Int)]
+tuples = [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]
 
 head' :: [a] -> a
 head' [] = error "Can't call head on an empty list, dummy!"
@@ -55,7 +55,7 @@ main = do
     print $ map charName ['a', 'b', 'c', 'd']
     print $ addVectors ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
     print $ addVectors' ((1, 2) :: (Int, Int)) ((3, 4) :: (Int, Int))
-    print [a+b | (a,b) <- xs]
+    print [a+b | (a,b) <- tuples]
     print $ head' "Hello"
     print $ map tell ["", "a", "ab", "abc", "abcd"]
     print (length' "Hello" :: Int)
