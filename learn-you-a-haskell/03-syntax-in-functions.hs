@@ -47,6 +47,10 @@ sum' :: (Num a) => [a] -> a
 sum' [] = 0
 sum' (x:xs) = x + sum' xs
 
+capital :: String -> String
+capital "" = "Empty string, whoops!"
+capital wholeStr@(x:_) = "The first letter of " ++ wholeStr ++ " is " ++ [x]
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -60,3 +64,4 @@ main = do
     print $ map tell ["", "a", "ab", "abc", "abcd"]
     print (length' "Hello" :: Int)
     print (sum' [1,2,3,4,5] :: Int)
+    print $ capital "Hello"
