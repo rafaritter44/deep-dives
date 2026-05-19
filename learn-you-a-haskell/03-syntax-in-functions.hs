@@ -68,6 +68,12 @@ max' a b
     | a > b     = a
     | otherwise = b
 
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+    | a > b     = GT
+    | a == b    = EQ
+    | otherwise = LT
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -85,3 +91,4 @@ main = do
     print $ densityTell (1000 :: Float)
     print $ densityTell' (100 :: Float) 50
     print $ max' True False
+    print $ 'a' `myCompare` 'b'
