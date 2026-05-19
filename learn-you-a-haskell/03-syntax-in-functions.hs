@@ -63,6 +63,11 @@ densityTell' mass volume
     | mass / volume <= 1000.0 = "Have fun swimming, but watch out for sharks!"
     | otherwise               = "If it's sink or swim, you're going to sink."
 
+max' :: (Ord a) => a -> a -> a
+max' a b
+    | a > b     = a
+    | otherwise = b
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -79,3 +84,4 @@ main = do
     print $ capital "Hello"
     print $ densityTell (1000 :: Float)
     print $ densityTell' (100 :: Float) 50
+    print $ max' True False
