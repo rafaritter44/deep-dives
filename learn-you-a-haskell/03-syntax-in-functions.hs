@@ -51,6 +51,12 @@ capital :: String -> String
 capital "" = "Empty string, whoops!"
 capital wholeStr@(x:_) = "The first letter of " ++ wholeStr ++ " is " ++ [x]
 
+densityTell :: (RealFloat a) => a -> String
+densityTell density
+    | density < 1.2     = "Wow! You're going for a ride in the sky!"
+    | density <= 1000.0 = "Have fun swimming, but watch out for sharks!"
+    | otherwise         = "If it's sink or swim, you're going to sink."
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -65,3 +71,4 @@ main = do
     print (length' "Hello" :: Int)
     print (sum' [1,2,3,4,5] :: Int)
     print $ capital "Hello"
+    print $ densityTell (1000 :: Float)
