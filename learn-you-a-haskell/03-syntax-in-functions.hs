@@ -57,6 +57,12 @@ densityTell density
     | density <= 1000.0 = "Have fun swimming, but watch out for sharks!"
     | otherwise         = "If it's sink or swim, you're going to sink."
 
+densityTell' :: (RealFloat a) => a -> a -> String
+densityTell' mass volume
+    | mass / volume < 1.2     = "Wow! You're going for a ride in the sky!"
+    | mass / volume <= 1000.0 = "Have fun swimming, but watch out for sharks!"
+    | otherwise               = "If it's sink or swim, you're going to sink."
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -72,3 +78,4 @@ main = do
     print (sum' [1,2,3,4,5] :: Int)
     print $ capital "Hello"
     print $ densityTell (1000 :: Float)
+    print $ densityTell' (100 :: Float) 50
