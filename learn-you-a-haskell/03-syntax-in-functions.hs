@@ -103,6 +103,10 @@ initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
     where (f:_) = firstname
           (l:_) = lastname
 
+calcDensities :: (RealFloat a) => [(a, a)] -> [a]
+calcDensities xs = [density m v | (m, v) <- xs]
+    where density mass volume = mass / volume
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -125,3 +129,4 @@ main = do
     print $ densityTell''' (100 :: Float) 50
     print $ densityTell'''' (100 :: Float) 50
     print $ initials "Rafael" "Ritter"
+    print $ calcDensities [(100 :: Float, 50), (200, 25)]
