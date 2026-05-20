@@ -98,6 +98,11 @@ densityTell'''' mass volume
     where density = mass / volume
           (air, water) = (1.2, 1000.0)
 
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+    where (f:_) = firstname
+          (l:_) = lastname
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -119,3 +124,4 @@ main = do
     print $ densityTell'' (100 :: Float) 50
     print $ densityTell''' (100 :: Float) 50
     print $ densityTell'''' (100 :: Float) 50
+    print $ initials "Rafael" "Ritter"
