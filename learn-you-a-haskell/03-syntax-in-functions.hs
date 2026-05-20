@@ -81,6 +81,15 @@ densityTell'' mass volume
     | otherwise         = "If it's sink or swim, you're going to sink."
     where density = mass / volume
 
+densityTell''' :: (RealFloat a) => a -> a -> String
+densityTell''' mass volume
+    | density < air    = "Wow! You're going for a ride in the sky!"
+    | density <= water = "Have fun swimming, but watch out for sharks!"
+    | otherwise        = "If it's sink or swim, you're going to sink."
+    where density = mass / volume
+          air     = 1.2
+          water   = 1000.0
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -100,3 +109,4 @@ main = do
     print $ max' True False
     print $ 'a' `myCompare` 'b'
     print $ densityTell'' (100 :: Float) 50
+    print $ densityTell''' (100 :: Float) 50
