@@ -107,6 +107,12 @@ calcDensities :: (RealFloat a) => [(a, a)] -> [a]
 calcDensities xs = [density m v | (m, v) <- xs]
     where density mass volume = mass / volume
 
+cylinder :: (RealFloat a) => a -> a -> a
+cylinder r h =
+    let sideArea = 2 * pi * r * h
+        topArea  = pi * r ^ (2 :: Int)
+    in  sideArea + 2 * topArea
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -130,3 +136,4 @@ main = do
     print $ densityTell'''' (100 :: Float) 50
     print $ initials "Rafael" "Ritter"
     print $ calcDensities [(100 :: Float, 50), (200, 25)]
+    print $ cylinder (10 :: Float) 20
