@@ -116,6 +116,9 @@ cylinder r h =
 calcDensities' :: (RealFloat a) => [(a, a)] -> [a]
 calcDensities' xs = [density | (m, v) <- xs, let density = m / v]
 
+calcDensities'' :: (RealFloat a) => [(a, a)] -> [a]
+calcDensities'' xs = [density | (m, v) <- xs, let density = m / v, density < 2.1]
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -145,3 +148,4 @@ main = do
     print (let (a :: Int) = 100; b = 200; c = 300 in a*b*c, let foo="Hey "; bar = "there!" in foo ++ bar)
     print $ (let (a,b,c) = (1,2,3) in a+b+c) * (100 :: Int)
     print $ calcDensities' [(100 :: Float, 50), (200, 25)]
+    print $ calcDensities'' [(100 :: Float, 50), (200, 25)]
