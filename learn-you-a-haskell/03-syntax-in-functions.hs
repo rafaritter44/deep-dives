@@ -149,3 +149,6 @@ main = do
     print $ (let (a,b,c) = (1,2,3) in a+b+c) * (100 :: Int)
     print $ calcDensities' [(100 :: Float, 50), (200, 25)]
     print $ calcDensities'' [(100 :: Float, 50), (200, 25)]
+    let zoot (x :: Int) y z = x * y + z
+    print $ zoot 3 9 2
+    let boot (x :: Int) y z = x * y + z in print $ boot 3 4 2
