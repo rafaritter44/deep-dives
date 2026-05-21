@@ -137,3 +137,4 @@ main = do
     print $ initials "Rafael" "Ritter"
     print $ calcDensities [(100 :: Float, 50), (200, 25)]
     print $ cylinder (10 :: Float) 20
+    print $ 4 * (let a = 9 in a + 1) + (2 :: Int)
