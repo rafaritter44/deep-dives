@@ -132,6 +132,12 @@ describeList xs = "The list is " ++ case xs of [] -> "empty."
                                                [_] -> "a singleton list."
                                                _ -> "a longer list."
 
+describeList' :: [a] -> String
+describeList' xs = "The list is " ++ what xs
+    where what [] = "empty."
+          what [_] = "a singleton list."
+          what _ = "a longer list."
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -168,3 +174,4 @@ main = do
     print $ head'' "Hello"
     print $ head''' "Hello"
     print $ map describeList ["", "a", "abc"]
+    print $ map describeList' ["", "a", "abc"]
