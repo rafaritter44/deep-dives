@@ -8,4 +8,4 @@ maximum' (x:xs)
 
 main :: IO ()
 main = do
-    print $ maximum' ([1,2,3,4,50,6,70,8,9,10] :: [Integer])
+    print $ maximum' ([1,2,3,4,50,6,70,8,9,10] :: [Int])
