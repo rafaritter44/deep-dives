@@ -129,8 +129,8 @@ head''' xs = case xs of [] -> error "No head for empty lists!"
 
 describeList :: [a] -> String
 describeList xs = "The list is " ++ case xs of [] -> "empty."
-                                               [x] -> "a singleton list."
-                                               xs -> "a longer list."
+                                               [_] -> "a singleton list."
+                                               _ -> "a longer list."
 
 main :: IO ()
 main = do
