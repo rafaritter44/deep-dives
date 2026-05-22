@@ -119,6 +119,14 @@ calcDensities' xs = [density | (m, v) <- xs, let density = m / v]
 calcDensities'' :: (RealFloat a) => [(a, a)] -> [a]
 calcDensities'' xs = [density | (m, v) <- xs, let density = m / v, density < 2.1]
 
+head'' :: [a] -> a
+head'' [] = error "No head for empty lists!"
+head'' (x:_) = x
+
+head''' :: [a] -> a
+head''' xs = case xs of [] -> error "No head for empty lists!"
+                        (x:_) -> x
+
 main :: IO ()
 main = do
     print $ map lucky ([3, 7, 12] :: [Int])
@@ -152,3 +160,5 @@ main = do
     let zoot (x :: Int) y z = x * y + z
     print $ zoot 3 9 2
     let boot (x :: Int) y z = x * y + z in print $ boot 3 4 2
+    print $ head'' "Hello"
+    print $ head''' "Hello"
