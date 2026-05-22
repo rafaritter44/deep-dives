@@ -1,3 +1,5 @@
+-- Pattern matching
+
 lucky :: (Integral a) => a -> String
 lucky 7 = "LUCKY NUMBER SEVEN!"
 lucky _ = "Sorry, you're out of luck, pal!"
@@ -51,6 +53,8 @@ capital :: String -> String
 capital "" = "Empty string, whoops!"
 capital wholeStr@(x:_) = "The first letter of " ++ wholeStr ++ " is " ++ [x]
 
+-- Guards
+
 densityTell :: (RealFloat a) => a -> String
 densityTell density
     | density < 1.2     = "Wow! You're going for a ride in the sky!"
@@ -73,6 +77,8 @@ a `myCompare` b
     | a > b     = GT
     | a == b    = EQ
     | otherwise = LT
+
+-- Where
 
 densityTell'' :: (RealFloat a) => a -> a -> String
 densityTell'' mass volume
@@ -107,6 +113,8 @@ calcDensities :: (RealFloat a) => [(a, a)] -> [a]
 calcDensities xs = [density m v | (m, v) <- xs]
     where density mass volume = mass / volume
 
+-- Let
+
 cylinder :: (RealFloat a) => a -> a -> a
 cylinder r h =
     let sideArea = 2 * pi * r * h
@@ -118,6 +126,8 @@ calcDensities' xs = [density | (m, v) <- xs, let density = m / v]
 
 calcDensities'' :: (RealFloat a) => [(a, a)] -> [a]
 calcDensities'' xs = [density | (m, v) <- xs, let density = m / v, density < 2.1]
+
+-- Case expressions
 
 head'' :: [a] -> a
 head'' [] = error "No head for empty lists!"
@@ -140,6 +150,7 @@ describeList' xs = "The list is " ++ what xs
 
 main :: IO ()
 main = do
+    -- Pattern matching
     print $ map lucky ([3, 7, 12] :: [Int])
     print $ map sayMe ([1..6] :: [Int])
     print $ factorial (50 :: Integer)
@@ -152,15 +163,21 @@ main = do
     print (length' "Hello" :: Int)
     print (sum' [1,2,3,4,5] :: Int)
     print $ capital "Hello"
+
+    -- Guards
     print $ densityTell (1000 :: Float)
     print $ densityTell' (100 :: Float) 50
     print $ max' True False
     print $ 'a' `myCompare` 'b'
+
+    -- Where
     print $ densityTell'' (100 :: Float) 50
     print $ densityTell''' (100 :: Float) 50
     print $ densityTell'''' (100 :: Float) 50
     print $ initials "Rafael" "Ritter"
     print $ calcDensities [(100 :: Float, 50), (200, 25)]
+
+    -- Let
     print $ cylinder (10 :: Float) 20
     print $ 4 * (let a = 9 in a + 1) + (2 :: Int)
     print $ let square (x :: Int) = x * x in (square 5, square 3, square 2)
@@ -171,6 +188,8 @@ main = do
     let zoot (x :: Int) y z = x * y + z
     print $ zoot 3 9 2
     let boot (x :: Int) y z = x * y + z in print $ boot 3 4 2
+
+    -- Case expressions
     print $ head'' "Hello"
     print $ head''' "Hello"
     print $ map describeList ["", "a", "abc"]
