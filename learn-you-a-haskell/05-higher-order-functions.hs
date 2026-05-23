@@ -14,4 +14,4 @@
 
 main :: IO ()
 main = do
-    print ""
+    print $ (max 4) (5 :: Int)
