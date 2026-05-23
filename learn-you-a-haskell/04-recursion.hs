@@ -49,4 +49,4 @@ main = do
     print $ reverse' "abc"
     print $ take' (3 :: Int) $ repeat' "abc"
     print $ zip' "abc" [True, False]
-    print $ elem' 'b' "abc"
+    print $ 'b' `elem'` "abc"
