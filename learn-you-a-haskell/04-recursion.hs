@@ -29,6 +29,11 @@ reverse' (x:xs) = reverse' xs ++ [x]
 repeat' :: a -> [a]
 repeat' x = x:repeat' x
 
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y):zip' xs ys
+
 main :: IO ()
 main = do
     print $ maximum' ([1,2,3,4,50,6,70,8,9,10] :: [Int])
@@ -37,3 +42,4 @@ main = do
     print $ take' (3 :: Int) "abcdef"
     print $ reverse' "abc"
     print $ take' (3 :: Int) $ repeat' "abc"
+    print $ zip' "abc" [True, False]
