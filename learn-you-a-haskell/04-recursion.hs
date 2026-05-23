@@ -34,6 +34,12 @@ zip' _ [] = []
 zip' [] _ = []
 zip' (x:xs) (y:ys) = (x,y):zip' xs ys
 
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' _ [] = False
+elem' a (x:xs)
+    | a == x    = True
+    | otherwise = a `elem'` xs
+
 main :: IO ()
 main = do
     print $ maximum' ([1,2,3,4,50,6,70,8,9,10] :: [Int])
@@ -43,3 +49,4 @@ main = do
     print $ reverse' "abc"
     print $ take' (3 :: Int) $ repeat' "abc"
     print $ zip' "abc" [True, False]
+    print $ elem' 'b' "abc"
