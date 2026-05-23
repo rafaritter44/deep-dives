@@ -40,6 +40,13 @@ elem' a (x:xs)
     | a == x    = True
     | otherwise = a `elem'` xs
 
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+    let smallerSorted = quicksort [a | a <- xs, a <= x]
+        biggerSorted  = quicksort [a | a <- xs, a > x]
+    in  smallerSorted ++ [x] ++ biggerSorted
+
 main :: IO ()
 main = do
     print $ maximum' ([1,2,3,4,50,6,70,8,9,10] :: [Int])
@@ -50,3 +57,4 @@ main = do
     print $ take' (3 :: Int) $ repeat' "abc"
     print $ zip' "abc" [True, False]
     print $ 'b' `elem'` "abc"
+    print $ quicksort "efadbc"
