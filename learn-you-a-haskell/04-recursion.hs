@@ -26,6 +26,9 @@ reverse' :: [a] -> [a]
 reverse' [] = []
 reverse' (x:xs) = reverse' xs ++ [x]
 
+repeat' :: a -> [a]
+repeat' x = x:repeat' x
+
 main :: IO ()
 main = do
     print $ maximum' ([1,2,3,4,50,6,70,8,9,10] :: [Int])
@@ -33,3 +36,4 @@ main = do
     print $ replicate' (10 :: Int) "abc"
     print $ take' (3 :: Int) "abcdef"
     print $ reverse' "abc"
+    print $ take' (3 :: Int) $ repeat' "abc"
