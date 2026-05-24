@@ -18,6 +18,9 @@ compareWithHundred' = compare 100
 divideByTen :: (Floating a) => a -> a
 divideByTen = (/10)
 
+isUpperAlphanum :: Char -> Bool
+isUpperAlphanum = (`elem` ['A'..'Z'])
+
 -- Higher-order functions
 
 -- Maps and filters
@@ -39,6 +42,7 @@ main = do
     print $ compareWithHundred (99 :: Int)
     print $ compareWithHundred' (99 :: Int)
     print $ divideByTen (200 :: Float)
+    print $ isUpperAlphanum 'R'
 
     -- Higher-order functions
 
