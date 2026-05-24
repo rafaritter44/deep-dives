@@ -12,6 +12,9 @@ multWithEighteen = multTwoWithNine 2
 compareWithHundred :: (Num a, Ord a) => a -> Ordering
 compareWithHundred x = compare 100 x
 
+compareWithHundred' :: (Num a, Ord a) => a -> Ordering
+compareWithHundred' = compare 100
+
 -- Higher-order functions
 
 -- Maps and filters
@@ -31,6 +34,7 @@ main = do
     print $ multTwoWithNine 2 3
     print $ multWithEighteen 10
     print $ compareWithHundred (99 :: Int)
+    print $ compareWithHundred' (99 :: Int)
 
     -- Higher-order functions
 
