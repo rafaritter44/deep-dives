@@ -15,6 +15,9 @@ compareWithHundred x = compare 100 x
 compareWithHundred' :: (Num a, Ord a) => a -> Ordering
 compareWithHundred' = compare 100
 
+divideByTen :: (Floating a) => a -> a
+divideByTen = (/10)
+
 -- Higher-order functions
 
 -- Maps and filters
@@ -35,6 +38,7 @@ main = do
     print $ multWithEighteen 10
     print $ compareWithHundred (99 :: Int)
     print $ compareWithHundred' (99 :: Int)
+    print $ divideByTen (200 :: Float)
 
     -- Higher-order functions
 
