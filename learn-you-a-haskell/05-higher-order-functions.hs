@@ -49,6 +49,10 @@ main = do
 
     -- Higher-order functions
     print $ applyTwice (+3) (10 :: Int)
+    print $ applyTwice (++ " HAHA") "HEY"
+    print $ applyTwice ("HAHA " ++) "HEY"
+    print $ applyTwice (multThree 2 2) (9 :: Int)
+    print $ applyTwice (3:) [1 :: Int]
 
     -- Maps and filters
 
