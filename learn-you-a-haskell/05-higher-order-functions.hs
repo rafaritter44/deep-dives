@@ -23,6 +23,9 @@ isUpperAlphanum = (`elem` ['A'..'Z'])
 
 -- Higher-order functions
 
+applyTwice :: (a -> a) -> a -> a
+applyTwice f x = f (f x)
+
 -- Maps and filters
 
 -- Lambdas
@@ -45,6 +48,7 @@ main = do
     print $ isUpperAlphanum 'R'
 
     -- Higher-order functions
+    print $ applyTwice (+3) (10 :: Int)
 
     -- Maps and filters
 
