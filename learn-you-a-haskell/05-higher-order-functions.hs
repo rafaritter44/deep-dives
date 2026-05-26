@@ -72,6 +72,8 @@ main = do
     print $ zipWith' (zipWith' (*)) [[1,2,3],[3,5,6],[2,3,4]] ([[3,2,2],[3,4,5],[5,4,3]] :: [[Int]])
     print $ flip' (++) "a" "b"
     print $ flip'' (++) "a" "b"
+    print $ flip' zip ([1,2,3,4,5] :: [Int]) "hello"
+    print $ zipWith (flip' div) ([2,2..] :: [Int]) [10,8,6,4,2]
 
     -- Maps and filters
 
