@@ -40,6 +40,10 @@ flip'' f y x = f x y
 
 -- Maps and filters
 
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = f x : map' f xs
+
 -- Lambdas
 
 -- Folds
@@ -76,6 +80,11 @@ main = do
     print $ zipWith (flip' div) ([2,2..] :: [Int]) [10,8,6,4,2]
 
     -- Maps and filters
+    print $ map' (+3) ([1,5,3,1,6] :: [Int])
+    print $ map' (++ "!") ["abc", "def", "ghi"]
+    print $ map' (replicate 3) ([3..6] :: [Int])
+    print $ map' (map' (^(2 :: Int))) ([[1,2],[3,4,5,6],[7,8]] :: [[Int]])
+    print $ map' fst ([(1,2),(3,5),(6,3),(2,6),(2,5)] :: [(Int, Int)])
 
     -- Lambdas
 
