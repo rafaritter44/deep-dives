@@ -44,6 +44,12 @@ map' :: (a -> b) -> [a] -> [b]
 map' _ [] = []
 map' f (x:xs) = f x : map' f xs
 
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' p (x:xs)
+    | p x       = x : filter' p xs
+    | otherwise = filter' p xs
+
 -- Lambdas
 
 -- Folds
@@ -85,6 +91,12 @@ main = do
     print $ map' (replicate 3) ([3..6] :: [Int])
     print $ map' (map' (^(2 :: Int))) ([[1,2],[3,4,5,6],[7,8]] :: [[Int]])
     print $ map' fst ([(1,2),(3,5),(6,3),(2,6),(2,5)] :: [(Int, Int)])
+    print $ filter' (>3) ([1,5,3,2,1,6,4,3,2,1] :: [Int])
+    print $ filter' (==3) ([1,2,3,4,5] :: [Int])
+    print $ filter' even ([1..10] :: [Int])
+    print $ let notNull x = not (null x) in filter' notNull ([[1,2,3],[],[3,4,5],[2,2],[],[],[]] :: [[Int]])
+    print $ filter' (`elem` ['a'..'z']) "u LaUgH aT mE BeCaUsE I aM diFfeRent"
+    print $ filter' (`elem` ['A'..'Z']) "i Laugh At you Because u R All The Same"
 
     -- Lambdas
 
