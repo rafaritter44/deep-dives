@@ -95,8 +95,8 @@ main = do
     print $ filter' (==3) ([1,2,3,4,5] :: [Int])
     print $ filter' even ([1..10] :: [Int])
     print $ let notNull x = not (null x) in filter' notNull ([[1,2,3],[],[3,4,5],[2,2],[],[],[]] :: [[Int]])
-    print $ filter' (`elem` ['a'..'z']) "u LaUgH aT mE BeCaUsE I aM diFfeRent"
-    print $ filter' (`elem` ['A'..'Z']) "i Laugh At you Because u R All The Same"
+    print $ filter' (`elem` ['a'..'z']) "Hello, World!"
+    print $ filter' (`elem` ['A'..'Z']) "Hello, World!"
 
     -- Lambdas
 
