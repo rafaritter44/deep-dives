@@ -88,7 +88,7 @@ main = do
     -- Maps and filters
     print $ map' (+3) ([1,5,3,1,6] :: [Int])
     print $ map' (++ "!") ["abc", "def", "ghi"]
-    print $ map' (replicate 3) ([3..6] :: [Int])
+    print $ map' (replicate 3) ([3..5] :: [Int])
     print $ map' (map' (^(2 :: Int))) ([[1,2],[3,4,5,6],[7,8]] :: [[Int]])
     print $ map' fst ([(1,2),(3,5),(6,3),(2,6),(2,5)] :: [(Int, Int)])
     print $ filter' (>3) ([1,5,3,2,1,6,4,3,2,1] :: [Int])
