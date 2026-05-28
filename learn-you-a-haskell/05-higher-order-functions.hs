@@ -50,6 +50,13 @@ filter' p (x:xs)
     | p x       = x : filter' p xs
     | otherwise = filter' p xs
 
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+    let smallerSorted = quicksort (filter' (<=x) xs)
+        biggerSorted = quicksort (filter' (>x) xs)
+    in  smallerSorted ++ [x] ++ biggerSorted
+
 -- Lambdas
 
 -- Folds
@@ -97,6 +104,7 @@ main = do
     print $ let notNull x = not (null x) in filter' notNull ([[1,2,3],[],[3,4,5],[2,2],[],[],[]] :: [[Int]])
     print $ filter' (`elem` ['a'..'z']) "Hello, World!"
     print $ filter' (`elem` ['A'..'Z']) "Hello, World!"
+    print $ quicksort "efadbc"
 
     -- Lambdas
 
