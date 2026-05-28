@@ -125,6 +125,8 @@ main = do
     print (sum (takeWhile (<10000) [n^(2 :: Int) | n <- [1..], odd (n^(2 :: Int))]) :: Int)
     print (chain 10, chain 30)
     print numLongChains
+    let listOfFuncs = map (*) [0..]
+    print $ (listOfFuncs !! 4) (5 :: Int)
 
     -- Lambdas
 
