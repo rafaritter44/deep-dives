@@ -57,6 +57,10 @@ quicksort (x:xs) =
         biggerSorted = quicksort (filter' (>x) xs)
     in  smallerSorted ++ [x] ++ biggerSorted
 
+largestDivisible :: (Integral a) => a
+largestDivisible = head (filter p [100000,99999..])
+    where p x = x `mod` 3829 == 0
+
 -- Lambdas
 
 -- Folds
@@ -105,6 +109,7 @@ main = do
     print $ filter' (`elem` ['a'..'z']) "Hello, World!"
     print $ filter' (`elem` ['A'..'Z']) "Hello, World!"
     print $ quicksort "efadbc"
+    print (largestDivisible :: Int)
 
     -- Lambdas
 
