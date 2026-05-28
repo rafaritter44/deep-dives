@@ -112,6 +112,7 @@ main = do
     print (largestDivisible :: Int)
     print $ takeWhile (/=' ') "elephants know how to party"
     print (sum (takeWhile (<10000) (filter odd (map (^(2 :: Int)) [1..]))) :: Int)
+    print (sum (takeWhile (<10000) [n^(2 :: Int) | n <- [1..], odd (n^(2 :: Int))]) :: Int)
 
     -- Lambdas
 
