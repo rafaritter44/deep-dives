@@ -111,6 +111,7 @@ main = do
     print $ quicksort "efadbc"
     print (largestDivisible :: Int)
     print $ takeWhile (/=' ') "elephants know how to party"
+    print (sum (takeWhile (<10000) (filter odd (map (^(2 :: Int)) [1..]))) :: Int)
 
     -- Lambdas
 
