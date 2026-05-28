@@ -110,6 +110,7 @@ main = do
     print $ filter' (`elem` ['A'..'Z']) "Hello, World!"
     print $ quicksort "efadbc"
     print (largestDivisible :: Int)
+    print $ takeWhile (/=' ') "elephants know how to party"
 
     -- Lambdas
 
