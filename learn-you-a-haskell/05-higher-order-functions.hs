@@ -68,7 +68,7 @@ chain n
     | otherwise = n:chain (n*3 + 1)
 
 numLongChains :: Int
-numLongChains = length (filter isLong (map chain [1..100]))
+numLongChains = length (filter isLong (map chain ([1..100] :: [Int])))
     where isLong xs = length xs > 15
 
 -- Lambdas
@@ -123,7 +123,7 @@ main = do
     print $ takeWhile (/=' ') "elephants know how to party"
     print (sum (takeWhile (<10000) (filter odd (map (^(2 :: Int)) [1..]))) :: Int)
     print (sum (takeWhile (<10000) [n^(2 :: Int) | n <- [1..], odd (n^(2 :: Int))]) :: Int)
-    print (chain 10, chain 30)
+    print ((chain 10, chain 30) :: ([Int], [Int]))
     print numLongChains
     let listOfFuncs = map (*) [0..]
     print $ (listOfFuncs !! 4) (5 :: Int)
