@@ -82,6 +82,9 @@ addThree x y z = x + y + z
 addThree' :: (Num a) => a -> a -> a -> a
 addThree' = \x -> \y -> \z -> x + y + z
 
+flip''' :: (a -> b -> c) -> b -> a -> c
+flip''' f = \x y -> f y x
+
 -- Folds
 
 -- Function application with $
@@ -143,6 +146,7 @@ main = do
     print (map (\(a,b) -> a + b) [(1,2),(3,5),(6,3),(2,6),(2,5)] :: [Int])
     print (addThree 1 2 3 :: Int)
     print (addThree' 1 2 3 :: Int)
+    print $ flip''' (++) "a" "b"
 
     -- Folds
 
