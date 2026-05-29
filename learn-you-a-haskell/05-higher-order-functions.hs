@@ -76,6 +76,9 @@ numLongChains = length (filter isLong (map chain ([1..100] :: [Int])))
 numLongChains' :: Int
 numLongChains' = length (filter (\xs -> length xs > 15) (map chain ([1..100] :: [Int])))
 
+addThree :: (Num a) => a -> a -> a -> a
+addThree x y z = x + y + z
+
 -- Folds
 
 -- Function application with $
@@ -135,6 +138,7 @@ main = do
     print numLongChains'
     print (zipWith (\a b -> (a * 30 + 3) / b) [5,4,3,2,1] [1,2,3,4,5] :: [Float])
     print (map (\(a,b) -> a + b) [(1,2),(3,5),(6,3),(2,6),(2,5)] :: [Int])
+    print (addThree 1 2 3 :: Int)
 
     -- Folds
 
