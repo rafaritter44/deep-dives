@@ -73,6 +73,9 @@ numLongChains = length (filter isLong (map chain ([1..100] :: [Int])))
 
 -- Lambdas
 
+numLongChains' :: Int
+numLongChains' = length (filter (\xs -> length xs > 15) (map chain ([1..100] :: [Int])))
+
 -- Folds
 
 -- Function application with $
@@ -129,6 +132,7 @@ main = do
     print $ (listOfFuncs !! 4) (5 :: Int)
 
     -- Lambdas
+    print numLongChains'
 
     -- Folds
 
