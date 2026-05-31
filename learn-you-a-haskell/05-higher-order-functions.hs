@@ -96,6 +96,9 @@ sum'' = foldl (+) 0
 elem' :: (Eq a) => a -> [a] -> Bool
 elem' y = foldl (\acc x -> (x == y) || acc) False
 
+map'' :: (a -> b) -> [a] -> [b]
+map'' f = foldr (\x acc -> f x : acc) []
+
 -- Function application with $
 
 -- Function composition
@@ -161,6 +164,7 @@ main = do
     print (sum' [3,5,2,1] :: Int)
     print (sum'' [3,5,2,1] :: Int)
     print $ 'b' `elem'` "abc"
+    print $ map'' (+3) ([1,5,3,1,6] :: [Int])
 
     -- Function application with $
 
