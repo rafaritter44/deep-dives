@@ -87,6 +87,9 @@ flip''' f = \x y -> f y x
 
 -- Folds
 
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
 -- Function application with $
 
 -- Function composition
@@ -149,6 +152,7 @@ main = do
     print $ flip''' (++) "a" "b"
 
     -- Folds
+    print (sum' [3,5,2,1] :: Int)
 
     -- Function application with $
 
