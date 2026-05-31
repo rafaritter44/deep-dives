@@ -93,6 +93,9 @@ sum' xs = foldl (\acc x -> acc + x) 0 xs
 sum'' :: (Num a) => [a] -> a
 sum'' = foldl (+) 0
 
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
+
 -- Function application with $
 
 -- Function composition
@@ -157,6 +160,7 @@ main = do
     -- Folds
     print (sum' [3,5,2,1] :: Int)
     print (sum'' [3,5,2,1] :: Int)
+    print $ 'b' `elem'` "abc"
 
     -- Function application with $
 
