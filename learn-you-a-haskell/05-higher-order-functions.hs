@@ -99,6 +99,9 @@ elem' y = foldl (\acc x -> (x == y) || acc) False
 map'' :: (a -> b) -> [a] -> [b]
 map'' f = foldr (\x acc -> f x : acc) []
 
+containsThree :: [Int] -> Bool
+containsThree = foldr (\x rest -> (x == 3) || rest) False
+
 -- Function application with $
 
 -- Function composition
@@ -165,6 +168,7 @@ main = do
     print (sum'' [3,5,2,1] :: Int)
     print $ 'b' `elem'` "abc"
     print $ map'' (+3) ([1,5,3,1,6] :: [Int])
+    print $ containsThree [1..]
 
     -- Function application with $
 
