@@ -94,7 +94,7 @@ sum'' :: (Num a) => [a] -> a
 sum'' = foldl (+) 0
 
 elem' :: (Eq a) => a -> [a] -> Bool
-elem' y = foldl (\acc x -> if x == y then True else acc) False
+elem' y = foldl (\acc x -> (x == y) || acc) False
 
 -- Function application with $
 
