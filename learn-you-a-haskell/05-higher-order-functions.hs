@@ -201,6 +201,8 @@ main = do
     print (scanl1 max [3,4,5,3,7,9,2,1] :: [Int])
     print (scanl (flip (:)) [] [3,2,1] :: [[Int]])
     print sqrtSums
+    print (sum (map sqrt [1..131]) :: Float)
+    print (sum (map sqrt [1..130]) :: Float)
 
     -- Function application with $
 
