@@ -102,6 +102,24 @@ map'' f = foldr (\x acc -> f x : acc) []
 containsThree :: [Int] -> Bool
 containsThree = foldr (\x rest -> (x == 3) || rest) False
 
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldr1 max
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
+
+product' :: (Num a) => [a] -> a
+product' = foldr1 (*)
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
+
+head' :: [a] -> a
+head' = foldr1 const
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+
 -- Function application with $
 
 -- Function composition
@@ -169,6 +187,12 @@ main = do
     print $ 'b' `elem'` "abc"
     print $ map'' (+3) ([1,5,3,1,6] :: [Int])
     print $ containsThree [1..]
+    print $ maximum' "abczdef"
+    print $ reverse' "hello"
+    print (product' [1..10] :: Int)
+    print $ filter'' even ([1..10] :: [Int])
+    print $ head' "abcdef"
+    print $ last' "abcdef"
 
     -- Function application with $
 
