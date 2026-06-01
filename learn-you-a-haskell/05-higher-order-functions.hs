@@ -120,6 +120,9 @@ head' = foldr1 const
 last' :: [a] -> a
 last' = foldl1 (\_ x -> x)
 
+sqrtSums :: Int
+sqrtSums = length (takeWhile (< (1000 :: Float)) (scanl1 (+) (map sqrt [1..]))) + 1
+
 -- Function application with $
 
 -- Function composition
@@ -197,6 +200,7 @@ main = do
     print (scanr (+) 0 [3,5,2,1] :: [Int])
     print (scanl1 max [3,4,5,3,7,9,2,1] :: [Int])
     print (scanl (flip (:)) [] [3,2,1] :: [[Int]])
+    print sqrtSums
 
     -- Function application with $
 
