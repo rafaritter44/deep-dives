@@ -193,6 +193,10 @@ main = do
     print $ filter'' even ([1..10] :: [Int])
     print $ head' "abcdef"
     print $ last' "abcdef"
+    print (scanl (+) 0 [3,5,2,1] :: [Int])
+    print (scanr (+) 0 [3,5,2,1] :: [Int])
+    print (scanl1 max [3,4,5,3,7,9,2,1] :: [Int])
+    print (scanl (flip (:)) [] [3,2,1] :: [[Int]])
 
     -- Function application with $
 
