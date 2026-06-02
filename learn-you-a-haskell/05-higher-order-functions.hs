@@ -213,5 +213,6 @@ main = do
     print (sum $ map sqrt [1..130] :: Float)
     print (sqrt $ 3 + 4 + 9 :: Float)
     print (sum $ filter (> 10) $ map (*2) [2..10] :: Int)
+    print (map ($ 3) [(4+), (10*), (^ (2 :: Int)), sqrt] :: [Float])
 
     -- Function composition
