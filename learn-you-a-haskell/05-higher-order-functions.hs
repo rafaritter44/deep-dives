@@ -211,5 +211,6 @@ main = do
 
     -- Function application with $
     print (sum $ map sqrt [1..130] :: Float)
+    print (sqrt $ 3 + 4 + 9 :: Float)
 
     -- Function composition
