@@ -125,6 +125,11 @@ sqrtSums = length (takeWhile (< (1000 :: Float)) (scanl1 (+) (map sqrt [1..]))) 
 
 -- Function application with $
 
+{-
+($) :: (a -> b) -> a -> b
+f $ x = f x
+-}
+
 -- Function composition
 
 main :: IO ()
@@ -205,5 +210,6 @@ main = do
     print (sum (map sqrt [1..130]) :: Float)
 
     -- Function application with $
+    print (sum $ map sqrt [1..130] :: Float)
 
     -- Function composition
