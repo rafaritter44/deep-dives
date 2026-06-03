@@ -222,3 +222,4 @@ main = do
 
     -- Function composition
     print (negate . (*3) $ 10 :: Int)
+    print (map (\x -> negate (abs x)) [5,-3,-6,7,-3,2,-19,24] :: [Int])
