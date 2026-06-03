@@ -144,10 +144,10 @@ fn' :: Float -> Int
 fn' = ceiling . negate . tan . cos . max 50
 
 oddSquareSum :: Integer
-oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^2) [1..])))
+oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^ (2 :: Int)) [1..])))
 
 oddSquareSum' :: Integer
-oddSquareSum' = sum . takeWhile (<10000) . filter odd . map (^2) $ [1..]
+oddSquareSum' = sum . takeWhile (<10000) . filter odd . map (^ (2 :: Int)) $ [1..]
 
 main :: IO ()
 main = do
