@@ -132,6 +132,11 @@ f $ x = f x
 
 -- Function composition
 
+{-
+(.) :: (b -> c) -> (a -> b) -> a -> c
+f . g = \x -> f (g x)
+-}
+
 main :: IO ()
 main = do
     -- Curried functions
@@ -216,3 +221,4 @@ main = do
     print (map ($ 3) [(4+), (10*), (^ (2 :: Int)), sqrt] :: [Float])
 
     -- Function composition
+    print (negate . (*3) $ 10 :: Int)
