@@ -229,3 +229,5 @@ main = do
     print (sum (replicate 5 (max 6.7 8.9)) :: Float)
     print ((sum . replicate 5 . max 6.7) 8.9 :: Float)
     print (sum . replicate 5 . max 6.7 $ 8.9 :: Float)
+    print (replicate 100 (product (map (*3) (zipWith max [1,2,3,4,5] [4,5,6,7,8]))) :: [Int])
+    print (replicate 100 . product . map (*3) . zipWith max [1,2,3,4,5] $ [4,5,6,7,8] :: [Int])
