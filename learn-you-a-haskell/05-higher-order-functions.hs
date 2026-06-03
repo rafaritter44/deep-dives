@@ -143,6 +143,12 @@ fn x = ceiling (negate (tan (cos (max 50 x))))
 fn' :: Float -> Int
 fn' = ceiling . negate . tan . cos . max 50
 
+oddSquareSum :: Integer
+oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^2) [1..])))
+
+oddSquareSum' :: Integer
+oddSquareSum' = sum . takeWhile (<10000) . filter odd . map (^2) $ [1..]
+
 main :: IO ()
 main = do
     -- Curried functions
@@ -239,3 +245,5 @@ main = do
     print (replicate 100 . product . map (*3) . zipWith max [1,2,3,4,5] $ [4,5,6,7,8] :: [Int])
     print $ fn 144000
     print $ fn' 144000
+    print oddSquareSum
+    print oddSquareSum'
