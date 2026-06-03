@@ -226,3 +226,6 @@ main = do
     print (map (negate . abs) [5,-3,-6,7,-3,2,-19,24] :: [Int])
     print (map (\xs -> negate (sum (tail xs))) [[1..5],[3..6],[1..7]] :: [Int])
     print (map (negate . sum . tail) [[1..5],[3..6],[1..7]] :: [Int])
+    print (sum (replicate 5 (max 6.7 8.9)) :: Float)
+    print ((sum . replicate 5 . max 6.7) 8.9 :: Float)
+    print (sum . replicate 5 . max 6.7 $ 8.9 :: Float)
