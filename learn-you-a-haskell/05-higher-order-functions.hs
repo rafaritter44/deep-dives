@@ -137,6 +137,9 @@ f $ x = f x
 f . g = \x -> f (g x)
 -}
 
+fn :: Float -> Int
+fn = ceiling . negate . tan . cos . max 50
+
 main :: IO ()
 main = do
     -- Curried functions
@@ -231,3 +234,4 @@ main = do
     print (sum . replicate 5 . max 6.7 $ 8.9 :: Float)
     print (replicate 100 (product (map (*3) (zipWith max [1,2,3,4,5] [4,5,6,7,8]))) :: [Int])
     print (replicate 100 . product . map (*3) . zipWith max [1,2,3,4,5] $ [4,5,6,7,8] :: [Int])
+    print $ fn 144000
