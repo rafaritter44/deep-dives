@@ -149,6 +149,12 @@ oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^ (2 :: Int)) [1..])))
 oddSquareSum' :: Integer
 oddSquareSum' = sum . takeWhile (<10000) . filter odd . map (^ (2 :: Int)) $ [1..]
 
+oddSquareSum'' :: Integer
+oddSquareSum'' =
+    let oddSquares = filter odd $ map (^ (2 :: Int)) [1..]
+        belowLimit = takeWhile (<10000) oddSquares
+    in  sum belowLimit
+
 main :: IO ()
 main = do
     -- Curried functions
@@ -247,3 +253,4 @@ main = do
     print $ fn' 144000
     print oddSquareSum
     print oddSquareSum'
+    print oddSquareSum''
