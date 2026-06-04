@@ -1,3 +1,8 @@
+import Data.List
+
+numUniques :: (Eq a) => [a] -> Int
+numUniques = length . nub
+
 main :: IO ()
 main = do
-    print "Hello, modules!"
+    print $ numUniques "aaabbbcccddd"
