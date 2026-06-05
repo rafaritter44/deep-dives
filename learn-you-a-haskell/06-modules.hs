@@ -16,3 +16,4 @@ main = do
     print $ Data.Map.filter (> "a") $ Data.Map.fromList intStrList
     print $ M.filter (> "a") $ M.fromList intStrList
     print $ intersperse '.' "Hello"
+    print $ intersperse (0 :: Int) [1..6]
