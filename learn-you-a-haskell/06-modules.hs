@@ -17,3 +17,4 @@ main = do
     print $ M.filter (> "a") $ M.fromList intStrList
     print $ intersperse '.' "Hello"
     print $ intersperse (0 :: Int) [1..6]
+    print $ intercalate " " ["hey", "there", "folks"]
