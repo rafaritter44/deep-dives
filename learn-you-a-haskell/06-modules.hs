@@ -20,3 +20,4 @@ main = do
     print $ intercalate " " ["hey", "there", "folks"]
     print $ intercalate ([0,0,0] :: [Int]) [[1,2,3],[4,5,6],[7,8,9]]
     print (transpose [[1,2,3],[4,5,6],[7,8,9]] :: [[Int]])
+    print $ transpose ["hey", "there", "folks"]
