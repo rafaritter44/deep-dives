@@ -25,3 +25,4 @@ main = do
     print $ concat ["foo","bar","car"]
     print (concat [[3,4,5],[2,3,4],[2,1,1]] :: [Int])
     print (concatMap (replicate 4) [1..3] :: [Int])
+    print $ and $ map (>4) ([5,6,7,8] :: [Int])
