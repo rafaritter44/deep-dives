@@ -27,3 +27,4 @@ main = do
     print (concatMap (replicate 4) [1..3] :: [Int])
     print $ and $ map (>4) ([5,6,7,8] :: [Int])
     print $ and $ map (==4) ([4,4,4,3,4] :: [Int])
+    print $ or $ map (==4) ([2,3,4,5,6,1] :: [Int])
