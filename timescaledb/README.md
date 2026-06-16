@@ -1,4 +1,4 @@
-# TimescaleDB
+# TimescaleDB (WIP)
 
 ## Load schema
 
