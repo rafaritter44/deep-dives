@@ -15,3 +15,9 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/list.sql
 ```
 
 You should see only `customer_us` and `customer_eu` in the query plan.
+
+## Hash Partitioning
+
+```
+psql "postgres://postgres:example@localhost/postgres" -f queries/hash.sql
+```

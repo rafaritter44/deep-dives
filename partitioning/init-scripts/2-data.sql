@@ -9,3 +9,5 @@ insert into customer (name, region)
 values ('Alice',   'US'),
        ('Bob',     'FR'),
        ('Charlie', 'JP');
+
+-- Hash Partitioning
