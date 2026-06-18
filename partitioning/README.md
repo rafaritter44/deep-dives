@@ -1,4 +1,4 @@
-# Partitioning (WIP)
+# Partitioning
 
 ## Range Partitioning
 
