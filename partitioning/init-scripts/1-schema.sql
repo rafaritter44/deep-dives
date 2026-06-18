@@ -6,7 +6,6 @@ create table "order" (
     status      text           not null,
     created_at  timestamptz    not null
 ) partition by range (created_at);
-create index order_id_idx on "order" (id);
 create index order_customer_id_idx on "order" (customer_id);
 create index order_created_at_idx on "order" (created_at);
 create table order_2026_01 partition of "order" for values from ('2026-01-01') to ('2026-02-01');
@@ -19,7 +18,6 @@ create table customer (
     name   text not null,
     region text not null
 ) partition by list (region);
-create index customer_region_idx on customer (region);
 create table customer_us   partition of customer for values in ('US', 'CA');
 create table customer_eu   partition of customer for values in ('DE', 'FR', 'GB', 'NL');
 create table customer_apac partition of customer for values in ('AU', 'JP', 'SG', 'IN');
@@ -30,7 +28,7 @@ create table event (
     user_id     bigint      not null,
     event_type  text        not null,
     payload     jsonb       not null,
-    occurred_at timestamptz not null
+    occurred_at timestamptz not null default now()
 ) partition by hash (user_id);
 create table event_p0 partition of event for values with (modulus 4, remainder 0);
 create table event_p1 partition of event for values with (modulus 4, remainder 1);

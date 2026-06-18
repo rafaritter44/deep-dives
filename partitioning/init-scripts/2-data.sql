@@ -11,3 +11,9 @@ values ('Alice',   'US'),
        ('Charlie', 'JP');
 
 -- Hash Partitioning
+insert into event (user_id, event_type, payload)
+values (100, 'user.created', '{"email":"alice@example.com"}'),
+       (101, 'user.created', '{"email":"bob@example.com"}'),
+       (102, 'user.created', '{"email":"charlie@example.com"}'),
+       (103, 'user.login', '{"device_type":"desktop","browser":"chrome"}'),
+       (104, 'user.login', '{"device_type":"mobile","browser":"safari"}');
