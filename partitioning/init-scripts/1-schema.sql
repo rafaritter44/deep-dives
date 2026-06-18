@@ -11,6 +11,7 @@ create index order_created_at_idx on "order" (created_at);
 create table order_2026_01 partition of "order" for values from ('2026-01-01') to ('2026-02-01');
 create table order_2026_02 partition of "order" for values from ('2026-02-01') to ('2026-03-01');
 create table order_2026_03 partition of "order" for values from ('2026-03-01') to ('2026-04-01');
+create table order_default partition of "order" default;
 
 -- List Partitioning
 create table customer (
