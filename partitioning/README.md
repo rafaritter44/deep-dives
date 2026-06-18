@@ -21,3 +21,5 @@ You should see only `customer_us` and `customer_eu` in the query plan.
 ```
 psql "postgres://postgres:example@localhost/postgres" -f queries/hash.sql
 ```
+
+You should see only a single partition in the query plan.
