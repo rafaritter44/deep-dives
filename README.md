@@ -37,12 +37,10 @@
 1. Unlogged Tables
 1. Skip Locked
 1. pgbench
-1. TABLE_DEE and TABLE_DUM
 
 ### Extensions
 
 1. pg_textsearch
-1. PostgREST
 1. PostGIS
 1. postgres_fdw
 1. pg_cron
@@ -54,7 +52,12 @@
 
 ### External Tools
 
+1. PostgREST
 1. PgDog
 1. PgBouncer
 1. Atlas
 1. pgschema
+
+### Relational Theory
+
+1. TABLE_DEE and TABLE_DUM
