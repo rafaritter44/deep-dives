@@ -2,19 +2,19 @@
 
 ## In the WHERE clause
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/where.sql
 ```
 
 ## In the SELECT clause
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/select.sql
 ```
 
 ## In the FROM clause
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/from.sql
 ```
 
@@ -22,43 +22,43 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/from.sql
 
 ### In the WHERE clause
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-where.sql
 ```
 
 ### In the SELECT clause
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-select.sql
 ```
 
 ### In the FROM clause (LATERAL)
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/correlated-from.sql
 ```
 
 ### EXISTS (semi-join)
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/exists.sql
 ```
 
 ### NOT EXISTS (anti-join)
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/not-exists.sql
 ```
 
 ## IN (semi-join)
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/in.sql
 ```
 
 ## NOT IN (anti-join)
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/not-in.sql
 ```
 
@@ -66,11 +66,11 @@ Note that if the left-hand expression yields null, or if there are no equal righ
 
 ## ANY/SOME
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/any.sql
 ```
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/some.sql
 ```
 
@@ -78,7 +78,7 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/some.sql
 
 ## ALL
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/all.sql
 ```
 

@@ -2,7 +2,7 @@
 
 ## COALESCE function
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/coalesce.sql
 ```
 
@@ -12,6 +12,6 @@ When a name is not specified for the coalesce column, Postgres uses "coalesce" a
 
 To specify a column name, add an alias after the coalesce function.
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/alias.sql
 ```

@@ -2,8 +2,12 @@
 
 ## Load schema
 
-`psql "postgres://postgres:password@localhost/postgres" -f sql/schema.sql`
+```shell
+psql "postgres://postgres:password@localhost/postgres" -f sql/schema.sql
+```
 
 ## Load data
 
-`psql "postgres://postgres:password@localhost/postgres" -f sql/data.sql`
+```shell
+psql "postgres://postgres:password@localhost/postgres" -f sql/data.sql
+```

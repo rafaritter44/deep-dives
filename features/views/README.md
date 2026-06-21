@@ -2,19 +2,19 @@
 
 ## Query table v1
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/query-table-v1.sql
 ```
 
 ## Query view v1
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/query-view-v1.sql
 ```
 
 ## Rename column
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/rename-column.sql
 ```
 
@@ -24,7 +24,7 @@ Also notice that even though the column name in the base table has changed, the 
 
 ## Rename table
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/rename-table.sql
 ```
 
@@ -34,13 +34,13 @@ The same applies to renaming the base table. Queries to the view are not affecte
 
 Queries to the base table, however, are affected, of course.
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/query-table-v2.sql
 ```
 
 ## Rename view
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/rename-view.sql
 ```
 
@@ -48,7 +48,7 @@ And renaming a view will only affect queries to the view; not to the base table,
 
 ## Query view v2
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/query-view-v2.sql
 ```
 
@@ -56,7 +56,7 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/query-view-v2.s
 
 The following DDL script will fail because it tries to drop a column that is used by the view.
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/drop-column.sql
 ```
 
@@ -64,6 +64,6 @@ psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/drop-column
 
 You would have to force it by using cascade, thus dropping the view as a result.
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f ddl-scripts/drop-column-cascade.sql
 ```

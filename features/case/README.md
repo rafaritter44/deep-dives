@@ -2,13 +2,13 @@
 
 ## CASE expression
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/case.sql
 ```
 
 ## Switch-like CASE expression
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/switch.sql
 ```
 
@@ -18,6 +18,6 @@ When a name is not specified for the case column, Postgres uses "case" as the co
 
 To specify a column name, add an alias after the END keyword.
 
-```
+```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/alias.sql
 ```
