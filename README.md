@@ -52,7 +52,6 @@
 
 ### External Tools
 
-1. PostgREST
 1. PgDog
 1. PgBouncer
 1. Atlas
