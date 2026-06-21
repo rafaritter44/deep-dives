@@ -2,8 +2,12 @@
 
 ## Running
 
-`$ dotnet fsi hello.fsx`
+```shell
+dotnet fsi hello.fsx
+```
 
 or
 
-`$ dotnet run`
+```shell
+dotnet run
+```

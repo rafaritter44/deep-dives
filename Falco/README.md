@@ -1,9 +1,9 @@
 # Falco POC
 
-```bash
+```shell
 curl -X POST http://localhost:8080/json -d '{"First":"Rafael","Last":"Ritter"}'
 ```
 
-```bash
+```shell
 curl -X POST http://localhost:8080/jsonOptions -d '{"First":"Rafael","Last":"Ritter"}'
 ```

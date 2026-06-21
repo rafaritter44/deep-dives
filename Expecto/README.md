@@ -4,7 +4,7 @@
 
 ### Example
 
-```
+```shell
 dotnet run --filter "All tests.A test list.A test with"
 ```
 
