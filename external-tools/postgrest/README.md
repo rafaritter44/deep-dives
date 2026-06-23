@@ -9,7 +9,7 @@ curl http://localhost:3000/todo
 ## Unauthorized POST
 
 ```shell
-curl http://localhost:3000/todo -X POST \
+curl http://localhost:3000/todo -X POST  \
      -H "Content-Type: application/json" \
      -d '{"task": "do bad thing"}'
 ```
@@ -25,7 +25,7 @@ TOKEN=$(./sign-token.sh)
 ## POST
 
 ```shell
-curl http://localhost:3000/todo -X POST \
+curl http://localhost:3000/todo -X POST  \
      -H "Authorization: Bearer $TOKEN"   \
      -H "Content-Type: application/json" \
      -d '{"task": "learn how to auth"}'
@@ -35,8 +35,8 @@ curl http://localhost:3000/todo -X POST \
 
 ```shell
 curl http://localhost:3000/todo -X PATCH \
-     -H "Authorization: Bearer $TOKEN"    \
-     -H "Content-Type: application/json"  \
+     -H "Authorization: Bearer $TOKEN"   \
+     -H "Content-Type: application/json" \
      -d '{"done": true}'
 ```
 
@@ -49,8 +49,8 @@ ATTACKER_TOKEN=$(./sign-attacker-token.sh)
 ## Forbidden PATCH
 
 ```shell
-curl http://localhost:3000/todo -X PATCH      \
+curl http://localhost:3000/todo -X PATCH        \
      -H "Authorization: Bearer $ATTACKER_TOKEN" \
-     -H "Content-Type: application/json"       \
+     -H "Content-Type: application/json"        \
      -d '{"task": "AAAHHHH!", "done": false}'
 ```
