@@ -19,5 +19,6 @@ services:
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
       PGRST_JWT_SECRET: reallyreallyreallyreallyverysafe
+      PGRST_DB_PRE_REQUEST: auth.check_token
     depends_on:
       - db

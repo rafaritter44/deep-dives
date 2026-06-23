@@ -18,3 +18,18 @@ create role todo_user nologin;
 grant usage on schema api to todo_user;
 grant all on api.todo to todo_user;
 grant todo_user to authenticator;
+
+create schema auth;
+grant usage on schema auth to web_anon, todo_user;
+
+create or replace function auth.check_token() returns void
+  language plpgsql
+  as $$
+begin
+  if current_setting('request.jwt.claims', true)::json->>'email' =
+     'disgruntled@mycompany.com' then
+    raise insufficient_privilege
+      using hint = 'Nope, we are on to you';
+  end if;
+end
+$$;

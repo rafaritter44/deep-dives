@@ -39,3 +39,18 @@ curl http://localhost:3000/todo -X PATCH \
      -H "Content-Type: application/json"  \
      -d '{"done": true}'
 ```
+
+## Sign attacker token
+
+```shell
+ATTACKER_TOKEN=$(./sign-attacker-token.sh)
+```
+
+## Forbidden PATCH
+
+```shell
+curl http://localhost:3000/todo -X PATCH      \
+     -H "Authorization: Bearer $ATTACKER_TOKEN" \
+     -H "Content-Type: application/json"       \
+     -d '{"task": "AAAHHHH!", "done": false}'
+```
