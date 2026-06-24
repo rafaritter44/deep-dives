@@ -36,6 +36,37 @@ $$;
 
 create domain "text/html" as text;
 
+create or replace function api.sanitize_html(text) returns text as $$
+  select replace(replace(replace(replace(replace($1, '&', '&amp;'), '"', '&quot;'),'>', '&gt;'),'<', '&lt;'), '''', '&apos;')
+$$ language sql;
+
+create or replace function api.html_todo(api.todo) returns text as $$
+  select format($html$
+    <div>
+      <%2$s>
+        %3$s
+      </%2$s>
+    </div>
+    $html$,
+    $1.id,
+    case when $1.done then 's' else 'span' end,
+    api.sanitize_html($1.task)
+  );
+$$ language sql stable;
+
+create or replace function api.html_all_todos() returns text as $$
+  select coalesce(
+    string_agg(api.html_todo(t), '<hr>' order by t.id),
+    '<p><em>There is nothing else to do.</em></p>'
+  )
+  from api.todo t;
+$$ language sql;
+
+create or replace function api.add_todo(_task text) returns "text/html" as $$
+  insert into api.todo(task) values (_task);
+  select api.html_all_todos();
+$$ language sql;
+
 create or replace function api.index() returns "text/html" as $$
   select $html$
     <!DOCTYPE html>
@@ -45,14 +76,29 @@ create or replace function api.index() returns "text/html" as $$
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>PostgREST + HTMX To-Do List</title>
       <!-- Pico CSS for CSS styling -->
-      <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css" rel="stylesheet" />
+      <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css" rel="stylesheet">
+      <!-- htmx for AJAX requests -->
+      <script src="https://unpkg.com/htmx.org"></script>
     </head>
     <body>
-      <main class="container">
+      <main class="container"
+            style="max-width: 600px"
+            hx-headers='{"Accept": "text/html"}'>
         <article>
           <h5 style="text-align: center;">
             PostgREST + HTMX To-Do List
           </h5>
+          <form hx-post="/rpc/add_todo"
+                hx-target="#todo-list-area"
+                hx-trigger="submit"
+                hx-on="htmx:afterRequest: this.reset()">
+            <input type="text" name="_task" placeholder="Add a todo...">
+          </form>
+          <div id="todo-list-area">
+            $html$
+              || api.html_all_todos() ||
+            $html$
+          <div>
         </article>
       </main>
       <!-- Script for Ionicons icons -->
