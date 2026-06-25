@@ -104,6 +104,24 @@ create or replace function api.index() returns "text/html" as $$
       <!-- Script for Ionicons icons -->
       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split(";");
+            for (let cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.trim().split("=");
+                if (cookieName === name) {
+                    return decodeURIComponent(cookieValue);
+                }
+            }
+            return null;
+        }
+        document.body.addEventListener("htmx:configRequest", function(evt) {
+            const token = getCookie("token");
+            if (token) {
+                event.detail.headers["Authorization"] = "Bearer " + token;
+            }
+        });
+      </script>
     </body>
     </html>
   $html$;

@@ -54,3 +54,16 @@ curl http://localhost:3000/todo -X PATCH        \
      -H "Content-Type: application/json"        \
      -d '{"task": "AAAHHHH!", "done": false}'
 ```
+
+## htmx
+
+1. Sign token and copy it
+```shell
+./sign-token.sh
+```
+2. Access http://localhost:3000/rpc/index
+3. Paste token and set cookie
+```javascript
+document.cookie = "token=<TOKEN>";
+```
+4. Create to-dos
