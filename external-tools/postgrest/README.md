@@ -55,6 +55,8 @@ curl http://localhost:3000/todo -X PATCH        \
      -d '{"task": "AAAHHHH!", "done": false}'
 ```
 
+The response should be 403.
+
 ## htmx
 
 1. Sign token and copy it
