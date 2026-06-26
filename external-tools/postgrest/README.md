@@ -66,4 +66,4 @@ curl http://localhost:3000/todo -X PATCH        \
 ```javascript
 document.cookie = "token=<TOKEN>";
 ```
-4. Create to-dos
+4. Create, edit, and delete to-dos

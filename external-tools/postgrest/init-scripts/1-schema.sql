@@ -40,17 +40,64 @@ create or replace function api.sanitize_html(text) returns text as $$
   select replace(replace(replace(replace(replace($1, '&', '&amp;'), '"', '&quot;'),'>', '&gt;'),'<', '&lt;'), '''', '&apos;')
 $$ language sql;
 
+create or replace function api.html_editable_task(_id int) returns "text/html" as $$
+  select format ($html$
+  <form id="edit-task-%1$s"
+        hx-post="/rpc/change_todo_task"
+        hx-headers='{"Accept": "text/html"}'
+        hx-vals='{"_id": %1$s}'
+        hx-target="#todo-list-area"
+        hx-trigger="submit,focusout">
+    <input id="task-%1$s" type="text" name="_task" value="%2$s" autofocus>
+  </form>
+  $html$,
+    id,
+    api.sanitize_html(task)
+  )
+  from api.todo
+  where id = _id;
+$$ language sql;
+
 create or replace function api.html_todo(api.todo) returns text as $$
   select format($html$
-    <div>
-      <%2$s>
-        %3$s
-      </%2$s>
+    <div class="grid">
+      <div id="todo-edit-area-%1$s">
+        <form id="edit-task-state-%1$s"
+              hx-post="/rpc/change_todo_state"
+              hx-vals='{"_id": %1$s, "_done": %4$s}'
+              hx-target="#todo-list-area"
+              hx-trigger="click">
+          <%2$s style="cursor: pointer">
+            %3$s
+          </%2$s>
+        </form>
+      </div>
+      <div style="text-align: right">
+        <button class="outline"
+                hx-get="/rpc/html_editable_task"
+                hx-vals='{"_id": "%1$s"}'
+                hx-target="#todo-edit-area-%1$s"
+                hx-trigger="click">
+          <span>
+            <ion-icon name="create"></ion-icon>
+          </span>
+        </button>
+        <button class="outline contrast"
+                hx-post="/rpc/delete_todo"
+                hx-vals='{"_id": %1$s}'
+                hx-target="#todo-list-area"
+                hx-trigger="click">
+          <span>
+            <ion-icon name="trash" style="color: #f87171"></ion-icon>
+          </span>
+        </button>
+      </div>
     </div>
     $html$,
     $1.id,
     case when $1.done then 's' else 'span' end,
-    api.sanitize_html($1.task)
+    api.sanitize_html($1.task),
+    (not $1.done)::text
   );
 $$ language sql stable;
 
@@ -64,6 +111,21 @@ $$ language sql;
 
 create or replace function api.add_todo(_task text) returns "text/html" as $$
   insert into api.todo(task) values (_task);
+  select api.html_all_todos();
+$$ language sql;
+
+create or replace function api.change_todo_state(_id int, _done boolean) returns "text/html" as $$
+  update api.todo set done = _done where id = _id;
+  select api.html_all_todos();
+$$ language sql;
+
+create or replace function api.change_todo_task(_id int, _task text) returns "text/html" as $$
+  update api.todo set task = _task where id = _id;
+  select api.html_all_todos();
+$$ language sql;
+
+create or replace function api.delete_todo(_id int) returns "text/html" as $$
+  delete from api.todo where id = _id;
   select api.html_all_todos();
 $$ language sql;
 
