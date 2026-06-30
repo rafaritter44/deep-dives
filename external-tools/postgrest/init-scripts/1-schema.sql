@@ -199,7 +199,7 @@ grant all on api.file to web_anon;
 create domain "image/webp" as bytea;
 
 create or replace function api.file(id int) returns "image/webp" as $$
-  select blob from api.file where file.id = id;
+  select blob from api.file where id = $1;
 $$ language sql;
 
 create or replace function api.images() returns "text/html" as $$
@@ -210,6 +210,13 @@ create or replace function api.images() returns "text/html" as $$
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>PostgREST Images</title>
+      <style>
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: contain;
+        }
+      </style>
     </head>
     <body>
       <img src="http://localhost:3000/rpc/file?id=1" alt="Postgres">
