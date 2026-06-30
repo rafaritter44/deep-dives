@@ -69,3 +69,7 @@ The response should be 403.
 document.cookie = "token=<TOKEN>";
 ```
 4. Create, edit, and delete to-dos
+
+## Images
+
+Access http://localhost:3000/rpc/images
