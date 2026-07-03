@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres
+    build: .
     shm_size: 128mb
     environment:
       POSTGRES_PASSWORD: example
