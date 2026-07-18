@@ -1,4 +1,4 @@
-# Common Table Expressions
+# Common Table Expressions (CTEs)
 
 ## `SELECT` in `WITH`
 
