@@ -5,3 +5,11 @@
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/select-in-with.sql
 ```
+
+## Recursive queries
+
+### Simple example
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/recursive-simple.sql
+```
