@@ -13,3 +13,9 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/select-in-with.
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/recursive-simple.sql
 ```
+
+### Useful example
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/recursive-useful.sql
+```

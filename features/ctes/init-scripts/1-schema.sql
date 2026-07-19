@@ -1,3 +1,4 @@
+-- SELECT in WITH
 create table "order" (
     id       bigserial,
     region   text,
@@ -5,3 +6,11 @@ create table "order" (
     quantity integer,
     amount   numeric(10,2)
 );
+
+-- Recursive queries
+create table part (
+    part     text,
+    subpart  text,
+    quantity integer,
+    primary key (part, subpart)
+)
