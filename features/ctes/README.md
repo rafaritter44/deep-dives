@@ -19,3 +19,15 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/recursive-simpl
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/recursive-useful.sql
 ```
+
+### DFS
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/dfs.sql
+```
+
+### BFS
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/bfs.sql
+```

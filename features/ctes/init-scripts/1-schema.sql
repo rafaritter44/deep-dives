@@ -7,10 +7,17 @@ create table "order" (
     amount   numeric(10,2)
 );
 
--- Recursive queries
+-- Recursive query
 create table part (
     part     text,
     subpart  text,
     quantity integer,
     primary key (part, subpart)
-)
+);
+
+-- Tree traversal
+create table tree (
+    id   integer primary key,
+    link integer references tree(id),
+    data text
+);
