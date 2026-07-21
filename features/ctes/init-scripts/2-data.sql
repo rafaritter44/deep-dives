@@ -29,8 +29,8 @@ values (1, null, 'Root'),
 
 -- Cycle detection
 insert into graph (id, link, data)
-values (1, 2, 'A'),
-       (2, 3, 'B'),
-       (3, 4, 'C'),
-       (4, 2, 'D'),
+values (1, 2,    'A'),
+       (2, 3,    'B'),
+       (3, 4,    'C'),
+       (4, 2,    'D'),
        (5, null, 'E');
