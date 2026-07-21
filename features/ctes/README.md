@@ -31,3 +31,9 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/dfs.sql
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/bfs.sql
 ```
+
+### Cycle detection
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/cycle-detection.sql
+```

@@ -26,3 +26,11 @@ values (1, null, 'Root'),
        (5, 2,    'A2'),
        (6, 3,    'B1'),
        (7, 4,    'A1a');
+
+-- Cycle detection
+insert into graph (id, link, data)
+values (1, 2, 'A'),
+       (2, 3, 'B'),
+       (3, 4, 'C'),
+       (4, 2, 'D'),
+       (5, null, 'E');

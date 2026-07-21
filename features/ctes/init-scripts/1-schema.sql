@@ -21,3 +21,10 @@ create table tree (
     link integer references tree(id),
     data text
 );
+
+-- Cycle detection
+create table graph (
+    id   integer primary key,
+    link integer references graph(id),
+    data text
+);
