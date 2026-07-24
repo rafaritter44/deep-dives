@@ -6,6 +6,20 @@
 psql "postgres://postgres:example@localhost/postgres" -f queries/select-in-with.sql
 ```
 
+## Materialization
+
+### Materialized
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/materialized.sql
+```
+
+### Not materialized
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/not-materialized.sql
+```
+
 ## Recursive queries
 
 ### Simple example

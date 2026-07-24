@@ -34,3 +34,17 @@ values (1, 2,    'A'),
        (3, 4,    'C'),
        (4, 2,    'D'),
        (5, null, 'E');
+
+-- Materialization
+insert into some_table (key, val)
+values (1, 10),
+       (2, 10),
+       (3, 10),
+       (4, 20),
+       (5, 20),
+       (6, 30);
+insert into big_table (key, ref)
+values (1, null);
+insert into big_table (key, ref)
+select i, i - 1
+from   generate_series(2, 10000000) as i;
