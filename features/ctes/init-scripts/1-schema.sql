@@ -1,10 +1,24 @@
 -- SELECT in WITH
 create table "order" (
-    id       bigserial,
+    id       bigserial primary key,
     region   text,
     product  text,
     quantity integer,
     amount   numeric(10,2)
+);
+
+-- Data-modifying statements in WITH
+create table product (
+    id     bigserial primary key,
+    name   text,
+    price  numeric(10,2),
+    "date" date
+);
+create table product_log (
+    id     bigint primary key,
+    name   text,
+    price  numeric(10,2),
+    "date" date
 );
 
 -- Recursive query

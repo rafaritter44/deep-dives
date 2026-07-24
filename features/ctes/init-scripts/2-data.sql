@@ -8,6 +8,12 @@ values ('US', 'Book',  10, 199.90),
        ('PH', 'Knife', 50, 4999.50),
        ('PH', 'Knife', 25, 2499.75);
 
+-- Data-modifying statements in WITH
+insert into product (name, price, "date")
+values ('Book',  19.99,  '2010-10-15'),
+       ('Gun',   499.99, '2010-10-25'),
+       ('Knife', 99.99,  '2010-11-05');
+
 -- Recursive query
 insert into part (part, subpart, quantity)
 values ('our_product',    'sub_assembly_1', 2),
