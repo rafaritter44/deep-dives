@@ -30,17 +30,6 @@ create table graph (
 );
 
 -- Materialization
-create function very_expensive_function(input int)
-    returns int language plpgsql as $$
-begin
-    perform pg_sleep(0.5);
-    return input * 2;
-end;
-$$;
-create table some_table (
-    key integer primary key,
-    val integer
-);
 create table big_table (
     key integer primary key,
     ref integer references big_table

@@ -8,12 +8,6 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/select-in-with.
 
 ## Materialization
 
-### Materialized
-
-```shell
-psql "postgres://postgres:example@localhost/postgres" -f queries/materialized.sql
-```
-
 ### Not materialized
 
 ```shell
