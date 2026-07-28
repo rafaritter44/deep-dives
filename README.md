@@ -4,7 +4,6 @@
 
 ### Features
 
-1. Joins (implicit, inner, left, right, full, self, cross, anti, natural, using) -- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN
 1. Window Functions
 1. Temporary Tables
 1. Functions
