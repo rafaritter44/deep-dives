@@ -4,20 +4,20 @@ create table "order" (
     region   text,
     product  text,
     quantity integer,
-    amount   numeric(10,2)
+    amount   numeric(10, 2)
 );
 
 -- Data-modifying statements in WITH
 create table product (
     id     bigserial primary key,
     name   text,
-    price  numeric(10,2),
+    price  numeric(10, 2),
     "date" date
 );
 create table product_log (
     id     bigint primary key,
     name   text,
-    price  numeric(10,2),
+    price  numeric(10, 2),
     "date" date
 );
 
