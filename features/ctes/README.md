@@ -1,12 +1,12 @@
 # Common Table Expressions (CTEs)
 
-## `SELECT` in `WITH`
+## SELECT in WITH
 
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/select-in-with.sql
 ```
 
-## Data-modifying statements in `WITH`
+## Data-modifying statements in WITH
 
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/delete-in-with.sql
