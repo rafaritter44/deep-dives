@@ -18,8 +18,8 @@ create table employee (
     e_name     text not null,
     manager_no int  not null,
     primary key (ein, e_no),
-    foreign key (ein)        references company,
-    foreign key (manager_no) references employee
+    foreign key (ein)             references company,
+    foreign key (ein, manager_no) references employee
 );
 
 create table employee_department (
