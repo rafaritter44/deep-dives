@@ -13,18 +13,20 @@ create table department (
 );
 
 create table employee (
+    ein        text not null,
     e_no       int  not null,
     e_name     text not null,
     manager_no int  not null,
-    primary key (e_no),
+    primary key (ein, e_no),
+    foreign key (ein)        references company,
     foreign key (manager_no) references employee
 );
 
 create table employee_department (
-    e_no int  not null,
     ein  text not null,
+    e_no int  not null,
     d_no int  not null,
-    primary key (e_no),
-    foreign key (e_no)      references employee,
+    primary key (ein, e_no),
+    foreign key (ein, e_no) references employee,
     foreign key (ein, d_no) references department
 );
