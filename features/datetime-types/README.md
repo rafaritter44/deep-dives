@@ -1,6 +1,6 @@
 # Date/Time Types
 
-(sum(interval))
+sum(interval)
 
 ## References
 
