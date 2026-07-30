@@ -16,7 +16,6 @@
 1. User-Defined Types
 1. Exclusion Constraints
 1. Deferred Constraints
-1. Indexes
 1. Locks
 1. Transactions
 1. Merge
