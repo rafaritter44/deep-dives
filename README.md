@@ -14,7 +14,6 @@
 1. Range Types (range_agg, range_intersect_agg)
 1. Domain Types
 1. User-Defined Types
-1. Exclusion Constraints
 1. Deferred Constraints
 1. Locks
 1. Transactions
