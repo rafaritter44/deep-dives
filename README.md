@@ -10,7 +10,6 @@
 1. Triggers
 1. Constraint Triggers
 1. Stored Procedures
-1. Range Types (range_agg, range_intersect_agg)
 1. Domain Types
 1. User-Defined Types
 1. Deferred Constraints
