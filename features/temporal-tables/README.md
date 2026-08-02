@@ -17,6 +17,8 @@ Temporal primary keys and unique constraints have the same behavior as exclusion
 FK - PERIOD:
 https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-PARMS-REFERENCES
 
+PostgreSQL supports temporal foreign keys with action `NO ACTION`, but not `RESTRICT`, `CASCADE`, `SET NULL`, or `SET DEFAULT`.
+
 ### Temporal DML
 
 UPDATE/DELETE - FOR PORTION OF:
