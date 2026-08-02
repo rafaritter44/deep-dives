@@ -4,6 +4,7 @@
 
 ### Features
 
+1. Foreign Keys (ON DELETE, ON UPDATE) - https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK
 1. Window Functions
 1. Temporary Tables
 1. Functions
