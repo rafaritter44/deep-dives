@@ -29,3 +29,7 @@ main = do
     print $ and $ map (==4) ([4,4,4,3,4] :: [Int])
     print $ or $ map (==4) ([2,3,4,5,6,1] :: [Int])
     print $ or $ map (>4) ([1,2,3] :: [Int])
+    print $ any (==4) ([2,3,5,6,1,4] :: [Int])
+    print $ any (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
+    print $ all (>4) ([6,9,10] :: [Int])
+    print $ all (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
