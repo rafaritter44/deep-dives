@@ -33,3 +33,5 @@ main = do
     print $ any (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
     print $ all (>4) ([6,9,10] :: [Int])
     print $ all (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
+    print $ take 10 $ iterate (*2) (1 :: Int)
+    print $ take 3 $ iterate (++ "haha") "haha"
