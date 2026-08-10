@@ -44,3 +44,6 @@ main = do
     print $ sum $ takeWhile (<10000) $ map (^ (3 :: Int)) ([1..] :: [Int])
     print $ dropWhile (/=' ') "This is a sentence"
     print $ dropWhile (<3) ([1,2,2,2,3,4,5,4,3,2,1] :: [Int])
+    let stock :: [(Double, Int, Int, Int)]
+        stock = [(994.4,2008,9,1),(995.2,2008,9,2),(999.2,2008,9,3),(1001.4,2008,9,4),(998.3,2008,9,5)]
+    print $ head $ dropWhile (\(val,_,_,_) -> val < 1000) stock
