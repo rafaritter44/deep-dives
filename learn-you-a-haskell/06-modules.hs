@@ -35,3 +35,7 @@ main = do
     print $ all (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
     print $ take 10 $ iterate (*2) (1 :: Int)
     print $ take 3 $ iterate (++ "haha") "haha"
+    print $ splitAt 3 "heyman"
+    print $ splitAt 100 "heyman"
+    print $ splitAt (-3) "heyman"
+    print $ let (a,b) = splitAt 3 "foobar" in b ++ a
