@@ -39,3 +39,5 @@ main = do
     print $ splitAt 100 "heyman"
     print $ splitAt (-3) "heyman"
     print $ let (a,b) = splitAt 3 "foobar" in b ++ a
+    print $ takeWhile (>3) ([6,5,4,3,2,1,2,3,4,5,4,3,2,1] :: [Int])
+    print $ takeWhile (/=' ') "This is a sentence"
