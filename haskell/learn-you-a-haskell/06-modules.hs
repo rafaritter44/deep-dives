@@ -1,0 +1,49 @@
+import Data.List
+-- import Data.List (nub, sort)
+-- import Data.List hiding (nub)
+import qualified Data.Map
+import qualified Data.Map as M
+
+numUniques :: (Eq a) => [a] -> Int
+numUniques = length . nub
+
+intStrList :: [(Int, String)]
+intStrList = [(5,"a"), (3,"b")] :: [(Int, String)]
+
+main :: IO ()
+main = do
+    print $ numUniques "aaabbbcccddd"
+    print $ Data.Map.filter (> "a") $ Data.Map.fromList intStrList
+    print $ M.filter (> "a") $ M.fromList intStrList
+    print $ intersperse '.' "Hello"
+    print $ intersperse (0 :: Int) [1..6]
+    print $ intercalate " " ["hey", "there", "folks"]
+    print $ intercalate ([0,0,0] :: [Int]) [[1,2,3],[4,5,6],[7,8,9]]
+    print (transpose [[1,2,3],[4,5,6],[7,8,9]] :: [[Int]])
+    print $ transpose ["hey", "there", "folks"]
+    print (map sum $ transpose [[0,3,5,9],[10,0,0,9],[8,5,1,-1]] :: [Int])
+    print $ concat ["foo","bar","car"]
+    print (concat [[3,4,5],[2,3,4],[2,1,1]] :: [Int])
+    print (concatMap (replicate 4) [1..3] :: [Int])
+    print $ and $ map (>4) ([5,6,7,8] :: [Int])
+    print $ and $ map (==4) ([4,4,4,3,4] :: [Int])
+    print $ or $ map (==4) ([2,3,4,5,6,1] :: [Int])
+    print $ or $ map (>4) ([1,2,3] :: [Int])
+    print $ any (==4) ([2,3,5,6,1,4] :: [Int])
+    print $ any (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
+    print $ all (>4) ([6,9,10] :: [Int])
+    print $ all (`elem` ['A'..'Z']) "HEYGUYSwhatsup"
+    print $ take 10 $ iterate (*2) (1 :: Int)
+    print $ take 3 $ iterate (++ "haha") "haha"
+    print $ splitAt 3 "heyman"
+    print $ splitAt 100 "heyman"
+    print $ splitAt (-3) "heyman"
+    print $ let (a,b) = splitAt 3 "foobar" in b ++ a
+    print $ takeWhile (>3) ([6,5,4,3,2,1,2,3,4,5,4,3,2,1] :: [Int])
+    print $ takeWhile (/=' ') "This is a sentence"
+    print $ sum $ takeWhile (<10000) $ map (^ (3 :: Int)) ([1..] :: [Int])
+    print $ dropWhile (/=' ') "This is a sentence"
+    print $ dropWhile (<3) ([1,2,2,2,3,4,5,4,3,2,1] :: [Int])
+    let stock :: [(Double, Int, Int, Int)]
+        stock = [(994.4,2008,9,1),(995.2,2008,9,2),(999.2,2008,9,3),(1001.4,2008,9,4),(998.3,2008,9,5)]
+    print $ head $ dropWhile (\(val,_,_,_) -> val < 1000) stock

@@ -1,0 +1,185 @@
+data Tree a = Empty
+            | Node (Tree a) a (Tree a)
+    deriving (Show, Eq)
+
+leaf :: a -> Tree a
+leaf x = Node Empty x Empty
+
+treeSize :: Tree a -> Integer
+treeSize Empty        = 0
+treeSize (Node l _ r) = 1 + treeSize l + treeSize r
+
+treeSum :: Tree Integer -> Integer
+treeSum Empty        = 0
+treeSum (Node l x r) = x + treeSum l + treeSum r
+
+treeDepth :: Tree a -> Integer
+treeDepth Empty        = 0
+treeDepth (Node l _ r) = 1 + max (treeDepth l) (treeDepth r)
+
+flatten :: Tree a -> [a]
+flatten Empty        = []
+flatten (Node l x r) = flatten l ++ [x] ++ flatten r
+
+integerTree :: Tree Integer
+integerTree = Node (Node (leaf 10) 20 Empty) 30 Empty
+
+treeFold :: b -> (b -> a -> b -> b) -> Tree a -> b
+treeFold e _ Empty        = e
+treeFold e f (Node l x r) = f (treeFold e f l) x (treeFold e f r)
+
+treeSize' :: Tree a -> Integer
+treeSize' = treeFold 0 (\l _ r -> 1 + l + r)
+
+treeSum' :: Tree Integer -> Integer
+treeSum' = treeFold 0 (\l x r -> x + l + r)
+
+treeDepth' :: Tree a -> Integer
+treeDepth' = treeFold 0 (\l _ r -> 1 + max l r)
+
+flatten' :: Tree a -> [a]
+flatten' = treeFold [] (\l x r -> l ++ [x] ++ r)
+
+treeMax :: (Ord a, Bounded a) => Tree a -> a
+treeMax = treeFold minBound (\l x r -> l `max` x `max` r)
+
+intTree :: Tree Int
+intTree = Node (Node (leaf 10) 20 Empty) 30 Empty
+
+data ExprT = Lit Integer
+           | Add ExprT ExprT
+           | Mul ExprT ExprT
+
+eval :: ExprT -> Integer
+eval (Lit i)     = i
+eval (Add e1 e2) = eval e1 + eval e2
+eval (Mul e1 e2) = eval e1 * eval e2
+
+expr :: ExprT
+expr = Mul (Lit 10) (Add (Lit 20) (Mul (Lit 30) (Lit 40)))
+
+exprTFold :: (Integer -> b) -> (b -> b -> b) -> (b -> b -> b) -> ExprT -> b
+exprTFold f _ _ (Lit i)     = f i
+exprTFold f g h (Add e1 e2) = g (exprTFold f g h e1) (exprTFold f g h e2)
+exprTFold f g h (Mul e1 e2) = h (exprTFold f g h e1) (exprTFold f g h e2)
+
+eval' :: ExprT -> Integer
+eval' = exprTFold id (+) (*)
+
+numLiterals :: ExprT -> Int
+numLiterals = exprTFold (const 1) (+) (+)
+
+{-
+class Monoid m where
+    mempty  :: m
+    mappend :: m -> m -> m
+
+    mconcat :: [m] -> m
+    mconcat = foldr mappend mempty
+
+(<>) :: Monoid m => m -> m -> m
+(<>) = mappend
+-}
+
+{-
+instance Monoid [a] where
+  mempty  = []
+  mappend = (++)
+-}
+
+newtype Sum a = Sum a
+    deriving (Eq, Ord, Num, Show)
+
+getSum :: Sum a -> a
+getSum (Sum a) = a
+
+instance Num a => Semigroup (Sum a) where
+    (<>) = (+)
+
+instance Num a => Monoid (Sum a) where
+    mempty = Sum 0
+
+lst :: [Integer]
+lst = [1,5,8,23,423,99]
+
+sum :: Integer
+sum = getSum . mconcat . map Sum $ lst
+
+newtype Product a = Product a
+    deriving (Eq, Ord, Num, Show)
+
+getProduct :: Product a -> a
+getProduct (Product a) = a
+
+instance Num a => Semigroup (Product a) where
+    (<>) = (*)
+
+instance Num a => Monoid (Product a) where
+    mempty = Product 1
+
+prod :: Integer
+prod = getProduct . mconcat . map Product $ lst
+
+{-
+instance (Monoid a, Monoid b) => Monoid (a,b) where
+    mempty = (mempty, mempty)
+    (a,b) `mappend` (c,d) = (a `mappend` c, b `mappend` d)
+-}
+
+lst2 :: [(Sum Integer, [Integer])]
+lst2 = [(1,[2,3]), (4,[5,6,7]), (8,[9]), (10,[])]
+
+lst3 :: [[Integer]]
+lst3 = [[1,2,3],[4,5],[],[6]]
+
+newtype All = All Bool
+
+getAll :: All -> Bool
+getAll (All a) = a
+
+instance Semigroup All where
+    All x <> All y = All (x && y)
+
+instance Monoid All where
+    mempty = All True
+
+all :: Bool
+all = getAll . mconcat . map All $ [True, True, False]
+
+newtype Any = Any Bool
+
+getAny :: Any -> Bool
+getAny (Any a) = a
+
+instance Semigroup Any where
+    Any x <> Any y = Any (x || y)
+
+instance Monoid Any where
+    mempty = Any False
+
+any :: Bool
+any = getAny . mconcat . map Any $ [False, False, True]
+
+main :: IO ()
+main = do
+    print integerTree
+    print $ treeSize integerTree
+    print $ treeSum integerTree
+    print $ treeDepth integerTree
+    print $ flatten integerTree
+    print $ treeSize' integerTree
+    print $ treeSum' integerTree
+    print $ treeDepth' integerTree
+    print $ flatten' integerTree
+    print $ treeMax intTree
+    print $ eval expr
+    print $ eval' expr
+    print $ numLiterals expr
+    print $ "ab" <> "cd" <> "ef"
+    print $ "ab" ++ "cd" ++ "ef"
+    print Main.sum
+    print prod
+    print $ mconcat lst2
+    print $ mconcat lst3
+    print Main.all
+    print Main.any
