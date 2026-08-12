@@ -1,3 +1,3 @@
-# F# Cheatsheet POCs
+# F# Cheatsheet
 
 Source: https://fsprojects.github.io/fsharp-cheatsheet/

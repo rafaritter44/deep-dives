@@ -1,4 +1,4 @@
-# Falco POC
+# Falco
 
 ```shell
 curl -X POST http://localhost:8080/json -d '{"First":"Rafael","Last":"Ritter"}'

@@ -42,7 +42,7 @@
 1. pgcrypto
 1. pg_partman
 1. pgvector
-1. Resume Citus POCs from here: https://github.com/citusdata/citus?tab=readme-ov-file#creating-distributed-tables-with-co-location
+1. Citus (resume from here: https://github.com/citusdata/citus?tab=readme-ov-file#creating-distributed-tables-with-co-location)
 
 ### External Tools
 

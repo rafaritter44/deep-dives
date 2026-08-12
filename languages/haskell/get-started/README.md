@@ -1,4 +1,4 @@
-# Get Started POC
+# Get Started
 
 Source:
 - https://www.haskell.org/get-started/

@@ -1,4 +1,4 @@
-# Expecto POC
+# Expecto
 
 ## Filtering
 
