@@ -1,4 +1,4 @@
-module GiraffePOC.App
+module GiraffeDemo.App
 
 open System
 open System.IO
@@ -29,7 +29,7 @@ module Views =
     let layout (content: XmlNode list) =
         html [] [
             head [] [
-                title []  [ encodedText "GiraffePOC" ]
+                title []  [ encodedText "GiraffeDemo" ]
                 link [ _rel  "stylesheet"
                        _type "text/css"
                        _href "/main.css" ]
@@ -38,7 +38,7 @@ module Views =
         ]
 
     let partial () =
-        h1 [] [ encodedText "GiraffePOC" ]
+        h1 [] [ encodedText "GiraffeDemo" ]
 
     let index (model : Message) =
         [
