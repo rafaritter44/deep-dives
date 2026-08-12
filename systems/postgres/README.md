@@ -1,6 +1,6 @@
-# Postgres POCs
+# Postgres
 
-## POC ideas
+## Backlog
 
 ### Features
 

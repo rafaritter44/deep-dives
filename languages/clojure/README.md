@@ -1,6 +1,7 @@
-# Clojure POCs
+# Clojure
 
-Other POC ideas:
+## Backlog
+
 1. Tests (clojure.test + kaocha)
 1. Configuration (juxt/aero, System/getenv)
 1. babashka
