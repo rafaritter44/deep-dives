@@ -1,0 +1,1 @@
+alter table person rename column person_name to p_name;

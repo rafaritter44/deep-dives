@@ -1,0 +1,25 @@
+services:
+  master:
+    image: citusdata/citus:13.0.3
+    labels: [com.citusdata.role=Master]
+    environment: &AUTH
+      POSTGRES_PASSWORD: secret
+    ports:
+      - 5432:5432
+  worker:
+    image: citusdata/citus:13.0.3
+    labels: [com.citusdata.role=Worker]
+    environment: *AUTH
+    depends_on: [manager]
+    command: ./wait-for-manager.sh
+    volumes:
+      - healthcheck-volume:/healthcheck
+  manager:
+    image: citusdata/membership-manager:0.3.0
+    environment: *AUTH
+    depends_on: [master]
+    volumes:
+      - "${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock"
+      - healthcheck-volume:/healthcheck
+volumes:
+  healthcheck-volume:
