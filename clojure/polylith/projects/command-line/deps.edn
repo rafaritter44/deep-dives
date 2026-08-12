@@ -1,0 +1,7 @@
+{:deps {org.clojure/clojure {:mvn/version "1.12.3"}
+        poly/cli            {:local/root "../../bases/cli"}
+        poly/user           {:local/root "../../components/user"}}
+
+ :aliases {:test    {:extra-paths []
+                     :extra-deps  {}}
+           :uberjar {:main se.example.cli.core}}}
