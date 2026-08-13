@@ -66,3 +66,4 @@ main = do
     print $ "ab" `isPrefixOf` "abcdef"
     print $ "ef" `isSuffixOf` "abcdef"
     print $ partition (`elem` ['A'..'Z']) "PADREcarloPIOacutis"
+    print $ partition (>3) ([1,3,5,6,3,2,1,0,3,7] :: [Int])
