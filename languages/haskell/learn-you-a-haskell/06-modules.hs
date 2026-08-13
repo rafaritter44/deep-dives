@@ -51,3 +51,4 @@ main = do
     print $ break (==4) ([1,2,3,4,5,6,7] :: [Int])
     print $ span (/=4) ([1,2,3,4,5,6,7] :: [Int])
     print $ sort "This will be sorted soon"
+    print $ group ([1,1,1,1,2,2,2,2,3,3,2,2,2,5,6,7] :: [Int])
