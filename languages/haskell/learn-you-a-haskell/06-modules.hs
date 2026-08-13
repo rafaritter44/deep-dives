@@ -65,3 +65,4 @@ main = do
     print $ "cd" `isInfixOf` "abcdef"
     print $ "ab" `isPrefixOf` "abcdef"
     print $ "ef" `isSuffixOf` "abcdef"
+    print $ partition (`elem` ['A'..'Z']) "PADREcarloPIOacutis"
