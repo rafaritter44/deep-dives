@@ -63,3 +63,5 @@ main = do
     print $ let w = "abcd" in zip (inits w) (tails w)
     print $ search "cd" "abcdef"
     print $ "cd" `isInfixOf` "abcdef"
+    print $ "ab" `isPrefixOf` "abcdef"
+    print $ "ef" `isSuffixOf` "abcdef"
