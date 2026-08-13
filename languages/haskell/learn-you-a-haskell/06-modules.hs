@@ -10,6 +10,11 @@ numUniques = length . nub
 intStrList :: [(Int, String)]
 intStrList = [(5,"a"), (3,"b")] :: [(Int, String)]
 
+search :: (Eq a) => [a] -> [a] -> Bool
+search needle haystack =
+    let nlen = length needle
+    in  foldl (\acc x -> (take nlen x == needle) || acc) False (tails haystack)
+
 main :: IO ()
 main = do
     print $ numUniques "aaabbbcccddd"
@@ -56,3 +61,4 @@ main = do
     print $ inits "abcd"
     print $ tails "abcd"
     print $ let w = "abcd" in zip (inits w) (tails w)
+    print $ search "cd" "abcdef"
