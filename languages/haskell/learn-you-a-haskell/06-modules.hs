@@ -47,3 +47,7 @@ main = do
     let stock :: [(Double, Int, Int, Int)]
         stock = [(994.4,2008,9,1),(995.2,2008,9,2),(999.2,2008,9,3),(1001.4,2008,9,4),(998.3,2008,9,5)]
     print $ head $ dropWhile (\(val,_,_,_) -> val < 1000) stock
+    print $ let (fw, rest) = span (/=' ') "This is a sentence" in "First word: " ++ fw ++ ", the rest:" ++ rest
+    print $ break (==4) ([1,2,3,4,5,6,7] :: [Int])
+    print $ span (/=4) ([1,2,3,4,5,6,7] :: [Int])
+    print $ sort "This will be sorted soon"
