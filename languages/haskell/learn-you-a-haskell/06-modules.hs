@@ -53,3 +53,6 @@ main = do
     print $ sort "This will be sorted soon"
     print $ group ([1,1,1,1,2,2,2,2,3,3,2,2,2,5,6,7] :: [Int])
     print $ map (\l@(x:_) -> (x,length l)) . group . sort $ ([1,1,1,1,2,2,2,2,3,3,2,2,2,5,6,7] :: [Int])
+    print $ inits "abcd"
+    print $ tails "abcd"
+    print $ let w = "abcd" in zip (inits w) (tails w)
