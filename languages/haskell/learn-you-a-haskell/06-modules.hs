@@ -70,3 +70,5 @@ main = do
     print $ find (>4) ([1..6] :: [Int])
     print $ find (>9) ([1..6] :: [Int])
     print $ find (\(val,_,_,_) -> val > 1000) stock
+    print $ 4 `elemIndex` ([1..6] :: [Int])
+    print $ 10 `elemIndex` ([1..6] :: [Int])
