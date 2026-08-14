@@ -73,3 +73,6 @@ main = do
     print $ 4 `elemIndex` ([1..6] :: [Int])
     print $ 10 `elemIndex` ([1..6] :: [Int])
     print $ ' ' `elemIndices` "Where are the spaces?"
+    print $ findIndex (==4) ([5,3,2,1,6,4] :: [Int])
+    print $ findIndex (==7) ([5,3,2,1,6,4] :: [Int])
+    print $ findIndices (`elem` ['A'..'Z']) "Where Are The Caps?"
