@@ -69,3 +69,4 @@ main = do
     print $ partition (>3) ([1,3,5,6,3,2,1,0,3,7] :: [Int])
     print $ find (>4) ([1..6] :: [Int])
     print $ find (>9) ([1..6] :: [Int])
+    print $ find (\(val,_,_,_) -> val > 1000) stock
