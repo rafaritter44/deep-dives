@@ -80,3 +80,6 @@ main = do
     print (zip4 [2,3,3] [2,2,2] [5,5,3] [2,2,2] :: [(Int, Int, Int, Int)])
     print $ lines "first line\nsecond line\nthird line"
     print $ unlines ["first line", "second line", "third line"]
+    print $ words "hey these are the words in this sentence"
+    print $ words "hey these           are    the words in this\nsentence"
+    print $ unwords ["hey","there","mate"]
