@@ -85,3 +85,5 @@ main = do
     print $ unwords ["hey","there","mate"]
     print (nub [1,2,3,4,3,2,1,2,3,4,3,2,1] :: [Int])
     print $ nub "Lots of words and stuff"
+    print $ delete 'h' "hey there!"
+    print $ delete 'h' . delete 'h' $ "hey there"
