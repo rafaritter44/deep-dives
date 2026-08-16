@@ -97,3 +97,6 @@ main = do
     print (insert 4 [1,2,3,5,6,7] :: [Int])
     print $ insert 'g' $ ['a'..'f'] ++ ['h'..'z']
     print (insert 3 [1,2,4,3,2,1] :: [Int])
+    let values :: [Double]
+        values = [-4.3, -2.4, -1.2, 0.4, 2.3, 5.9, 10.5, 29.1, 5.3, -2.4, -14.5, 2.9, 2.3]
+    print $ groupBy (\x y -> (x > 0) == (y > 0)) values
