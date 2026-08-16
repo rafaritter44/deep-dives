@@ -91,3 +91,4 @@ main = do
     print $ "Im a big baby" \\ "big"
     print $ "hey man" `union` "man what's up"
     print ([1..7] `union` [5..10] :: [Int])
+    print ([1..7] `intersect` [5..10] :: [Int])
