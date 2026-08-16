@@ -1,3 +1,5 @@
+-- Loading modules
+
 import Data.List
 -- import Data.List (nub, sort)
 -- import Data.List hiding (nub)
@@ -7,8 +9,7 @@ import qualified Data.Map as M
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
 
-intStrList :: [(Int, String)]
-intStrList = [(5,"a"), (3,"b")] :: [(Int, String)]
+-- Data.List
 
 search :: (Eq a) => [a] -> [a] -> Bool
 search needle haystack =
@@ -20,9 +21,14 @@ f `on` g = \x y -> f (g x) (g y)
 
 main :: IO ()
 main = do
+    -- Loading modules
     print $ numUniques "aaabbbcccddd"
+    let intStrList :: [(Int, String)]
+        intStrList = [(5,"a"), (3,"b")] :: [(Int, String)]
     print $ Data.Map.filter (> "a") $ Data.Map.fromList intStrList
     print $ M.filter (> "a") $ M.fromList intStrList
+
+    -- Data.List
     print $ intersperse '.' "Hello"
     print $ intersperse (0 :: Int) [1..6]
     print $ intercalate " " ["hey", "there", "folks"]
