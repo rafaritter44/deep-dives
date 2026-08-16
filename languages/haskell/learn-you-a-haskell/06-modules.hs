@@ -5,6 +5,7 @@ import Data.List
 -- import Data.List hiding (nub)
 import qualified Data.Map
 import qualified Data.Map as M
+import Data.Char
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
@@ -113,3 +114,7 @@ main = do
     let xs :: [[Int]]
         xs = [[5,4,5,4,4],[1,2,3],[3,5,4,3],[],[2],[2,2]]
     print $ sortBy (compare `on` length) xs
+
+    -- Data.Char
+    print $ all isAlphaNum "abc123"
+    print $ all isAlphaNum "abc def 123!"
