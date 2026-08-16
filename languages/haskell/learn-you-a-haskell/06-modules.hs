@@ -83,3 +83,5 @@ main = do
     print $ words "hey these are the words in this sentence"
     print $ words "hey these           are    the words in this\nsentence"
     print $ unwords ["hey","there","mate"]
+    print (nub [1,2,3,4,3,2,1,2,3,4,3,2,1] :: [Int])
+    print $ nub "Lots of words and stuff"
