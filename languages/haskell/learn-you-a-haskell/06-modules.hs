@@ -94,3 +94,6 @@ main = do
     print ([1..7] `intersect` [5..10] :: [Int])
     print (insert 4 [3,5,1,2,8,2] :: [Int])
     print (insert 4 [1,3,4,4,1] :: [Int])
+    print (insert 4 [1,2,3,5,6,7] :: [Int])
+    print $ insert 'g' $ ['a'..'f'] ++ ['h'..'z']
+    print (insert 3 [1,2,4,3,2,1] :: [Int])
