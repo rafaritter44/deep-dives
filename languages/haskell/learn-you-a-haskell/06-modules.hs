@@ -87,3 +87,5 @@ main = do
     print $ nub "Lots of words and stuff"
     print $ delete 'h' "hey there!"
     print $ delete 'h' . delete 'h' $ "hey there"
+    print ([1..10] \\ [2,5,9] :: [Int])
+    print $ "Im a big baby" \\ "big"
