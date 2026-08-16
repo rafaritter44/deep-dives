@@ -89,3 +89,5 @@ main = do
     print $ delete 'h' . delete 'h' $ "hey there"
     print ([1..10] \\ [2,5,9] :: [Int])
     print $ "Im a big baby" \\ "big"
+    print $ "hey man" `union` "man what's up"
+    print ([1..7] `union` [5..10] :: [Int])
