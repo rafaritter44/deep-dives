@@ -78,3 +78,4 @@ main = do
     print $ findIndices (`elem` ['A'..'Z']) "Where Are The Caps?"
     print (zipWith3 (\x y z -> x + y + z) [1,2,3] [4,5,2,2] [2,2,3] :: [Int])
     print (zip4 [2,3,3] [2,2,2] [5,5,3] [2,2,2] :: [(Int, Int, Int, Int)])
+    print $ lines "first line\nsecond line\nthird line"
