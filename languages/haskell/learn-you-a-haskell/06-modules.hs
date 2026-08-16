@@ -92,3 +92,5 @@ main = do
     print $ "hey man" `union` "man what's up"
     print ([1..7] `union` [5..10] :: [Int])
     print ([1..7] `intersect` [5..10] :: [Int])
+    print (insert 4 [3,5,1,2,8,2] :: [Int])
+    print (insert 4 [1,3,4,4,1] :: [Int])
