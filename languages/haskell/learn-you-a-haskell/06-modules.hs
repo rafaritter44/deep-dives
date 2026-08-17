@@ -122,3 +122,5 @@ main = do
     print $ groupBy ((==) `on` isSpace) "hey folks its me"
     print $ filter (not . any isSpace) . groupBy ((==) `on` isSpace) $ "hey folks its me"
     print $ map generalCategory [' ', 'a', 'A', '0', '.', '|', '\n']
+    print $ map digitToInt "34538"
+    print $ map digitToInt "FF85AB"
