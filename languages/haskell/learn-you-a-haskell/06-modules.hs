@@ -124,3 +124,4 @@ main = do
     print $ map generalCategory [' ', 'a', 'A', '0', '.', '|', '\n']
     print $ map digitToInt "34538"
     print $ map digitToInt "FF85AB"
+    print $ map intToDigit [5, 15]
