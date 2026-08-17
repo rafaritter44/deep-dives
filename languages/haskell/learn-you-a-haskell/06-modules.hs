@@ -121,3 +121,4 @@ main = do
     print $ words "hey folks its me"
     print $ groupBy ((==) `on` isSpace) "hey folks its me"
     print $ filter (not . any isSpace) . groupBy ((==) `on` isSpace) $ "hey folks its me"
+    print $ map generalCategory [' ', 'a', 'A', '0', '.', '|', '\n']
