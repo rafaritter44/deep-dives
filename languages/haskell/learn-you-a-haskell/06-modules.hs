@@ -125,3 +125,5 @@ main = do
     print $ map digitToInt "34538"
     print $ map digitToInt "FF85AB"
     print $ map intToDigit [5, 15]
+    print (ord 'a', chr 97)
+    print $ map ord "abcdefgh"
