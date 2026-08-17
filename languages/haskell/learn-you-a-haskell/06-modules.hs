@@ -118,3 +118,6 @@ main = do
     -- Data.Char
     print $ all isAlphaNum "abc123"
     print $ all isAlphaNum "abc def 123!"
+    print $ words "hey folks its me"
+    print $ groupBy ((==) `on` isSpace) "hey folks its me"
+    print $ filter (not . any isSpace) . groupBy ((==) `on` isSpace) $ "hey folks its me"
