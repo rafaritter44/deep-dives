@@ -20,6 +20,17 @@ search needle haystack =
 on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 f `on` g = \x y -> f (g x) (g y)
 
+-- Data.Char
+
+encode :: Int -> String -> String
+encode shift msg =
+    let ords = map ord msg
+        shifted = map (+ shift) ords
+    in  map chr shifted
+
+decode :: Int -> String -> String
+decode shift = encode $ negate shift
+
 main :: IO ()
 main = do
     -- Loading modules
@@ -127,3 +138,7 @@ main = do
     print $ map intToDigit [5, 15]
     print (ord 'a', chr 97)
     print $ map ord "abcdefgh"
+    let shift = 3
+    let secretMsg = encode shift "A secret message"
+    print secretMsg
+    print $ decode shift secretMsg
