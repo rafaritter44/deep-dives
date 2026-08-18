@@ -32,6 +32,11 @@ encode shift msg =
 decode :: Int -> String -> String
 decode shift = encode $ negate shift
 
+-- Data.Map
+
+phoneBookToMap :: (Ord k) => [(k, String)] -> M.Map k String
+phoneBookToMap = M.fromListWith (\number1 number2 -> number1 ++ ", " ++ number2)
+
 main :: IO ()
 main = do
     -- Loading modules
@@ -156,3 +161,19 @@ main = do
     print $ M.map (*100) $ M.fromList ([(1,1),(2,4),(3,9)] :: [(Int,Int)])
     print $ M.filter isUpper $ M.fromList ([(1,'a'),(2,'A'),(3,'b'),(4,'B')] :: [(Int,Char)])
     print $ M.singleton 'A' "Alice" & M.insert 'B' "Bob" & M.toList
+    let phoneBook =
+          [("Alice","555-2938")
+          ,("Alice","342-2492")
+          ,("Bob","452-2928")
+          ,("Charlie","493-2928")
+          ,("Charlie","943-2929")
+          ,("Charlie","827-9162")
+          ,("David","205-2928")
+          ,("Eve","939-8282")
+          ,("Frank","853-2492")
+          ,("Frank","555-2111")
+          ]
+    print $ M.lookup "Alice" $ phoneBookToMap phoneBook
+    print $ M.lookup "Bob" $ phoneBookToMap phoneBook
+    print $ M.lookup "Charlie" $ phoneBookToMap phoneBook
+    print $ M.lookup "Grace" $ phoneBookToMap phoneBook
