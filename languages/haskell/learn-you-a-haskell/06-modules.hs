@@ -146,3 +146,5 @@ main = do
 
     -- Data.Map
     print $ M.empty & M.insert 'A' "Alice" & M.insert 'B' "Bob"
+    print $ M.null M.empty
+    print $ M.null $ M.fromList [('A', "Alice")]
