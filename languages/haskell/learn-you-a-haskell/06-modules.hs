@@ -155,3 +155,4 @@ main = do
     print $ M.member 'A' $ M.singleton 'B' "Bob"
     print $ M.map (*100) $ M.fromList ([(1,1),(2,4),(3,9)] :: [(Int,Int)])
     print $ M.filter isUpper $ M.fromList ([(1,'a'),(2,'A'),(3,'b'),(4,'B')] :: [(Int,Char)])
+    print $ M.singleton 'A' "Alice" & M.insert 'B' "Bob" & M.toList
