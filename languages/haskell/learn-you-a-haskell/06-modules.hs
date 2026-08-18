@@ -153,3 +153,4 @@ main = do
     print $ M.singleton 'A' "Alice"
     print $ M.member 'A' $ M.singleton 'A' "Alice"
     print $ M.member 'A' $ M.singleton 'B' "Bob"
+    print $ M.map (*100) $ M.fromList ([(1,1),(2,4),(3,9)] :: [(Int,Int)])
