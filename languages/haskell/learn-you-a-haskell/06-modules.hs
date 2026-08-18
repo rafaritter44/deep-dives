@@ -150,3 +150,4 @@ main = do
     print $ M.null $ M.fromList [('A', "Alice")]
     print $ M.size M.empty
     print $ M.size $ M.fromList [('A', "Alice")]
+    print $ M.singleton 'A' "Alice"
