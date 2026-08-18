@@ -203,3 +203,4 @@ main = do
     print $ S.singleton 'A'
     print $ S.insert '?' set1
     print $ S.insert '!' set1
+    print $ S.delete '!' set1
