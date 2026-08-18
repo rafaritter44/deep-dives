@@ -37,6 +37,9 @@ decode shift = encode $ negate shift
 phoneBookToMap :: (Ord k) => [(k, String)] -> M.Map k String
 phoneBookToMap = M.fromListWith (\number1 number2 -> number1 ++ ", " ++ number2)
 
+phoneBookToMap' :: (Ord k) => [(k, a)] -> M.Map k [a]
+phoneBookToMap' xs = M.fromListWith (++) $ map (\(k,v) -> (k,[v])) xs
+
 main :: IO ()
 main = do
     -- Loading modules
@@ -177,3 +180,7 @@ main = do
     print $ M.lookup "Bob" $ phoneBookToMap phoneBook
     print $ M.lookup "Charlie" $ phoneBookToMap phoneBook
     print $ M.lookup "Grace" $ phoneBookToMap phoneBook
+    print $ M.lookup "Alice" $ phoneBookToMap' phoneBook
+    print $ M.lookup "Bob" $ phoneBookToMap' phoneBook
+    print $ M.lookup "Charlie" $ phoneBookToMap' phoneBook
+    print $ M.lookup "Grace" $ phoneBookToMap' phoneBook
