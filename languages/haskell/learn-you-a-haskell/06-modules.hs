@@ -190,4 +190,8 @@ main = do
     print $ M.insertWith (+) 3 100 $ M.fromList ([(3,4),(5,103),(6,339)] :: [(Int, Int)])
 
     -- Data.Set
-    print $ S.fromList "Hello, hello!"
+    let set1 = S.fromList "Hello, hello!"
+    let set2 = S.fromList "Hi, everyone!"
+    print set1
+    print set2
+    print $ S.intersection set1 set2
