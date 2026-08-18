@@ -148,3 +148,5 @@ main = do
     print $ M.empty & M.insert 'A' "Alice" & M.insert 'B' "Bob"
     print $ M.null M.empty
     print $ M.null $ M.fromList [('A', "Alice")]
+    print $ M.size M.empty
+    print $ M.size $ M.fromList [('A', "Alice")]
