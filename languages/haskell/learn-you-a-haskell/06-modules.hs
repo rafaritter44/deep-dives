@@ -151,3 +151,5 @@ main = do
     print $ M.size M.empty
     print $ M.size $ M.fromList [('A', "Alice")]
     print $ M.singleton 'A' "Alice"
+    print $ M.member 'A' $ M.singleton 'A' "Alice"
+    print $ M.member 'A' $ M.singleton 'B' "Bob"
