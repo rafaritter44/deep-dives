@@ -197,3 +197,4 @@ main = do
     print $ S.intersection set1 set2
     print $ S.difference set1 set2
     print $ S.difference set2 set1
+    print $ S.union set1 set2
