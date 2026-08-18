@@ -6,6 +6,7 @@ import Data.List
 import qualified Data.Map
 import qualified Data.Map as M
 import Data.Char
+import Data.Function ((&))
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
@@ -142,3 +143,6 @@ main = do
     let secretMsg = encode shift "A secret message"
     print secretMsg
     print $ decode shift secretMsg
+
+    -- Data.Map
+    print $ M.empty & M.insert 'A' "Alice" & M.insert 'B' "Bob"
