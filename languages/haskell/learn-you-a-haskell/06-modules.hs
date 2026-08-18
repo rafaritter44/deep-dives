@@ -195,3 +195,5 @@ main = do
     print set1
     print set2
     print $ S.intersection set1 set2
+    print $ S.difference set1 set2
+    print $ S.difference set2 set1
