@@ -198,3 +198,5 @@ main = do
     print $ S.difference set1 set2
     print $ S.difference set2 set1
     print $ S.union set1 set2
+    print $ map S.null [S.empty, set1, set2]
+    print $ map S.size [S.empty, set1, set2]
