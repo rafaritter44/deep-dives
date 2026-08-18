@@ -186,3 +186,4 @@ main = do
     print $ M.lookup "Grace" $ phoneBookToMap' phoneBook
     print $ M.fromListWith max ([(2,3),(2,5),(2,100),(3,29),(3,22),(3,11),(4,22),(4,15)] :: [(Int, Int)])
     print $ M.fromListWith (+) ([(2,3),(2,5),(2,100),(3,29),(3,22),(3,11),(4,22),(4,15)] :: [(Int, Int)])
+    print $ M.insertWith (+) 3 100 $ M.fromList ([(3,4),(5,103),(6,339)] :: [(Int, Int)])
