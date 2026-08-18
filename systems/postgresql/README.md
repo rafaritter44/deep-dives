@@ -1,4 +1,4 @@
-# Postgres
+# PostgreSQL
 
 ## Backlog
 
