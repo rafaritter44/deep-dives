@@ -201,3 +201,5 @@ main = do
     print $ map S.null [S.empty, set1, set2]
     print $ map S.size [S.empty, set1, set2]
     print $ S.singleton 'A'
+    print $ S.insert '?' set1
+    print $ S.insert '!' set1
