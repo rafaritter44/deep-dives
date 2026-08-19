@@ -208,3 +208,5 @@ main = do
     print $ S.fromList "abc" `S.isSubsetOf` S.fromList "abc"
     print $ S.fromList "abc" `S.isProperSubsetOf` S.fromList "abcd"
     print $ S.fromList "abc" `S.isProperSubsetOf` S.fromList "abc"
+    print $ S.filter odd $ S.fromList ([3,4,5,6,7,2,3,4] :: [Int])
+    print $ S.map (+1) $ S.fromList ([3,4,5,6,7,2,3,4] :: [Int])
