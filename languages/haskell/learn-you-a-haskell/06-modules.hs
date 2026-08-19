@@ -41,6 +41,11 @@ phoneBookToMap = M.fromListWith (\number1 number2 -> number1 ++ ", " ++ number2)
 phoneBookToMap' :: (Ord k) => [(k, a)] -> M.Map k [a]
 phoneBookToMap' xs = M.fromListWith (++) $ map (\(k,v) -> (k,[v])) xs
 
+-- Data.Set
+
+setNub :: Ord a => [a] -> [a]
+setNub xs = S.toList $ S.fromList xs
+
 main :: IO ()
 main = do
     -- Loading modules
@@ -210,3 +215,5 @@ main = do
     print $ S.fromList "abc" `S.isProperSubsetOf` S.fromList "abc"
     print $ S.filter odd $ S.fromList ([3,4,5,6,7,2,3,4] :: [Int])
     print $ S.map (+1) $ S.fromList ([3,4,5,6,7,2,3,4] :: [Int])
+    print $ setNub "Hello, hello!"
+    print $ nub "Hello, hello!"
