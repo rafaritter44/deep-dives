@@ -204,3 +204,7 @@ main = do
     print $ S.insert '?' set1
     print $ S.insert '!' set1
     print $ S.delete '!' set1
+    print $ S.fromList "abc" `S.isSubsetOf` S.fromList "abcd"
+    print $ S.fromList "abc" `S.isSubsetOf` S.fromList "abc"
+    print $ S.fromList "abc" `S.isProperSubsetOf` S.fromList "abcd"
+    print $ S.fromList "abc" `S.isProperSubsetOf` S.fromList "abc"
