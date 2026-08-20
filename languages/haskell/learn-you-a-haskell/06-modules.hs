@@ -8,6 +8,7 @@ import qualified Data.Map as M
 import Data.Char
 import Data.Function ((&))
 import qualified Data.Set as S
+import Geometry -- Making our own modules
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
@@ -217,3 +218,11 @@ main = do
     print $ S.map (+1) $ S.fromList ([3,4,5,6,7,2,3,4] :: [Int])
     print $ setNub "Hello, hello!"
     print $ nub "Hello, hello!"
+
+    -- Making our own modules
+    print $ sphereVolume 1
+    print $ sphereArea 1
+    print $ cubeVolume 1
+    print $ cubeArea 1
+    print $ cuboidVolume 1 2 3
+    print $ cuboidArea 1 2 3
