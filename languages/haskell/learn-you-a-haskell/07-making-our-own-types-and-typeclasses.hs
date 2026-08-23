@@ -1,6 +1,6 @@
 -- Algebraic data types
 
-data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+data Shape = Circle Float Float Float | Rectangle Float Float Float Float deriving (Show)
 
 surface :: Shape -> Float
 surface (Circle _ _ r) = pi * r ^ (2 :: Int)
@@ -29,6 +29,8 @@ main = do
     -- Algebraic data types
     print $ surface $ Circle 10 20 10
     print $ surface $ Rectangle 0 0 100 100
+    print $ Circle 10 20 5
+    print $ Rectangle 50 230 60 90
 
     -- Record syntax
     putStr ""
