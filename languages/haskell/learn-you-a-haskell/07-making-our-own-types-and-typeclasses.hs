@@ -1,5 +1,11 @@
 -- Algebraic data types
 
+data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+
+surface :: Shape -> Float
+surface (Circle _ _ r) = pi * r ^ (2 :: Int)
+surface (Rectangle x1 y1 x2 y2) = (abs $ x2 - x1) * (abs $ y2 - y1)
+
 -- Record syntax
 
 -- Type params
@@ -21,7 +27,8 @@
 main :: IO ()
 main = do
     -- Algebraic data types
-    putStr ""
+    print $ surface $ Circle 10 20 10
+    print $ surface $ Rectangle 0 0 100 100
 
     -- Record syntax
     putStr ""
