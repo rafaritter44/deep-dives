@@ -31,6 +31,7 @@ main = do
     print $ surface $ Rectangle 0 0 100 100
     print $ Circle 10 20 5
     print $ Rectangle 50 230 60 90
+    print $ map (Circle 10 20) [4,5,6,6]
 
     -- Record syntax
     putStr ""
