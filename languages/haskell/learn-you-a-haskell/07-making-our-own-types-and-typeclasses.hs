@@ -6,6 +6,13 @@ surface :: Shape -> Float
 surface (Circle _ _ r) = pi * r ^ (2 :: Int)
 surface (Rectangle x1 y1 x2 y2) = abs (x2 - x1) * abs (y2 - y1)
 
+data Point = Point Float Float deriving (Show)
+data Shape' = Circle' Point Float | Rectangle' Point Point deriving (Show)
+
+surface' :: Shape' -> Float
+surface' (Circle' _ r) = pi * r ^ (2 :: Int)
+surface' (Rectangle' (Point x1 y1) (Point x2 y2)) = abs (x2 - x1) * abs (y2 - y1)
+
 -- Record syntax
 
 -- Type params
@@ -32,6 +39,8 @@ main = do
     print $ Circle 10 20 5
     print $ Rectangle 50 230 60 90
     print $ map (Circle 10 20) [4,5,6,6]
+    print $ surface' $ Rectangle' (Point 0 0) (Point 100 100)
+    print $ surface' $ Circle' (Point 0 0) 24
 
     -- Record syntax
     putStr ""
