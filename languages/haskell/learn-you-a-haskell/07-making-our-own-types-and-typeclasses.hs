@@ -17,6 +17,12 @@ nudge :: Shape' -> Float -> Float -> Shape'
 nudge (Circle' (Point x y) r) a b = Circle' (Point (x+a) (y+b)) r
 nudge (Rectangle' (Point x1 y1) (Point x2 y2)) a b = Rectangle' (Point (x1+a) (y1+b)) (Point (x2+a) (y2+b))
 
+baseCircle :: Float -> Shape'
+baseCircle = Circle' $ Point 0 0
+
+baseRect :: Float -> Float -> Shape'
+baseRect width height = Rectangle' (Point 0 0) (Point width height)
+
 -- Record syntax
 
 -- Type params
@@ -46,6 +52,8 @@ main = do
     print $ surface' $ Rectangle' (Point 0 0) (Point 100 100)
     print $ surface' $ Circle' (Point 0 0) 24
     print $ nudge (Circle' (Point 34 34) 10) 5 10
+    print $ nudge (baseCircle 10) 39 44
+    print $ nudge (baseRect 40 100) 60 23
 
     -- Record syntax
     putStr ""
