@@ -28,11 +28,6 @@ For output, the months field is converted to years and months by dividing by 12.
 
 sum(interval)
 
-### References
-
-https://www.postgresql.org/docs/current/datatype-datetime.html
-https://www.postgresql.org/docs/current/functions-datetime.html
-
 ## Range Types (WIP)
 
 range_agg
