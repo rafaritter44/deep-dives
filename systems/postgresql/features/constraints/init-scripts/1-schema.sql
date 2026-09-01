@@ -13,3 +13,9 @@ create table product_2 (
     discounted_price numeric constraint positive_discounted_price check (discounted_price > 0),
     constraint valid_discount check (price > discounted_price)
 );
+
+-- Exclusion Constraints
+create table circles (
+    c circle,
+    exclude using gist (c with &&)
+)

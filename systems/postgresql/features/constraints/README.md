@@ -30,9 +30,8 @@ psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/check-colum
 psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/check-table-named.sql
 ```
 
-## Exclusion Constraints (WIP)
+## Exclusion Constraints
 
-### References
-
-https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-EXCLUSION
-https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-EXCLUDE
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/exclusion.sql
+```
