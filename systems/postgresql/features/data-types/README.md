@@ -30,10 +30,68 @@ sum(interval)
 
 ## Range Types (WIP)
 
+```sql
+CREATE TABLE reservation (room int, during tsrange);
+INSERT INTO reservation VALUES
+    (1108, '[2010-01-01 14:30, 2010-01-01 15:30)');
+
+-- Containment
+SELECT int4range(10, 20) @> 3;
+
+-- Overlaps
+SELECT numrange(11.1, 22.2) && numrange(20.0, 30.0);
+
+-- Extract the upper bound
+SELECT upper(int8range(15, 25));
+
+-- Compute the intersection
+SELECT int4range(10, 20) * int4range(15, 25);
+
+-- Is the range empty?
+SELECT isempty(numrange(1, 5));
+
+
+-- includes 3, does not include 7, and does include all points in between
+SELECT '[3,7)'::int4range;
+
+-- does not include either 3 or 7, but includes all points in between
+SELECT '(3,7)'::int4range;
+
+-- includes only the single point 4
+SELECT '[4,4]'::int4range;
+
+-- includes no points (and will be normalized to 'empty')
+SELECT '[4,4)'::int4range;
+
+
+SELECT '{}'::int4multirange;
+SELECT '{[3,7)}'::int4multirange;
+SELECT '{[3,7), [8,9)}'::int4multirange;
+
+
+-- The full form is: lower bound, upper bound, and text argument indicating
+-- inclusivity/exclusivity of bounds.
+SELECT numrange(1.0, 14.0, '(]');
+
+-- If the third argument is omitted, '[)' is assumed.
+SELECT numrange(1.0, 14.0);
+
+-- Although '(]' is specified here, on display the value will be converted to
+-- canonical form, since int8range is a discrete range type (see below).
+SELECT int8range(1, 14, '(]');
+
+-- Using NULL for either bound causes the range to be unbounded on that side.
+SELECT numrange(NULL, 2.2);
+
+
+SELECT nummultirange();
+SELECT nummultirange(numrange(1.0, 14.0));
+SELECT nummultirange(numrange(1.0, 14.0), numrange(20.0, 25.0));
+```
+
 range_agg
 range_intersect_agg
 
 ### References
 
-https://www.postgresql.org/docs/current/rangetypes.html
 https://www.postgresql.org/docs/current/functions-range.html
