@@ -18,4 +18,10 @@ PostgreSQL supports temporal foreign keys with action `NO ACTION`, but not `REST
 
 ### UPDATE/DELETE - FOR PORTION OF
 
+Instead of using the `FROM ... TO ...` syntax, temporal update/delete commands can also give the targeted range/multirange directly, inside parentheses. For example: `DELETE FROM products FOR PORTION OF valid_at ('[2028-01-01,)') ...`. This syntax is required when application time is stored in a multirange column.
 
+The bounds given to `FOR PORTION OF` must be constant. Functions like `now()` are allowed, but column references are not.
+
+When temporal leftovers are inserted, all `INSERT` triggers are fired, but permission checks for inserting rows are skipped.
+
+In `READ COMMITTED` mode, temporal updates and deletes can yield unexpected results when they concurrently touch the same row. It is possible to lose all or part of the second update or delete. To solve these problems, precede every temporal update/delete with a `SELECT FOR UPDATE` matching the same criteria (including the targeted portion of application time). That way the actual update/delete doesn't begin until the lock is held, and all concurrent leftovers will be visible. In higher transaction isolation levels, this lock is not required.
