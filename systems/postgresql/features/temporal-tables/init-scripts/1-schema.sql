@@ -1,9 +1,9 @@
 create table product (
-    product_no integer,
-    price      numeric,
-    valid_at   daterange,
-    primary key (product_no, valid_at without overlaps)
-    -- unique (product_no, valid_at without overlaps)
+  product_no integer,
+  price      numeric,
+  valid_at   daterange,
+  primary key (product_no, valid_at without overlaps)
+  -- unique (product_no, valid_at without overlaps)
 );
 
 create table variant (
