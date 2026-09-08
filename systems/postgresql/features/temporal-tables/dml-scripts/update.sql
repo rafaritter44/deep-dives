@@ -1,4 +1,4 @@
-UPDATE products
-  FOR PORTION OF valid_at FROM '2023-09-01' TO '2025-03-01'
-  SET price = 12.00
-  WHERE product_no = 5;
+update product
+  for portion of valid_at from '2023-09-01' to '2025-03-01'
+  set price = 12.00
+  where product_no = 5;
