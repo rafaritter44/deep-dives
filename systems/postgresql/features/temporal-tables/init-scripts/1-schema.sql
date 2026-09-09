@@ -1,3 +1,5 @@
+create extension btree_gist;
+
 create table product (
   product_no integer,
   price      numeric,
