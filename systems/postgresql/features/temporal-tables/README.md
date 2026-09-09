@@ -12,13 +12,13 @@ psql "postgres://postgres:example@localhost/postgres" -f queries/variant.sql
 
 ## Temporal Constraints
 
-### PK/UNIQUE - `WITHOUT OVERLAPS`
+### PK/UNIQUE (`WITHOUT OVERLAPS`)
 
 Temporal primary keys and unique constraints are backed by GiST indexes rather than B-Tree indexes. In practice, creating a temporal primary key or constraint requires installing the btree_gist extension, so that the database has GiST operator classes for the non-temporal parts of the key.
 
 Temporal primary keys and unique constraints have the same behavior as exclusion constraints, where each regular key part is compared with equality, and the application time is compared with overlaps, for example `EXCLUDE USING gist (id WITH =, valid_at WITH &&)`. The only difference is that they also forbid an empty application time.
 
-### FK - `PERIOD`
+### FK (`PERIOD`)
 
 The constraint is considered satisfied if the referenced table has matching records (based on the non-`PERIOD` parts of the key) whose combined `PERIOD` values completely cover the referencing record's. In other words, the reference must have a referent for its entire duration.
 
@@ -30,7 +30,7 @@ psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/insert.sql
 
 ## Temporal DML
 
-### UPDATE/DELETE - `FOR PORTION OF`
+### UPDATE/DELETE (`FOR PORTION OF`)
 
 Instead of using the `FROM ... TO ...` syntax, temporal update/delete commands can also give the targeted range/multirange directly, inside parentheses. For example: `DELETE FROM products FOR PORTION OF valid_at ('[2028-01-01,)') ...`. This syntax is required when application time is stored in a multirange column.
 
