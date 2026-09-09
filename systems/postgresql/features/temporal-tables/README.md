@@ -1,5 +1,15 @@
 # Temporal Tables
 
+## Queries
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/product.sql
+```
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/variant.sql
+```
+
 ## Temporal Constraints
 
 ### PK/UNIQUE - `WITHOUT OVERLAPS`
@@ -36,14 +46,4 @@ psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/update.sql
 
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/delete.sql
-```
-
-## Queries
-
-```shell
-psql "postgres://postgres:example@localhost/postgres" -f queries/product.sql
-```
-
-```shell
-psql "postgres://postgres:example@localhost/postgres" -f queries/variant.sql
 ```
