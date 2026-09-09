@@ -26,8 +26,6 @@ Temporal primary keys and unique constraints have the same behavior as exclusion
 
 The constraint is considered satisfied if the referenced table has matching records (based on the non-`PERIOD` parts of the key) whose combined `PERIOD` values completely cover the referencing record's. In other words, the reference must have a referent for its entire duration.
 
-PostgreSQL supports temporal foreign keys with action `NO ACTION`, but not `RESTRICT`, `CASCADE`, `SET NULL`, or `SET DEFAULT`.
-
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/insert.sql
 ```
