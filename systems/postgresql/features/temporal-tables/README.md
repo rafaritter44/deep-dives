@@ -22,12 +22,18 @@ Temporal primary keys and unique constraints are backed by GiST indexes rather t
 
 Temporal primary keys and unique constraints have the same behavior as exclusion constraints, where each regular key part is compared with equality, and the application time is compared with overlaps, for example `EXCLUDE USING gist (id WITH =, valid_at WITH &&)`. The only difference is that they also forbid an empty application time.
 
+Constraint violation example:
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/pk-violation.sql
+```
+
 ### FK (`PERIOD`)
 
 The constraint is considered satisfied if the referenced table has matching records (based on the non-`PERIOD` parts of the key) whose combined `PERIOD` values completely cover the referencing record's. In other words, the reference must have a referent for its entire duration.
 
+Constraint violation example:
 ```shell
-psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/insert.sql
+psql "postgres://postgres:example@localhost/postgres" -f dml-scripts/fk-violation.sql
 ```
 
 ## Temporal DML
