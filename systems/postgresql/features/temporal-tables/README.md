@@ -2,9 +2,13 @@
 
 ## Queries
 
+### Product table
+
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/product.sql
 ```
+
+### Variant table
 
 ```shell
 psql "postgres://postgres:example@localhost/postgres" -f queries/variant.sql
