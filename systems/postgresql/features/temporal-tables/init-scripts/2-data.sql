@@ -1,7 +1,7 @@
 insert into product (product_no, price, valid_at)
   values (5, 5.00, '[2020-01-01,2022-01-01)'),
-         (5, 8.00, '[2022-01-01,)')
-         (6, 9.00, '[2021-01-01,2024-01-01)';
+         (5, 8.00, '[2022-01-01,)'),
+         (6, 9.00, '[2021-01-01,2024-01-01)');
 
 insert into variant (variant_id, product_no, name, valid_at)
   values (8, 5, 'Medium', '[2021-01-01,2023-06-01)'),
