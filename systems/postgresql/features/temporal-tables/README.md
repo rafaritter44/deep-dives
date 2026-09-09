@@ -25,3 +25,13 @@ The bounds given to `FOR PORTION OF` must be constant. Functions like `now()` ar
 When temporal leftovers are inserted, all `INSERT` triggers are fired, but permission checks for inserting rows are skipped.
 
 In `READ COMMITTED` mode, temporal updates and deletes can yield unexpected results when they concurrently touch the same row. It is possible to lose all or part of the second update or delete. To solve these problems, precede every temporal update/delete with a `SELECT FOR UPDATE` matching the same criteria (including the targeted portion of application time). That way the actual update/delete doesn't begin until the lock is held, and all concurrent leftovers will be visible. In higher transaction isolation levels, this lock is not required.
+
+## Queries
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/product.sql
+```
+
+```shell
+psql "postgres://postgres:example@localhost/postgres" -f queries/variant.sql
+```
