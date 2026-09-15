@@ -1,3 +1,3 @@
 # Deep Dives
 
-Deep dives into core software engineering technologies.
+Deep dives into core computing technologies.
