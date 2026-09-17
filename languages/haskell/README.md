@@ -19,3 +19,4 @@
     1. https://github.com/nick8325/quickcheck
     1. https://github.com/UnkindPartition/tasty
 1. Effect System: https://github.com/tomjaguarpaw/bluefin
+1. Chess CLI with alpha-beta pruning engine
